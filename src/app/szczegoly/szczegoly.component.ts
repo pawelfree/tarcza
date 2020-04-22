@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap, catchError, map, tap } from 'rxjs/operators'; 
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-szczegoly',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SzczegolyComponent implements OnInit {
 
-  constructor() { }
+  szczegoly$: Observable<[{nazwa:string, link: string}]>
+  constructor(private readonly route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.szczegoly$ = this.route.snapshot.data.szczegoly;
+
   }
 
 }

@@ -5,11 +5,16 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class WnioskiService{
-    private apiRoot: string = "http://localhost:3000/wnioski";
+    private apiRoot: string = "http://localhost:3000/";
 
     constructor(private http: HttpClient) {}
 
-    wszystkieWnioski(): Observable<Wniosek[]> {
-        return this.http.get<Array<any>>(this.apiRoot);
+    wszystkieWnioski(): Observable<Array<Wniosek>> {
+        return this.http.get<Array<Wniosek>>(this.apiRoot+'wnioski');
     }
+
+    szczegolyWniosku(id: string): Observable<any> {
+        return this.http.get(this.apiRoot+'szczegoly/'+id);
+    }
+
 }

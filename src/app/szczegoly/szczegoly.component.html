@@ -1,1 +1,4 @@
 <p>szczegoly wniosku</p>
+<ul>
+    <li *ngFor="let szczegol of szczegoly$ | async">To jest dokument: {{szczegol.nazwa}} - {{szczegol.link}}</li>
+</ul> 

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { WnioskiComponent } from './wnioski/wnioski.component';
 import { SzczegolyComponent } from './szczegoly/szczegoly.component';
+import { SzczegolyResolver } from './szczegoly/szczegoly.resolver';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'wnioski/:id',
+    resolve: {szczegoly: SzczegolyResolver},
     component: SzczegolyComponent
   },
   { path: '**', redirectTo: '/wnioski' }

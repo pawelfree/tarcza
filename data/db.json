@@ -15,5 +15,58 @@
             "applicationID": "EFC11111111",
             "applicationStatus": "Odrzucony"
         }
+    ],
+    "szczegoly": [
+        {
+            "id": "EFC12345678",
+            "dokumenty": [
+                {
+                    "nazwa": "nazwa 1",
+                    "link": "link 1"
+                },
+                {
+                    "nazwa": "nazwa 2",
+                    "link": "link 2"
+                },
+                {
+                    "nazwa": "nazwa 3",
+                    "link": "link 3"
+                }
+            ]
+        },
+        {
+            "id": "EFC9876543",
+            "dokumenty": [
+                {
+                    "nazwa": "nazwa 1",
+                    "link": "link 1"
+                },
+                {
+                    "nazwa": "nazwa 2",
+                    "link": "link 2"
+                },
+                {
+                    "nazwa": "nazwa 3",
+                    "link": "link 3"
+                }
+            ]
+        },
+        {
+            "id": "EFC11111111",
+            "dokumenty": [
+                {
+                    "nazwa": "nazwa 1",
+                    "link": "link 1"
+                },
+                {
+                    "nazwa": "nazwa 2",
+                    "link": "link 2"
+                },
+                {
+                    "nazwa": "nazwa 3",
+                    "link": "link 3"
+                }
+            ]
+        }
     ]
 }
