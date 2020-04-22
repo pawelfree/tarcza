@@ -1,0 +1,19 @@
+{
+    "wnioski": [
+        {
+            "company": "Arka 1",
+            "applicationID": "EFC12345678",
+            "applicationStatus": "Złożony"
+        },
+        {
+            "company": "Arka 2",
+            "applicationID": "EFC9876543",
+            "applicationStatus": "Złożony"
+        },
+        {
+            "company": "Arka 3",
+            "applicationID": "EFC11111111",
+            "applicationStatus": "Odrzucony"
+        }
+    ]
+}

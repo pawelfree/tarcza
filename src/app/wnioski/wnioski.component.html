@@ -1,6 +1,4 @@
 <p>Lista wnioskow</p>
 <ul>
-    <li><a [routerLink]="['/wnioski', 1]">Coffee</a></li>
-    <li><a [routerLink]="['/wnioski', 1]">Tea</a></li>
-    <li><a [routerLink]="['/wnioski', 1]">Milk</a></li>
+    <li *ngFor="let wniosek of wnioski$ | async"><a [routerLink]="['/wnioski', wniosek.applicationID]">{{wniosek.applicationID}}</a></li>
 </ul> 
