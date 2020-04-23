@@ -5,3 +5,59 @@ mat-card {
 mat-card-content {
     margin-top: 2rem;
 }
+
+button:hover {
+    color: #d7f8c2;
+}
+
+.title {
+    margin: 1em 0.5em 0.5em 1em;
+    font-size: 1.5em;
+
+}
+
+.addButton {
+    margin: 1em;
+    padding: 1em;
+    margin-right: 1em;
+   
+}
+
+.companyName {
+    font-weight: bold;
+    text-align: left;
+  }
+  .author {
+      font-weight: 200;
+      font-size: 0.8em;
+  }
+
+
+  .applicationData {
+    font-weight: 200;
+    font-size: 0.8em;
+    text-align: right;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }  
+
+  .amount {
+      font-size: 1.2em;
+      margin-left:1.5em;
+      margin-top: -3em;
+  }
+
+  .document {
+      
+      float: right;
+      margin-top: -2.6em;
+  
+
+
+  }
+
+  a .download {
+      color: none;
+  }
