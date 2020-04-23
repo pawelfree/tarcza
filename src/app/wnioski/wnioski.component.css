@@ -10,16 +10,22 @@ button:hover {
     color: #d7f8c2;
 }
 
+
 .title {
     margin: 1em 0.5em 0.5em 1em;
     font-size: 1.5em;
+    text-align: left;
 
 }
 
 .addButton {
-    margin: 1em;
+    margin-right: 0.5em;
     padding: 1em;
-    margin-right: 1em;
+   
+}
+.addButton .description{
+    margin-right: 0.5em;
+
    
 }
 
@@ -44,20 +50,36 @@ button:hover {
   }  
 
   .amount {
+    
       font-size: 1.2em;
       margin-left:1.5em;
-      margin-top: -3em;
+ 
+      padding-bottom: 1em;
+
   }
 
   .document {
       
       float: right;
-      margin-top: -2.6em;
+      margin-top: -3.35em;
   
 
 
   }
-
+ .document::after {
+     content: "";
+     clear: both;
+ }
   a .download {
       color: none;
   }
+
+  @media (max-width: 768px) {
+        .document {
+            float: none;
+            margin: 1rem;
+        }
+
+}
+
+  

@@ -1,8 +1,20 @@
-<div align="end" class="addButton"><span style="margin-right: 20px;">Dodaj wniosek </span><button mat-fab color="accent"><mat-icon>add</mat-icon></button></div>
+
+
 
 <mat-divider></mat-divider>
 
-<div class="title">Twoje wnioski</div>
+<div class="row">
+    <div class="column">
+        <span class="title">Twoje wnioski </span>
+    </div>
+    <div class="column right">
+        <span class="addButton"><span class="description">Dodaj wniosek</span><button mat-fab color="accent"><mat-icon>add</mat-icon></button></span>
+
+    </div>
+  </div>
+
+
+
 <mat-divider></mat-divider>
     <mat-card *ngFor="let wniosek of wnioski$ | async">
 
@@ -28,17 +40,15 @@
         </div>
         </mat-card-header>
         <mat-card-content>
-            <div class="amount">
-                Wnioskowana kwota {{wniosek.amountRequested}} <span *ngIf="wniosek.amountGranted">/ Kwota przyznana {{wniosek.amountGranted}}</span>
-            </div>
-            <!--<table>
-            
+            <div class="amount" layout="column">
                
-             
+           
+            <table>
                 <tr><td>Wnioskowana kwota</td><td>{{wniosek.amountRequested}}</td></tr>
                 <tr *ngIf="wniosek.amountGranted"><td>Kwota przyznana</td><td>{{wniosek.amountGranted}}</td></tr>
              
-            </table>-->
+            </table>
+        </div>
             <div align="end" class="document">
                   <span style="margin-right: 10px;">Pobierz dokumenty</span> <button mat-mini-fab color="basic"><mat-icon color="accent">get_app</mat-icon></button> 
                   <span style="margin-right: 10px;margin-left:15px">Złożenie odwołania </span><button mat-mini-fab color="basic"><mat-icon color="warn">redo</mat-icon></button>
@@ -46,4 +56,4 @@
             </div>
             
         </mat-card-content>
-    </mat-card>
+    </mat-card> 

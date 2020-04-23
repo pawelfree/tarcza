@@ -95,10 +95,27 @@ $custom-typography: mat-typography-config(
 html, body {
 	margin: 0;
 	padding: 0;
-	border: 0;
-	font-size: 100%;
+  border: 0;
+  font-size: 100%;
+  box-sizing: border-box;
 	font: inherit;
 	vertical-align: baseline;
 	font-family: "Open Sans",Arial,Helvetica,sans-serif;
 }
 
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100vh;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #e0e0e0;
+  font-size: 0.8em;
+}
