@@ -5,18 +5,21 @@
 
 <div class="row">
     <div class="column">
-        <span [hidden]="false" class="title" >Twoje wnioski </span>
+        <span *ngIf="wnioski$ | async" class="title" >Twoje wnioski </span>
     </div>
     <div class="column right">
         <span class="addButton"><span class="description">Dodaj wniosek</span><button mat-fab color="accent"><mat-icon>add</mat-icon></button></span>
 
     </div>
   </div>
-
-
-
 <mat-divider></mat-divider>
-    <mat-card *ngFor="let wniosek of wnioski$ | async">
+
+<mat-card *ngIf="!(wnioski$ | async)">
+    <mat-card-header></mat-card-header>
+    <mat-card-content>Nie znaleziono Twoich wniosków. Dodaj nowy wniosek.</mat-card-content>
+</mat-card>
+
+<mat-card *ngFor="let wniosek of wnioski$ | async">
 
         <mat-card-header>
             
