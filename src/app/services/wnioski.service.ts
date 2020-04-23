@@ -18,7 +18,7 @@ export class WnioskiService {
 
     wszystkieWnioski(): Observable<Array<Wniosek>> {
         const headers = new HttpHeaders({ 'requestId': this.objectID() })   
-        return this.http.get<Array<Wniosek>>(this.apiRoot + 'getAllApplicationList');
+        return this.http.get<Array<Wniosek>>(this.apiRoot + 'getAllApplicationList', { headers });
     }
 
     nowyWniosek(id: string): Observable<any> {

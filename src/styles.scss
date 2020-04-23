@@ -38,9 +38,47 @@ $mat-pocztowy: (
     )
 );
 
+$mat-pocztowy-accent: (
+  
+    50 : #fae6e4,
+    100 : #f2bfbc,
+    200 : #ea958f,
+    300 : #e26b62,
+    400 : #db4b40,
+    500 : #d52b1e,
+    600 : #d0261a,
+    700 : #ca2016,
+    800 : #c41a12,
+    900 : #67b6c1,
+    A100 : #ffe6e5,
+    A200 : #67b6c1,
+    A400 : #ff8280,
+    A700 : #ff6a66,
+    contrast: (
+        50 : #ffffff,
+        100 : #ffffff,
+        200 : #ffffff,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #ffffff,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+
+
+
 $custom-theme-primary: mat-palette($mat-pocztowy);
-$custom-theme-accent: mat-palette($mat-orange, A200, A100, A400);
+$custom-theme-accent: mat-palette($mat-pocztowy-accent, A200, A100, A400);
 $custom-theme-warn: mat-palette($mat-red);
+$custom-theme-footer: mat-palette($mat-gray);
 
 //$custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent);
 $custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
@@ -63,3 +101,4 @@ html, body {
 	vertical-align: baseline;
 	font-family: "Open Sans",Arial,Helvetica,sans-serif;
 }
+
