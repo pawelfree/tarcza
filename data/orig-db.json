@@ -1,4 +1,13 @@
 {
+    "zaloguj": [
+        {
+            "id" : "1"
+        },
+        {
+            "id": "2"
+        }
+
+    ],
     "wnioski": [
         {
             "company": "Arka 1",

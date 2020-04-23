@@ -17,4 +17,7 @@ export class WnioskiService{
         return this.http.get(this.apiRoot+'szczegoly/'+id);
     }
 
+    zaloguj(token: string): Observable<any> {
+        return this.http.get(this.apiRoot+ 'zaloguj/'+token)
+    }
 }
