@@ -1,16 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { JwtModule, JwtHelperService } from "@auth0/angular-jwt";
 
-import { AngularMaterialModule} from './angular-material.module';
+import { AngularMaterialModule } from './angular-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WnioskiComponent } from './wnioski/wnioski.component';
 import { SzczegolyComponent } from './szczegoly/szczegoly.component';
 import { WnioskiService } from './services/wnioski.service';
-import { JwtInterceptor } from './services/jwt.interceptor';
 import { BladComponent } from './blad/blad.component';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -18,17 +20,27 @@ import { LoginComponent } from './login/login.component';
     WnioskiComponent,
     SzczegolyComponent,
     BladComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem("id_token");
+        },
+        whitelistedDomains: ["localhost:3000"]
+      }
+    })
   ],
   providers: [
     WnioskiService,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    JwtHelperService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

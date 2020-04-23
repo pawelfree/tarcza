@@ -6,6 +6,7 @@ import { SzczegolyResolver } from './szczegoly/szczegoly.resolver';
 import { AuthGuard } from './services/auth.guard';
 import { BladComponent } from './blad/blad.component';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 
@@ -29,6 +30,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     resolve: { szczegoly: SzczegolyResolver },
     component: SzczegolyComponent
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent
   },
   {
     path: '**',
