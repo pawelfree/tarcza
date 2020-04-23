@@ -47,6 +47,12 @@ button:hover {
 
 }
 
+.emptyApplication {
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+}
+
 .addButton {
     margin-right: 0em;
   

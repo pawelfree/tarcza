@@ -12,7 +12,7 @@ export class WnioskiComponent implements OnInit {
 
   
   wnioski$: Observable<Wniosek[]>;
-
+  
   constructor(private wnioski : WnioskiService) { }
 
   statusColor(applicationStatus:string) {
