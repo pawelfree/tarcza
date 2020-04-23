@@ -19,10 +19,11 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.pipe(
+    this.route.queryParams.pipe(
       take(1),
+      tap(console.log),
       map(param => {
-        const token = param['token'];
+        const token = param['UfChecksum'];
         if (token) {
           this.wnioski.zaloguj(token).pipe(
             take(1),

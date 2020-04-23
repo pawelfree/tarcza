@@ -7,7 +7,6 @@ import { AngularMaterialModule } from './angular-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WnioskiComponent } from './wnioski/wnioski.component';
-import { SzczegolyComponent } from './szczegoly/szczegoly.component';
 import { WnioskiService } from './services/wnioski.service';
 import { BladComponent } from './blad/blad.component';
 import { LoginComponent } from './login/login.component';
@@ -18,7 +17,6 @@ import { AuthService } from './services/auth.service';
   declarations: [
     AppComponent,
     WnioskiComponent,
-    SzczegolyComponent,
     BladComponent,
     LoginComponent,
     LogoutComponent

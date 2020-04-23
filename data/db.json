@@ -1,81 +1,46 @@
 {
-    "zaloguj": [
+    "getNewApplicationLink" : { "Link": "to/jest/link"},
+    "loginUser": [
         {
-            "id" : "1"
+            "id" : "12345"
         },
         {
-            "id": "2"
+            "id": "67890"
         }
 
     ],
-    "wnioski": [
-        {
-            "company": "Arka 1",
-            "applicationID": "EFC12345678",
-            "applicationStatus": "Złożony"
+    "getAllApplicationList": [
+        {   
+            "applicationId": "EFC12345678",
+            "userName": "Paweł Dudek",
+            "companyName" : "Kwarantanna sp. z o.o",
+            "applicationDateRequested" : "2020-01-01",
+            "applicationStatus": "Złożony",
+            "amountRequested" : "100000",
+            "amountGranted" : "100000",
+            "documentId" : "document_id_1",
+            "decisionId" : "decision_id_1"
         },
-        {
-            "company": "Arka 2",
-            "applicationID": "EFC9876543",
-            "applicationStatus": "Złożony"
+        {   
+            "applicationId": "EFC12345678",
+            "userName": "Wojciech Kowalski",
+            "companyName" : "Apteka s.c.",
+            "applicationDateRequested" : "2020-01-01",
+            "applicationStatus": "Złożony",
+            "amountRequested" : "50000",
+            "documentId" : "document_id_1",
+            "decisionId" : "decision_id_1"
         },
-        {
-            "company": "Arka 3",
-            "applicationID": "EFC11111111",
-            "applicationStatus": "Odrzucony"
-        }
-    ],
-    "szczegoly": [
-        {
-            "id": "EFC12345678",
-            "dokumenty": [
-                {
-                    "nazwa": "nazwa 1",
-                    "link": "link 1"
-                },
-                {
-                    "nazwa": "nazwa 2",
-                    "link": "link 2"
-                },
-                {
-                    "nazwa": "nazwa 3",
-                    "link": "link 3"
-                }
-            ]
-        },
-        {
-            "id": "EFC9876543",
-            "dokumenty": [
-                {
-                    "nazwa": "nazwa 1",
-                    "link": "link 1"
-                },
-                {
-                    "nazwa": "nazwa 2",
-                    "link": "link 2"
-                },
-                {
-                    "nazwa": "nazwa 3",
-                    "link": "link 3"
-                }
-            ]
-        },
-        {
-            "id": "EFC11111111",
-            "dokumenty": [
-                {
-                    "nazwa": "nazwa 1",
-                    "link": "link 1"
-                },
-                {
-                    "nazwa": "nazwa 2",
-                    "link": "link 2"
-                },
-                {
-                    "nazwa": "nazwa 3",
-                    "link": "link 3"
-                }
-            ]
+        {   
+            "applicationId": "EFC12345678",
+            "userName": "TOmasz Nowak",
+            "companyName" : "Piekarnia Kamień",
+            "applicationDateRequested" : "2020-01-01",
+            "applicationStatus": "Złożony",
+            "amountRequested" : "100000",
+            "amountGranted" : "100000",
+            "documentId" : "document_id_1",
+            "decisionId" : "decision_id_1"
         }
     ]
 }
