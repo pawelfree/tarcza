@@ -49,6 +49,12 @@ $custom-theme-warn: mat-palette($mat-red);
 $custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
 
 
+$custom-typography: mat-typography-config(
+  $font-family: '"Open Sans",Arial,Helvetica,sans-serif;'
+);
+
+@include angular-material-typography($custom-typography);
+
 @include angular-material-theme($custom-theme);
 
 html, body {
@@ -58,4 +64,5 @@ html, body {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	font-family: "Open Sans",Arial,Helvetica,sans-serif;
 }
