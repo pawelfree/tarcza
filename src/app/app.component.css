@@ -47,6 +47,9 @@
   clear: both;
 }
 
+.hidden {
+  display: none;
+}
 .session {
   font-size: 0.6em;
   line-height: 100%;

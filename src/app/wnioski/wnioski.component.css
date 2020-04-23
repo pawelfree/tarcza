@@ -7,7 +7,7 @@ mat-card-content {
 }
 
 button:hover {
-    color: #d7f8c2;
+    background-color: #A7D9E0;
 }
 
 .row {
@@ -102,6 +102,16 @@ button:hover {
   a .download {
       color: none;
   }
+
+
+  .green {
+      color: green;
+  }
+
+  .red {
+      color: red;
+  }
+  
 
   @media (max-width: 768px) {
         .document {

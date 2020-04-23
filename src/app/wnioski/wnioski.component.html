@@ -34,7 +34,7 @@
             <div style="text-align: right;">
             Wniosek nr: {{ wniosek.applicationId }}<br />
             <span class="applicationData">Data złożenia: {{wniosek.applicationDateRequested}} <br />
-                Status wniosku: {{wniosek.applicationStatus}} <br />
+                Status wniosku: <span [class]="statusColor(wniosek.applicationStatus)">{{wniosek.applicationStatus}}</span>
                 
             </span>
         </div>
@@ -51,8 +51,9 @@
         </div>
             <div align="end" class="document">
                   <span style="margin-right: 10px;">Pobierz dokumenty</span> <button mat-mini-fab color="basic"><mat-icon color="accent">get_app</mat-icon></button> 
+                  <span [hidden]="showAppeal(wniosek.applicationStatus,wniosek.amountRequested, wniosek.amountGranted)">
                   <span style="margin-right: 10px;margin-left:15px">Złożenie odwołania </span><button mat-mini-fab color="basic"><mat-icon color="warn">redo</mat-icon></button>
-                
+                </span>
             </div>
             
         </mat-card-content>
