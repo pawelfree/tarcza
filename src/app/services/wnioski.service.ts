@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Wniosek } from '../models/wniosek';
 import { Observable } from 'rxjs';
+import { User } from '../models/user';
 
 @Injectable()
 export class WnioskiService {
@@ -26,8 +27,8 @@ export class WnioskiService {
         return this.http.get(this.apiRoot + 'getNewApplicationLink',{ headers });
     }
 
-    zaloguj(token: string): Observable<any> {
+    zaloguj(token: string): Observable<User> {
         const headers = new HttpHeaders({ 'requestId': this.objectID() })
-        return this.http.get(this.apiRoot + 'loginUser/' + token, { headers });
+        return this.http.get<User>(this.apiRoot + 'loginUser/' + token, { headers });
     }
 }

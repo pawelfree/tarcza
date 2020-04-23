@@ -2,10 +2,14 @@
     "getNewApplicationLink" : { "Link": "to/jest/link"},
     "loginUser": [
         {
-            "id" : "12345"
+            "id" : "12345",
+            "userName": "Wojciech Kowalski",
+            "isCompany": true
         },
         {
-            "id": "67890"
+            "id": "67890",
+            "userName": "Tomasz Nowak",
+            "isCompany": true
         }
 
     ],

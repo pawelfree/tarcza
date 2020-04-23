@@ -3,12 +3,20 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 
 
 import { Router } from '@angular/router';
+import { WnioskiService } from './wnioski.service';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { take, catchError, map, tap } from 'rxjs/operators';
+import { User } from '../models/user';
 
 @Injectable()
 export class AuthService implements OnDestroy {
 
+    private loggedIn = new BehaviorSubject<User>(null);
+    loggedIn$ = this.loggedIn.asObservable();
+
     constructor(private router: Router,
-                private jwt: JwtHelperService) {}
+        private jwt: JwtHelperService,
+        private wnioski: WnioskiService) { }
 
     private tokenExpirationTimer: any;
 
@@ -18,7 +26,7 @@ export class AuthService implements OnDestroy {
         }
     }
 
-    zweryfikuj(token: string){
+    zweryfikuj(token: string) {
         return this.jwt.decodeToken(token);
     }
 
@@ -34,5 +42,34 @@ export class AuthService implements OnDestroy {
             clearTimeout(this.tokenExpirationTimer);
         }
         this.tokenExpirationTimer = null;
+    }
+
+    public logout(redirect: boolean = true) {
+        this.loggedIn.next(null);
+        this.clearLogoutTimer();
+        localStorage.removeItem('id_token');
+        if (redirect) { 
+            this.router.navigateByUrl('/logout');
+        }
+    }
+
+    public login(token: string): Observable<boolean> {
+
+        return this.wnioski.zaloguj(token)
+            .pipe(
+                take(1),
+                map(res => {
+                    if (res && res.isCompany) {
+                        localStorage.setItem('id_token', res['id']);
+                        const expirationTimer = 30 * 1000;
+                        this.setLogoutTimer(expirationTimer);
+                        this.loggedIn.next(res);
+                        return true
+                    } else {
+                        this.loggedIn.next(null);
+                        return false
+                    }
+                }),
+                catchError(() => of(false)));
     }
 }
