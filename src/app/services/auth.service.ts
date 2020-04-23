@@ -5,7 +5,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 import { Router } from '@angular/router';
 import { WnioskiService } from './wnioski.service';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { take, catchError, map, tap } from 'rxjs/operators';
+import { take, catchError, map } from 'rxjs/operators';
 import { User } from '../models/user';
 
 @Injectable()
@@ -60,12 +60,11 @@ export class AuthService implements OnDestroy {
                 take(1),
                 map(res => {
                     if (res && res.isCompany) {
-                        localStorage.setItem('id_token', res['id']);
-                        const expirationTimer = 30 * 1000;
-                        this.setLogoutTimer(expirationTimer);
+                        this.setLogoutTimer(30*1000)
                         this.loggedIn.next(res);
                         return true
                     } else {
+                        localStorage.removeItem('id_token')
                         this.loggedIn.next(null);
                         return false
                     }

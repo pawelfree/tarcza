@@ -3,12 +3,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Wniosek } from '../models/wniosek';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
+import { map } from 'rxjs/operators';
+import { TokenService } from './token.service';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class WnioskiService {
-    private apiRoot: string = "http://localhost:3000/";
+    private apiUrl: string = environment.apiUrl;
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,
+        private tokenService: TokenService) { }
 
     private objectID(): string {
         const timestamp = (new Date().getTime() / 1000 | 0).toString(16);
@@ -19,16 +23,27 @@ export class WnioskiService {
 
     wszystkieWnioski(): Observable<Array<Wniosek>> {
         const headers = new HttpHeaders({ 'requestId': this.objectID() })   
-        return this.http.get<Array<Wniosek>>(this.apiRoot + 'getAllApplicationList', { headers });
+        return this.http.get<Array<Wniosek>>(this.apiUrl + 'getApplicationList', { headers, observe: 'response' })
+            .pipe(map(result => {
+                this.tokenService.setToken(result.headers['Authorization']);
+                return result.body}));
     }
 
     nowyWniosek(id: string): Observable<any> {
         const headers = new HttpHeaders({ 'requestId': this.objectID() })       
-        return this.http.get(this.apiRoot + 'getNewApplicationLink',{ headers });
+        return this.http.get(this.apiUrl + 'getNewApplicationLink',{ headers , observe: 'response'})
+            .pipe(map(result => {
+                this.tokenService.setToken(result.headers['Authorization']);
+                return result.body}));
     }
 
     zaloguj(token: string): Observable<User> {
         const headers = new HttpHeaders({ 'requestId': this.objectID() })
-        return this.http.get<User>(this.apiRoot + 'loginUser/' + token, { headers });
+        return this.http
+            .get<User>(this.apiUrl + 'LoginUser/' + token, { headers , observe: 'response'})
+            .pipe(map(result => {
+                const token = result.headers.get('Authorization');
+                this.tokenService.setToken(token);
+                return result.body}));
     }
 }

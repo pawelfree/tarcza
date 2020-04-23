@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.pipe(
       take(1),
-      tap(console.log),
       switchMap(param => this.auth.login(param['UfChecksum']))
     ).subscribe(result => {
       if (result) {

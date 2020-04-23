@@ -12,6 +12,7 @@ import { BladComponent } from './blad/blad.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthService } from './services/auth.service';
+import { TokenService } from './services/token.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AuthService } from './services/auth.service';
   providers: [
     WnioskiService,
     JwtHelperService,
-    AuthService
+    AuthService,
+    TokenService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,6 @@
 {
     "getNewApplicationLink" : { "Link": "to/jest/link"},
-    "loginUser": [
+    "LoginUser": [
         {
             "id" : "12345",
             "userName": "Wojciech Kowalski",
@@ -13,7 +13,7 @@
         }
 
     ],
-    "getAllApplicationList": [
+    "getApplicationList": [
         {   
             "applicationId": "EFC12345678",
             "userName": "Paweł Dudek",
