@@ -66,8 +66,8 @@
                 </button>
             </span>
             <span *ngIf="showDecision(wniosek.decisionId)">
-                <span style="margin-right: 10px;margin-left:15px">Pokaż decyzję</span><button mat-mini-fab
-                    color="basic">
+                <span style="margin-right: 10px;margin-left:15px">Pokaż decyzję</span><button mat-mini-fab color="basic"
+                    (click)="loadPdf(wniosek.decisionId)">
                     <mat-icon color="accent">file_copy</mat-icon>
                 </button>
             </span>

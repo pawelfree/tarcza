@@ -7,6 +7,7 @@ import { take, catchError, tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { WaitComponent } from '../wait/wait.component';
+import { environment } from 'src/environments/environment';
 
 @Component( {
   selector: 'app-wnioski',
@@ -50,6 +51,11 @@ export class WnioskiComponent implements OnInit {
     return statusClass
   }
 
+  loadPdf( id: string ) {
+    const _id = id ? id : "getDocumentMock";
+    const link = environment.apiUrl + _id;
+    window.open( link, "_blank" );
+  }
   // showAppeal( applicationStatus: string, amountReq: number, amountGranded: number ) {
   //   var hiddenAppeal = true;
   //   hiddenAppeal = amountGranded != amountReq ? false : true;
