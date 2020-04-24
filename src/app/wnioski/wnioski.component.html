@@ -25,20 +25,19 @@
 
     <mat-card-header>
 
-        <div class="companyName">{{wniosek.companyName}} <br /> <span class="author">{{wniosek.userName}}</span>
+        <div class="companyName">
+            {{wniosek.companyName}}
+            <br />
+            <span style="font-weight: 100">Status wniosku: </span>
+            <span [class]="statusColor(wniosek.applicationStatus)">{{wniosek.applicationStatus}}</span>
 
         </div>
-        <div class="author"></div>
-
-
 
         <span class="spacer"></span>
         <div style="text-align: right;">
             Wniosek nr: {{ wniosek.applicationId }}<br />
             <span class="applicationData">Data złożenia: {{wniosek.applicationDateRequested}} <br />
-                Status wniosku: <span
-                    [class]="statusColor(wniosek.applicationStatus)">{{wniosek.applicationStatus}}</span>
-
+                <span class="author">{{wniosek.userName}}</span>
             </span>
         </div>
     </mat-card-header>
@@ -49,12 +48,12 @@
             <table>
                 <tr>
                     <td>Wnioskowana kwota</td>
-                    <td>{{wniosek.amountRequested}}</td>
+                    <td class="amountInfo">{{showAmount(wniosek.amountRequested)}}</td>
                 </tr>
                 <tr *ngIf="wniosek.amountGranted">
                     <td>Kwota przyznana</td>
-                    <td><span
-                            [class]="checkAmount(wniosek.amountRequested,wniosek.amountGranted)">{{wniosek.amountGranted}}</span>
+                    <td class="amountInfo"><span
+                            [class]="checkAmount(wniosek.amountRequested,wniosek.amountGranted)">{{showAmount(wniosek.amountGranted)}}</span>
                     </td>
                 </tr>
 
@@ -72,7 +71,7 @@
                     <mat-icon color="accent">file_copy</mat-icon>
                 </button>
             </span>
-            <span *ngIf="showAppeal(wniosek.applicationStatus,wniosek.amountRequested, wniosek.amountGranted)">
+            <span *ngIf="showAppeal(wniosek.applicationStatus)">
                 <span style="margin-right: 10px;margin-left:15px">Złóż odwołanie </span><button mat-mini-fab
                     color="basic">
                     <mat-icon color="warn">redo</mat-icon>

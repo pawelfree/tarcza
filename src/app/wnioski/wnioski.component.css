@@ -71,7 +71,7 @@ button:hover {
   }
   .author {
       font-weight: 200;
-      font-size: 0.8em;
+      font-size: 1em;
   }
 
 
@@ -89,16 +89,23 @@ button:hover {
     
       font-size: 1.2em;
       margin-left:1.5em;
+     
  
       padding-bottom: 1em;
 
+  }
+
+  .amountInfo {
+      margin-left: 2em;
+      text-align: right;
+      width: 50%;
   }
 
   .document {
       
       float: right;
       margin-top: -3.35em;
-      font-size: 0.8em;
+      font-size: 1em;
   
 
 
@@ -128,7 +135,8 @@ button:hover {
   @media (max-width: 768px) {
         .document {
             float: none;
-            margin: 1rem;
+            margin: 1em;
+            font-size: 0.8em;
         }
 
 }

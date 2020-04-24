@@ -50,12 +50,24 @@ export class WnioskiComponent implements OnInit {
     return statusClass
   }
 
-  showAppeal( applicationStatus: string, amountReq: number, amountGranded: number ) {
+  // showAppeal( applicationStatus: string, amountReq: number, amountGranded: number ) {
+  //   var hiddenAppeal = true;
+  //   hiddenAppeal = amountGranded != amountReq ? false : true;
+  //   //TOTO na dzisiaj zawsza nie pokauje
+  //   //return hiddenAppeal;
+  //   return false;
+  // }
+
+  showAmount( amount: number ) {
+    return amount.toString().replace( /\B(?=(\d{3})+(?!\d))/g, " " ) + " zł.";
+  }
+
+  showAppeal( applicationStatus: string ) {
     var hiddenAppeal = true;
-    hiddenAppeal = amountGranded != amountReq ? false : true;
-    //TOTO na dzisiaj zawsza nie pokauje
-    //return hiddenAppeal;
-    return false;
+    hiddenAppeal = applicationStatus != "Odrzucony" ? false : true;
+    //TOTO pokazuje na podstawie statusu
+    return hiddenAppeal;
+    //return false;
   }
 
   // showAppeal( applicationStatus: string ) {
