@@ -15,7 +15,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { AuthService } from './services/auth.service';
 import { WaitComponent } from './wait/wait.component';
 
-@NgModule({
+@NgModule( {
   declarations: [
     AppComponent,
     WnioskiComponent,
@@ -30,14 +30,14 @@ import { WaitComponent } from './wait/wait.component';
     AppRoutingModule,
     HttpClientModule,
     AngularMaterialModule,
-    JwtModule.forRoot({
+    JwtModule.forRoot( {
       config: {
         tokenGetter: () => {
-          return localStorage.getItem("id_token");
+          return localStorage.getItem( "id_token" );
         },
         whitelistedDomains: ["localhost:3000"]
       }
-    })
+    } )
   ],
   providers: [
     WnioskiService,
@@ -46,5 +46,5 @@ import { WaitComponent } from './wait/wait.component';
     // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
-})
+} )
 export class AppModule { }

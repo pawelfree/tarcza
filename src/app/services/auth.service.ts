@@ -11,65 +11,72 @@ import { User } from '../models/user';
 @Injectable()
 export class AuthService implements OnDestroy {
 
-    private loggedIn = new BehaviorSubject<User>(null);
+    private loggedIn = new BehaviorSubject<User>( null );
     loggedIn$ = this.loggedIn.asObservable();
 
-    constructor(private router: Router,
+    constructor( private router: Router,
         private jwt: JwtHelperService,
-        private wnioski: WnioskiService) { }
+        private wnioski: WnioskiService ) { }
 
     private tokenExpirationTimer: any;
 
     ngOnDestroy() {
-        if (this.tokenExpirationTimer) {
-            clearTimeout(this.tokenExpirationTimer);
+        if ( this.tokenExpirationTimer ) {
+            clearTimeout( this.tokenExpirationTimer );
         }
     }
 
-    zweryfikuj(token: string) {
-        return this.jwt.decodeToken(token);
+    zweryfikuj( token: string ) {
+        // return this.jwt.decodeToken( token );
     }
 
-    setLogoutTimer(expirationDuration: number) {
-        this.tokenExpirationTimer = setTimeout(_ => {
-            localStorage.removeItem('id_token');
-            this.router.navigateByUrl('/logout');
-        }, expirationDuration);
+    setLogoutTimer( expirationDuration: number ) {
+        this.tokenExpirationTimer = setTimeout( _ => {
+            localStorage.removeItem( 'id_token' );
+            this.router.navigateByUrl( '/logout' );
+        }, expirationDuration );
     }
 
     clearLogoutTimer() {
-        if (this.tokenExpirationTimer) {
-            clearTimeout(this.tokenExpirationTimer);
+        if ( this.tokenExpirationTimer ) {
+            clearTimeout( this.tokenExpirationTimer );
         }
         this.tokenExpirationTimer = null;
     }
 
-    public logout(redirect: boolean = true) {
-        this.loggedIn.next(null);
+    public logout( redirect: boolean = true ) {
+        this.loggedIn.next( null );
         this.clearLogoutTimer();
-        localStorage.removeItem('id_token');
-        if (redirect) { 
-            this.router.navigateByUrl('/logout');
+        localStorage.removeItem( 'id_token' );
+        if ( redirect ) {
+            this.router.navigateByUrl( '/logout' );
+
         }
     }
 
-    public login(token: string): Observable<boolean> {
+    public login( token: string ): Observable<boolean> {
 
-        return this.wnioski.zaloguj(token)
+        return this.wnioski.zaloguj( token )
             .pipe(
-                take(1),
-                map(res => {
-                    if (res && res.isCompany && res.token) {
-                        localStorage.setItem('id_token',token);
-                        this.setLogoutTimer(30*1000)
-                        this.loggedIn.next(res);
+                take( 1 ),
+                map( res => {
+                    console.log( 'result', res );
+
+                    if ( res && res.isCompany && res.token ) {
+                        var expirationDuration = this.jwt.getTokenExpirationDate( res.token ).getTime() - new Date().getTime();
+                        localStorage.setItem( 'id_token', res.token );
+                        if ( expirationDuration > 60 * 60 * 1000 ) {
+                            expirationDuration = 60 * 60 * 1000;
+                        }
+                        this.setLogoutTimer( expirationDuration )
+                        this.loggedIn.next( res );
                         return true
                     } else {
-                        localStorage.removeItem('id_token')
-                        this.loggedIn.next(null);
+                        localStorage.removeItem( 'id_token' )
+                        this.loggedIn.next( null );
                         return false
                     }
-                }),
-                catchError(() => of(false)));
+                } ),
+                catchError( () => of( false ) ) );
     }
 }

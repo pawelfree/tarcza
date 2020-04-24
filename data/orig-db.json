@@ -1,50 +1,53 @@
 {
-    "getNewApplicationLink" : { "Link": "https://stackoverflow.com"},
+    "getNewApplicationLink": {
+        "Link": "https://stackoverflow.com"
+    },
     "LoginUser": [
         {
-            "id" : "12345",
+            "id": "12345",
             "userName": "Wojciech Kowalski",
-            "isCompany": true
+            "isCompany": true,
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0OTM1Mzk2MCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiI0OTM1Mzk2MCIsImV4cCI6MTY1MDc4NjYzOCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1NzY4MiIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTc2ODIifQ.MmnFALAHaRgsG08DHbCEcoA9trYe-ceB4yMrr3KaGkc"
         },
         {
             "id": "67890",
             "userName": "Tomasz Nowak",
-            "isCompany": true
+            "isCompany": true,
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0OTM1Mzk2MCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiI0OTM1Mzk2MCIsImV4cCI6MTY1MDc4NjYzOCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1NzY4MiIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTc2ODIifQ.MmnFALAHaRgsG08DHbCEcoA9trYe-ceB4yMrr3KaGkc"
         }
-
     ],
     "getApplicationList": [
-        {   
+        {
             "applicationId": "EFC12345678",
             "userName": "Paweł Dudek",
-            "companyName" : "Kwarantanna sp. z o.o",
-            "applicationDateRequested" : "2020-01-01",
+            "companyName": "Kwarantanna sp. z o.o",
+            "applicationDateRequested": "2020-01-01",
             "applicationStatus": "Złożony",
-            "amountRequested" : "100000",
-            "amountGranted" : "100000",
-            "documentId" : "document_id_1",
-            "decisionId" : "decision_id_1"
+            "amountRequested": "100000",
+            "amountGranted": "100000",
+            "documentId": "document_id_1",
+            "decisionId": "decision_id_1"
         },
-        {   
+        {
             "applicationId": "EFC12345678",
             "userName": "Wojciech Kowalski",
-            "companyName" : "Apteka s.c.",
-            "applicationDateRequested" : "2020-01-01",
+            "companyName": "Apteka s.c.",
+            "applicationDateRequested": "2020-01-01",
             "applicationStatus": "Złożony",
-            "amountRequested" : "50000",
-            "documentId" : "document_id_1",
-            "decisionId" : "decision_id_1"
+            "amountRequested": "50000",
+            "documentId": "document_id_1",
+            "decisionId": "decision_id_1"
         },
-        {   
+        {
             "applicationId": "EFC12345678",
             "userName": "TOmasz Nowak",
-            "companyName" : "Piekarnia Kamień",
-            "applicationDateRequested" : "2020-01-01",
+            "companyName": "Piekarnia Kamień",
+            "applicationDateRequested": "2020-01-01",
             "applicationStatus": "Złożony",
-            "amountRequested" : "100000",
-            "amountGranted" : "100000",
-            "documentId" : "document_id_1",
-            "decisionId" : "decision_id_1"
+            "amountRequested": "100000",
+            "amountGranted": "100000",
+            "documentId": "document_id_1",
+            "decisionId": "decision_id_1"
         }
     ]
 }

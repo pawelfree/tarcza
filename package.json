@@ -8,7 +8,8 @@
     "dist": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "server": "cp ./data/orig-db.json ./data/db.json && json-server --watch ./data/db.json"
+    "server:l": "cp ./data/orig-db.json ./data/db.json && json-server --watch ./data/db.json",
+    "server:w": "copy .\\data\\orig-db.json .\\data\\db.json && json-server --watch .\\data\\db.json"
   },
   "private": true,
   "dependencies": {

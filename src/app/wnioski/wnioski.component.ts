@@ -8,24 +8,24 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { WaitComponent } from '../wait/wait.component';
 
-@Component({
+@Component( {
   selector: 'app-wnioski',
   templateUrl: './wnioski.component.html',
   styleUrls: ['./wnioski.component.css']
-})
+} )
 export class WnioskiComponent implements OnInit {
 
   wnioski$: Observable<Wniosek[]>;
 
-  constructor(private wnioski: WnioskiService,
-              private router: Router,
-              public dialog: MatDialog,
-              @Inject(DOCUMENT) private document: Document) { }
+  constructor( private wnioski: WnioskiService,
+    private router: Router,
+    public dialog: MatDialog,
+    @Inject( DOCUMENT ) private document: Document ) { }
 
-  statusColor(applicationStatus: string) {
+  statusColor( applicationStatus: string ) {
     var statusClass: string = "";
 
-    switch (applicationStatus) {
+    switch ( applicationStatus ) {
       case "Złożony": {
         statusClass = "green";
         break;
@@ -44,7 +44,7 @@ export class WnioskiComponent implements OnInit {
     return statusClass
   }
 
-  showAppeal(applicationStatus: string, amountReq: number, amountGranded: number) {
+  showAppeal( applicationStatus: string, amountReq: number, amountGranded: number ) {
     var hiddenAppeal = false;
     hiddenAppeal = amountGranded != amountReq ? false : true;
     //TOTO na dzisiaj zawsza nie pokauje
@@ -53,18 +53,18 @@ export class WnioskiComponent implements OnInit {
   }
 
   nowyWniosek() {
-    const dialogRef = this.dialog.open(WaitComponent, {disableClose : true});
+    const dialogRef = this.dialog.open( WaitComponent, { disableClose: true } );
     this.wnioski.nowyWniosek().pipe(
-      take(1),
-      catchError(err => {
+      take( 1 ),
+      catchError( err => {
         dialogRef.close();
-        this.router.navigateByUrl('/error')
+        this.router.navigateByUrl( '/error' )
         return null
-      })
+      } )
     ).subscribe(
       res => {
         dialogRef.close();
-        this.document.location.href = res['Link'];        
+        this.document.location.href = res['Link'];
       }
     )
   }
