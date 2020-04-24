@@ -15,7 +15,7 @@
 <mat-divider *ngIf="wnioski$ | async"></mat-divider>
 <mat-card *ngIf="!(wnioski$ | async)">
     <mat-card-header>
-        <div class="emptyApplication">Dodaj nowy wniosek.</div>
+        <div class="emptyApplication">Nie masz żadnych aktywnych wniosków. Dodaj pierwszy wniosek.</div>
     </mat-card-header>
 
 </mat-card>
@@ -24,10 +24,7 @@
 
     <mat-card-header>
 
-        <div class="companyName">{{wniosek.companyName}} <br /> <span class="author">{{wniosek.userName}}
-                <br />Decyzja: {{wniosek.decisionId}}
-
-            </span>
+        <div class="companyName">{{wniosek.companyName}} <br /> <span class="author">{{wniosek.userName}}</span>
 
         </div>
         <div class="author"></div>
@@ -55,21 +52,30 @@
                 </tr>
                 <tr *ngIf="wniosek.amountGranted">
                     <td>Kwota przyznana</td>
-                    <td>{{wniosek.amountGranted}}</td>
+                    <td><span [class]="checkAmount(wniosek.amountRequested,wniosek.amountGranted)">{{wniosek.amountGranted}}</span></td>
                 </tr>
 
             </table>
         </div>
         <div align="end" class="document">
-            <span style="margin-right: 10px;">Pobierz dokumenty</span> <button mat-mini-fab color="basic">
+            <span *ngIf="showDocument(wniosek.documentId)">
+            <span style="margin-right: 10px;">Pokaż umowę</span> <button mat-mini-fab color="basic">
                 <mat-icon color="accent">get_app</mat-icon>
             </button>
-            <span [hidden]="showAppeal(wniosek.applicationStatus,wniosek.amountRequested, wniosek.amountGranted)">
-                <span style="margin-right: 10px;margin-left:15px">Złożenie odwołania </span><button mat-mini-fab
+            </span>
+            <span *ngIf="showDecision(wniosek.decisionId)">
+                <span style="margin-right: 10px;margin-left:15px">Pokaż decyzję</span><button mat-mini-fab
+                    color="basic">
+                    <mat-icon color="accent">file_copy</mat-icon>
+                </button>
+            </span>
+            <span *ngIf="showAppeal(wniosek.applicationStatus,wniosek.amountRequested, wniosek.amountGranted)">
+                <span style="margin-right: 10px;margin-left:15px">Złóż odwołanie </span><button mat-mini-fab
                     color="basic">
                     <mat-icon color="warn">redo</mat-icon>
                 </button>
             </span>
+            
         </div>
 
     </mat-card-content>

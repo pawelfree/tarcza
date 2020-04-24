@@ -44,12 +44,34 @@ export class WnioskiComponent implements OnInit {
     return statusClass
   }
 
-  showAppeal( applicationStatus: string, amountReq: number, amountGranded: number ) {
-    var hiddenAppeal = false;
+  /*showAppeal( applicationStatus: string, amountReq: number, amountGranded: number ) {
+    var hiddenAppeal = true;
     hiddenAppeal = amountGranded != amountReq ? false : true;
     //TOTO na dzisiaj zawsza nie pokauje
     //return hiddenAppeal;
-    return true;
+    return false;
+  }*/
+
+  showAppeal( applicationStatus: string) {
+    var hiddenAppeal = true;
+    hiddenAppeal = applicationStatus != "Odrzucony" ? false : true;
+    //TOTO pokazuje na podstawie statusu
+    return hiddenAppeal;
+    //return false;
+  }
+
+  showDecision(decisionID: string) {
+    var showDecisionButton = false;
+    showDecisionButton = !(decisionID) ? false : true;
+    return showDecisionButton;
+ 
+
+  }
+
+  showDocument(documentID:string) {
+    var showDocumentButton = false;
+    showDocumentButton = !(documentID) ? false : true;
+    return showDocumentButton;
   }
 
   nowyWniosek() {
@@ -69,9 +91,31 @@ export class WnioskiComponent implements OnInit {
     )
   }
 
+  checkAmount(amountReq: number, amountGranded: number) {
+    var amountClass:string = "";
+    switch (true) {
+      case (amountGranded / amountReq <= 0.25): {
+        amountClass = "orange";
+        break;
+      }
+      case (amountGranded / amountReq > 0.25 && amountGranded / amountReq < 1): {
+        amountClass = "red";
+        break;
+      }
+      case (amountGranded / amountReq == 1): {
+        amountClass = "green";
+        break;
+      } default: {
+        break;
+      }
+    }
+    return amountClass;
+ 
+  }
 
   ngOnInit(): void {
     this.wnioski$ = this.wnioski.wszystkieWnioski();
+    
   }
 
 }
