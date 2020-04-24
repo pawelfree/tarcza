@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { WnioskiService } from '../services/wnioski.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { tap, take, map, catchError, switchMap } from 'rxjs/operators';
-import { noop } from 'rxjs';
+import { take, switchMap } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 
 @Component({

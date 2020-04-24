@@ -1,5 +1,5 @@
 {
-    "getNewApplicationLink" : { "Link": "to/jest/link"},
+    "getNewApplicationLink" : { "Link": "https://stackoverflow.com"},
     "LoginUser": [
         {
             "id" : "12345",

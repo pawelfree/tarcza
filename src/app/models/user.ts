@@ -3,4 +3,5 @@ export class User {
     id: string;
     isCompany: boolean;
     userName: string;
+    token: string;
 }

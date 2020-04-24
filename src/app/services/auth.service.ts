@@ -59,7 +59,8 @@ export class AuthService implements OnDestroy {
             .pipe(
                 take(1),
                 map(res => {
-                    if (res && res.isCompany) {
+                    if (res && res.isCompany && res.token) {
+                        localStorage.setItem('id_token',token);
                         this.setLogoutTimer(30*1000)
                         this.loggedIn.next(res);
                         return true
