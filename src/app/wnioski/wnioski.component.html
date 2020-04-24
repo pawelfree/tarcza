@@ -60,8 +60,9 @@
             </table>
         </div>
         <div align="end" class="document">
-            <span *ngIf="showDocument(wniosek.documentId)">
-                <span style="margin-right: 10px;">Pokaż umowę</span> <button mat-mini-fab color="basic">
+            <span *ngIf="showDocument(wniosek.contractId)">
+                <span style="margin-right: 10px;">Pokaż umowę</span> <button mat-mini-fab color="basic"
+                    (click)="loadPdf(wniosek.contractId)">
                     <mat-icon color="accent">get_app</mat-icon>
                 </button>
             </span>

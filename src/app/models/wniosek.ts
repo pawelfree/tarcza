@@ -6,6 +6,6 @@ export class Wniosek {
     applicationStatus: string;
     amountRequested: string;
     amountGranted: string;
-    documentId: string;
+    contractId: string;
     decisionId: string;
 }

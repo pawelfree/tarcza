@@ -25,7 +25,7 @@ export class WnioskiComponent implements OnInit {
     @Inject( DOCUMENT ) private document: Document ) { }
 
   ngOnInit(): void {
-    this.wnioski$ = this.wnioski.wszystkieWnioski().pipe( map( res => Array.from( res['applictions'] ) ) );
+    this.wnioski$ = this.wnioski.wszystkieWnioski().pipe( map( res => Array.from( res['applications'] ) ) );
     this.zablokowanyPrzyciskNowyWniosek = false;
   }
 
@@ -52,8 +52,7 @@ export class WnioskiComponent implements OnInit {
   }
 
   loadPdf( id: string ) {
-    const _id = id ? id : "getDocumentMock";
-    const link = environment.apiUrl + _id;
+    const link = environment.apiUrl + id;
     window.open( link, "_blank" );
   }
   // showAppeal( applicationStatus: string, amountReq: number, amountGranded: number ) {
@@ -103,7 +102,6 @@ export class WnioskiComponent implements OnInit {
     const dialogRef = this.dialog.open( WaitComponent, { disableClose: true } );
     this.wnioski.nowyWniosek().pipe(
       take( 1 ),
-      tap( console.log ),
       catchError( err => {
         dialogRef.close();
         this.router.navigateByUrl( '/error' )
