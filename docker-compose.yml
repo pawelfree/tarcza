@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+    node:
+        container_name: tarcza
+        build: .
+        volumes:
+            - ./dist/tarcza/:/usr/local/apache2/htdocs/
+        ports:
+            - 80:80

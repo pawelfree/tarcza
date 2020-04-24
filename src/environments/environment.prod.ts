@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: "http://localhost:3000/api/Session"
+  apiUrl: "http://bpsqldra.bpsa.pl/Arka.Backend/api/Session/",
 };

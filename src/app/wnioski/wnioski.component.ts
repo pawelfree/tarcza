@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Wniosek } from '../models/wniosek';
 import { WnioskiService } from '../services/wnioski.service';
 import { DOCUMENT } from '@angular/common';
-import { take, catchError, tap } from 'rxjs/operators';
+import { take, catchError, tap, map } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { WaitComponent } from '../wait/wait.component';
@@ -25,7 +25,7 @@ export class WnioskiComponent implements OnInit {
     @Inject( DOCUMENT ) private document: Document ) { }
 
   ngOnInit(): void {
-    this.wnioski$ = this.wnioski.wszystkieWnioski().pipe( tap( console.log ) );
+    this.wnioski$ = this.wnioski.wszystkieWnioski().pipe( map( res => Array.from( res['applictions'] ) ) );
     this.zablokowanyPrzyciskNowyWniosek = false;
   }
 
