@@ -52,6 +52,10 @@ export class WnioskiComponent implements OnInit {
     return false;
   }*/
 
+  showAmount(amount:number) {
+    return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " zł.";
+  }
+
   showAppeal( applicationStatus: string) {
     var hiddenAppeal = true;
     hiddenAppeal = applicationStatus != "Odrzucony" ? false : true;

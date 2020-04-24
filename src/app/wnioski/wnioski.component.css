@@ -89,6 +89,7 @@ button:hover {
     
       font-size: 1.2em;
       margin-left:1.5em;
+     
  
       padding-bottom: 1em;
 
@@ -96,6 +97,8 @@ button:hover {
 
   .amountInfo {
       margin-left: 2em;
+      text-align: right;
+      width: 50%;
   }
 
   .document {

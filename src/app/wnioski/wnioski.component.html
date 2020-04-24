@@ -37,9 +37,6 @@
             Wniosek nr: {{ wniosek.applicationId }}<br />
             <span class="applicationData">Data złożenia: {{wniosek.applicationDateRequested}} <br />
                 <span class="author">{{wniosek.userName}}</span>
-                <!--Status wniosku: <span
-                    [class]="statusColor(wniosek.applicationStatus)">{{wniosek.applicationStatus}}</span>-->
-
             </span>
         </div>
     </mat-card-header>
@@ -50,11 +47,11 @@
             <table>
                 <tr>
                     <td>Wnioskowana kwota</td>
-                    <td>{{wniosek.amountRequested}}</td>
+                    <td class="amountInfo">{{showAmount(wniosek.amountRequested)}}</td>
                 </tr>
                 <tr *ngIf="wniosek.amountGranted">
                     <td>Kwota przyznana</td>
-                    <td><span [class]="checkAmount(wniosek.amountRequested,wniosek.amountGranted)">{{wniosek.amountGranted}}</span></td>
+                    <td class="amountInfo"><span [class]="checkAmount(wniosek.amountRequested,wniosek.amountGranted)">{{showAmount(wniosek.amountGranted)}}</span></td>
                 </tr>
 
             </table>
