@@ -24,10 +24,13 @@
 
     <mat-card-header>
 
-        <div class="companyName">{{wniosek.companyName}} <br /> <span class="author">{{wniosek.userName}}</span>
+        <div class="companyName">{{wniosek.companyName}} 
+        <br />
+        Status wniosku: <span
+                    [class]="statusColor(wniosek.applicationStatus)">{{wniosek.applicationStatus}}</span>
 
         </div>
-        <div class="author"></div>
+       
 
 
 
@@ -35,8 +38,9 @@
         <div style="text-align: right;">
             Wniosek nr: {{ wniosek.applicationId }}<br />
             <span class="applicationData">Data złożenia: {{wniosek.applicationDateRequested}} <br />
-                Status wniosku: <span
-                    [class]="statusColor(wniosek.applicationStatus)">{{wniosek.applicationStatus}}</span>
+                <span class="author">{{wniosek.userName}}</span>
+                <!--Status wniosku: <span
+                    [class]="statusColor(wniosek.applicationStatus)">{{wniosek.applicationStatus}}</span>-->
 
             </span>
         </div>
