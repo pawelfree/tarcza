@@ -24,16 +24,14 @@
 
     <mat-card-header>
 
-        <div class="companyName">{{wniosek.companyName}} 
-        <br />
-        Status wniosku: <span
-                    [class]="statusColor(wniosek.applicationStatus)">{{wniosek.applicationStatus}}</span>
+        <div class="companyName">
+            {{wniosek.companyName}} 
+            <br />
+            <span style="font-weight: 100">Status wniosku: </span> 
+            <span [class]="statusColor(wniosek.applicationStatus)">{{wniosek.applicationStatus}}</span>
 
         </div>
        
-
-
-
         <span class="spacer"></span>
         <div style="text-align: right;">
             Wniosek nr: {{ wniosek.applicationId }}<br />
@@ -73,7 +71,7 @@
                     <mat-icon color="accent">file_copy</mat-icon>
                 </button>
             </span>
-            <span *ngIf="showAppeal(wniosek.applicationStatus,wniosek.amountRequested, wniosek.amountGranted)">
+            <span *ngIf="showAppeal(wniosek.applicationStatus)">
                 <span style="margin-right: 10px;margin-left:15px">Złóż odwołanie </span><button mat-mini-fab
                     color="basic">
                     <mat-icon color="warn">redo</mat-icon>
