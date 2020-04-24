@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { JwtModule, JwtHelperService, JwtInterceptor } from "@auth0/angular-jwt";
+import { JwtInterceptor } from './services/jwt.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularMaterialModule } from './angular-material.module';
@@ -30,20 +30,24 @@ import { WaitComponent } from './wait/wait.component';
     AppRoutingModule,
     HttpClientModule,
     AngularMaterialModule,
-    JwtModule.forRoot( {
-      config: {
-        tokenGetter: () => {
-          return localStorage.getItem( "id_token" );
-        },
-        whitelistedDomains: ["localhost:3000"]
-      }
-    } )
+    // JwtModule.forRoot( {
+    //   config: {
+    //     tokenGetter: () => {
+    //       const token = localStorage.getItem( "id_token" );
+    //       console.log( "geting from local", token )
+    //       return token;
+    //     },
+    //     whitelistedDomains: ["localhost", "http://*", "http://bpsqldra.bpsa.pl:80"],
+    //     headerName: 'Authorization',
+    //     throwNoTokenError: true
+    //   }
+    // } )
   ],
   providers: [
     WnioskiService,
-    JwtHelperService,
-    AuthService
-    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    // JwtHelperService,
+    AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 } )

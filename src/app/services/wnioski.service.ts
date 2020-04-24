@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Wniosek } from '../models/wniosek';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
-import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 @Injectable()

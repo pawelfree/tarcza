@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Wniosek } from '../models/wniosek';
 import { WnioskiService } from '../services/wnioski.service';
 import { DOCUMENT } from '@angular/common';
-import { take, catchError } from 'rxjs/operators';
+import { take, catchError, tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { WaitComponent } from '../wait/wait.component';
@@ -21,6 +21,10 @@ export class WnioskiComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     @Inject( DOCUMENT ) private document: Document ) { }
+
+  ngOnInit(): void {
+    this.wnioski$ = this.wnioski.wszystkieWnioski().pipe( tap( console.log ) );
+  }
 
   statusColor( applicationStatus: string ) {
     var statusClass: string = "";
@@ -67,11 +71,6 @@ export class WnioskiComponent implements OnInit {
         this.document.location.href = res['Link'];
       }
     )
-  }
-
-
-  ngOnInit(): void {
-    this.wnioski$ = this.wnioski.wszystkieWnioski();
   }
 
 }

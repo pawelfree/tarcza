@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { JwtHelperService } from "@auth0/angular-jwt";
+// import { JwtHelperService } from "@auth0/angular-jwt";
 
 
 import { Router } from '@angular/router';
@@ -15,7 +15,7 @@ export class AuthService implements OnDestroy {
     loggedIn$ = this.loggedIn.asObservable();
 
     constructor( private router: Router,
-        private jwt: JwtHelperService,
+        // private jwt: JwtHelperService,
         private wnioski: WnioskiService ) { }
 
     private tokenExpirationTimer: any;
@@ -60,14 +60,14 @@ export class AuthService implements OnDestroy {
             .pipe(
                 take( 1 ),
                 map( res => {
-                    console.log( 'result', res );
-
                     if ( res && res.isCompany && res.token ) {
-                        var expirationDuration = this.jwt.getTokenExpirationDate( res.token ).getTime() - new Date().getTime();
+                        var expirationDuration = 5 * 60 * 1000;// this.jwt.getTokenExpirationDate( res.token ).getTime() - new Date().getTime();
                         localStorage.setItem( 'id_token', res.token );
-                        if ( expirationDuration > 60 * 60 * 1000 ) {
-                            expirationDuration = 60 * 60 * 1000;
-                        }
+                        // if ( expirationDuration > 60 * 60 * 1000 ) {
+                        //     expirationDuration = 60 * 60 * 1000;
+                        // }
+
+
                         this.setLogoutTimer( expirationDuration )
                         this.loggedIn.next( res );
                         return true
