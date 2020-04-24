@@ -67,6 +67,7 @@ button:hover {
 .companyName {
     font-weight: bold;
     text-align: left;
+    font-size: 1.2em;;
   }
   .author {
       font-weight: 200;
@@ -97,6 +98,7 @@ button:hover {
       
       float: right;
       margin-top: -3.35em;
+      font-size: 0.8em;
   
 
 
@@ -116,6 +118,10 @@ button:hover {
 
   .red {
       color: red;
+  }
+
+  .orange {
+      color: orange;
   }
   
 

@@ -16,6 +16,7 @@ import { WaitComponent } from '../wait/wait.component';
 export class WnioskiComponent implements OnInit {
 
   wnioski$: Observable<Wniosek[]>;
+  public zablokowanyPrzyciskNowyWniosek = false
 
   constructor( private wnioski: WnioskiService,
     private router: Router,
@@ -24,6 +25,7 @@ export class WnioskiComponent implements OnInit {
 
   ngOnInit(): void {
     this.wnioski$ = this.wnioski.wszystkieWnioski().pipe( tap( console.log ) );
+    this.zablokowanyPrzyciskNowyWniosek = false;
   }
 
   statusColor( applicationStatus: string ) {
@@ -49,17 +51,41 @@ export class WnioskiComponent implements OnInit {
   }
 
   showAppeal( applicationStatus: string, amountReq: number, amountGranded: number ) {
-    var hiddenAppeal = false;
+    var hiddenAppeal = true;
     hiddenAppeal = amountGranded != amountReq ? false : true;
     //TOTO na dzisiaj zawsza nie pokauje
     //return hiddenAppeal;
-    return true;
+    return false;
+  }
+
+  // showAppeal( applicationStatus: string ) {
+  //   var hiddenAppeal = true;
+  //   hiddenAppeal = applicationStatus != "Odrzucony" ? false : true;
+  //   //TOTO pokazuje na podstawie statusu
+  //   return hiddenAppeal;
+  //   //return false;
+  // }
+
+  showDecision( decisionID: string ) {
+    var showDecisionButton = false;
+    showDecisionButton = !( decisionID ) ? false : true;
+    return showDecisionButton;
+
+
+  }
+
+  showDocument( documentID: string ) {
+    var showDocumentButton = false;
+    showDocumentButton = !( documentID ) ? false : true;
+    return showDocumentButton;
   }
 
   nowyWniosek() {
+    this.zablokowanyPrzyciskNowyWniosek = true;
     const dialogRef = this.dialog.open( WaitComponent, { disableClose: true } );
     this.wnioski.nowyWniosek().pipe(
       take( 1 ),
+      tap( console.log ),
       catchError( err => {
         dialogRef.close();
         this.router.navigateByUrl( '/error' )
@@ -68,9 +94,31 @@ export class WnioskiComponent implements OnInit {
     ).subscribe(
       res => {
         dialogRef.close();
-        this.document.location.href = res['Link'];
+        this.document.location.href = res['url'];
       }
     )
+  }
+
+  checkAmount( amountReq: number, amountGranded: number ) {
+    var amountClass: string = "";
+    switch ( true ) {
+      case ( amountGranded / amountReq <= 0.25 ): {
+        amountClass = "orange";
+        break;
+      }
+      case ( amountGranded / amountReq > 0.25 && amountGranded / amountReq < 1 ): {
+        amountClass = "red";
+        break;
+      }
+      case ( amountGranded / amountReq == 1 ): {
+        amountClass = "green";
+        break;
+      } default: {
+        break;
+      }
+    }
+    return amountClass;
+
   }
 
 }
