@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Wniosek } from '../models/wniosek';
 import { WnioskiService } from '../services/wnioski.service';
 import { DOCUMENT } from '@angular/common';
-import { take, catchError, tap, map } from 'rxjs/operators';
+import { take, catchError, tap, map, finalize } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { WaitComponent } from '../wait/wait.component';
@@ -16,16 +16,23 @@ import { environment } from 'src/environments/environment';
 } )
 export class WnioskiComponent implements OnInit {
 
-  wnioski$: Observable<Wniosek[]>;
+  private wnioski = new BehaviorSubject<Array<Wniosek>>( null );
+  wnioski$ = this.wnioski.asObservable();
   public zablokowanyPrzyciskNowyWniosek = false
+  loading = false;
 
-  constructor( private wnioski: WnioskiService,
+  constructor( private wnioskiService: WnioskiService,
     private router: Router,
     public dialog: MatDialog,
     @Inject( DOCUMENT ) private document: Document ) { }
 
   ngOnInit(): void {
-    this.wnioski$ = this.wnioski.wszystkieWnioski().pipe( map( res => Array.from( res['applications'] ) ) );
+    this.loading = true;
+    this.wnioskiService.wszystkieWnioski().pipe(
+      map( res => Array.from( res['applications'] ) ),
+      finalize( () => this.loading = false ) )
+      .subscribe(
+        ( res: Wniosek[] ) => this.wnioski.next( res ) );
     this.zablokowanyPrzyciskNowyWniosek = false;
   }
 
@@ -101,7 +108,7 @@ export class WnioskiComponent implements OnInit {
   nowyWniosek() {
     this.zablokowanyPrzyciskNowyWniosek = true;
     const dialogRef = this.dialog.open( WaitComponent, { disableClose: true } );
-    this.wnioski.nowyWniosek().pipe(
+    this.wnioskiService.nowyWniosek().pipe(
       take( 1 ),
       catchError( err => {
         dialogRef.close();

@@ -13,73 +13,81 @@
     </div>
 </div>
 
-<mat-divider *ngIf="wnioski$ | async"></mat-divider>
-<mat-card *ngIf="!(wnioski$ | async)">
-    <mat-card-header>
-        <div class="emptyApplication">Nie masz żadnych aktywnych wniosków. Dodaj pierwszy wniosek.</div>
-    </mat-card-header>
+<div *ngIf="!loading">
+    <mat-divider *ngIf="wnioski$ | async"></mat-divider>
+    <mat-card *ngIf="!(wnioski$ | async)">
+        <mat-card-header>
+            <div class="emptyApplication">Nie masz żadnych aktywnych wniosków. Dodaj pierwszy wniosek.</div>
+        </mat-card-header>
+    </mat-card>
+</div>
 
-</mat-card>
+<div *ngIf="loading">
+    <p style="text-align: center;">Szukam Twoich wcześniejszych wniosków ...</p>
+    <mat-spinner style="margin: 0 auto;"></mat-spinner>
 
-<mat-card *ngFor="let wniosek of wnioski$ | async">
+</div>
+<div *ngIf="!loading">
+    <mat-card *ngFor="let wniosek of wnioski$ | async">
 
-    <mat-card-header>
+        <mat-card-header>
 
-        <div class="companyName">
-            {{wniosek.companyName}}
-            <br />
-            <span style="font-weight: 100">Status wniosku: </span>
-            <span [class]="statusColor(wniosek.applicationStatus)">{{wniosek.applicationStatus}}</span>
+            <div class="companyName">
+                {{wniosek.companyName}}
+                <br />
+                <span style="font-weight: 100">Status wniosku: </span>
+                <span [class]="statusColor(wniosek.applicationStatus)">{{wniosek.applicationStatus}}</span>
 
-        </div>
+            </div>
 
-        <span class="spacer"></span>
-        <div style="text-align: right;">
-            Wniosek nr: {{ wniosek.applicationId }}<br />
-            <span class="applicationData">Data złożenia: {{wniosek.applicationDateRequested}} <br />
-                <span class="author">{{wniosek.userName}}</span>
-            </span>
-        </div>
-    </mat-card-header>
-    <mat-card-content>
-        <div class="amount" layout="column">
+            <span class="spacer"></span>
+            <div style="text-align: right;">
+                Wniosek nr: {{ wniosek.applicationId }}<br />
+                <span class="applicationData">Data złożenia: {{wniosek.applicationDateRequested}} <br />
+                    <span class="author">{{wniosek.userName}}</span>
+                </span>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="amount" layout="column">
 
 
-            <table>
-                <tr>
-                    <td>Wnioskowana kwota</td>
-                    <td class="amountInfo">{{showAmount(wniosek.amountRequested)}}</td>
-                </tr>
-                <tr *ngIf="wniosek.amountGranted">
-                    <td>Kwota przyznana</td>
-                    <td class="amountInfo"><span
-                            [class]="checkAmount(wniosek.amountRequested,wniosek.amountGranted)">{{showAmount(wniosek.amountGranted)}}</span>
-                    </td>
-                </tr>
+                <table>
+                    <tr>
+                        <td>Wnioskowana kwota</td>
+                        <td class="amountInfo">{{showAmount(wniosek.amountRequested)}}</td>
+                    </tr>
+                    <tr *ngIf="wniosek.amountGranted">
+                        <td>Kwota przyznana</td>
+                        <td class="amountInfo"><span
+                                [class]="checkAmount(wniosek.amountRequested,wniosek.amountGranted)">{{showAmount(wniosek.amountGranted)}}</span>
+                        </td>
+                    </tr>
 
-            </table>
-        </div>
-        <div align="end" class="document">
-            <span *ngIf="showDocument(wniosek.contractId)">
-                <span style="margin-right: 10px;">Pokaż umowę</span> <button mat-mini-fab color="basic"
-                    (click)="loadPdf(wniosek.contractId)">
-                    <mat-icon color="accent">get_app</mat-icon>
-                </button>
-            </span>
-            <span *ngIf="showDecision(wniosek.decisionId)">
-                <span style="margin-right: 10px;margin-left:15px">Pokaż decyzję</span><button mat-mini-fab color="basic"
-                    (click)="loadPdf(wniosek.decisionId)">
-                    <mat-icon color="accent">file_copy</mat-icon>
-                </button>
-            </span>
-            <span *ngIf="showAppeal(wniosek.applicationStatus)">
-                <span style="margin-right: 10px;margin-left:15px">Złóż odwołanie </span><button mat-mini-fab
-                    color="basic">
-                    <mat-icon color="warn">redo</mat-icon>
-                </button>
-            </span>
+                </table>
+            </div>
+            <div align="end" class="document">
+                <span *ngIf="showDocument(wniosek.contractId)">
+                    <span style="margin-right: 10px;">Pokaż umowę</span> <button mat-mini-fab color="basic"
+                        (click)="loadPdf(wniosek.contractId)">
+                        <mat-icon color="accent">get_app</mat-icon>
+                    </button>
+                </span>
+                <span *ngIf="showDecision(wniosek.decisionId)">
+                    <span style="margin-right: 10px;margin-left:15px">Pokaż decyzję</span><button mat-mini-fab
+                        color="basic" (click)="loadPdf(wniosek.decisionId)">
+                        <mat-icon color="accent">file_copy</mat-icon>
+                    </button>
+                </span>
+                <span *ngIf="showAppeal(wniosek.applicationStatus)">
+                    <span style="margin-right: 10px;margin-left:15px">Złóż odwołanie </span><button mat-mini-fab
+                        color="basic">
+                        <mat-icon color="warn">redo</mat-icon>
+                    </button>
+                </span>
 
-        </div>
+            </div>
 
-    </mat-card-content>
-</mat-card>
+        </mat-card-content>
+    </mat-card>
+</div>

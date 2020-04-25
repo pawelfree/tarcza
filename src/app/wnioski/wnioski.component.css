@@ -28,17 +28,13 @@ button:hover {
   
   .right {
       text-align: right;
-     
-   }
+       }
       
-  
-  
   .row:after {
     content: "";
     display: table;
     clear: both;
   }
-
 
 .title {
     margin: 1em 0.5em 0.5em 1em;
@@ -60,8 +56,6 @@ button:hover {
 }
 .addButton .description{
     margin-right: 0.5em;
-
-   
 }
 
 .companyName {
@@ -69,11 +63,11 @@ button:hover {
     text-align: left;
     font-size: 1.2em;;
   }
+
   .author {
       font-weight: 200;
       font-size: 1em;
   }
-
 
   .applicationData {
     font-weight: 200;
@@ -85,14 +79,10 @@ button:hover {
     flex: 1 1 auto;
   }  
 
-  .amount {
-    
+  .amount { 
       font-size: 1.2em;
       margin-left:1.5em;
-     
- 
       padding-bottom: 1em;
-
   }
 
   .amountInfo {
@@ -106,8 +96,6 @@ button:hover {
       float: right;
       margin-top: -3.35em;
       font-size: 1em;
-  
-
 
   }
  .document::after {
