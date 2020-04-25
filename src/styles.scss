@@ -72,9 +72,6 @@ $mat-pocztowy-accent: (
     )
 );
 
-
-
-
 $custom-theme-primary: mat-palette($mat-pocztowy);
 $custom-theme-accent: mat-palette($mat-pocztowy-accent, A200, A100, A400);
 $custom-theme-warn: mat-palette($mat-red);

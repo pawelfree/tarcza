@@ -34,7 +34,7 @@ export class WnioskiComponent implements OnInit {
       tap( console.log ),
       finalize( () => this.loading = false ) )
       .subscribe(
-        ( res: Wniosek[] ) => this.wnioski.next( res ) );
+        ( res: Wniosek[] ) => res ? res.length > 0 ? this.wnioski.next( res ) : res : res );
     this.zablokowanyPrzyciskNowyWniosek = false;
   }
 
