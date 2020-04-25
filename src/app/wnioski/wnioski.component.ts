@@ -69,7 +69,7 @@ export class WnioskiComponent implements OnInit {
   loadPdf( id: string ) {
     if ( environment.getDocumentMethod === 'PARAM' ) {
       this.loadingDocuments = true;
-      this.wnioskiService.pobierzDokument( id ).pipe( finalize( () => this.loadingDocuments = false ) ).subscribe( res => {
+      this.wnioskiService.pobierzDokument( encodeURIComponent( id ) ).pipe( finalize( () => this.loadingDocuments = false ) ).subscribe( res => {
         if ( res ) {
           window.open( "data:applicatio/pdf;base64," + res, "_blank" );
         }

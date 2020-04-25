@@ -36,14 +36,16 @@
                 {{wniosek.companyName}}
                 <br />
                 <span style="font-weight: 100">Status wniosku: </span>
-                <span [class]="statusColor(wniosek.applicationStatus)">{{wniosek.applicationStatus}}</span>
+                <span
+                    [class]="statusColor(wniosek.applicationStatus)">{{applicationStatus(wniosek.applicationStatus)}}</span>
 
             </div>
 
             <span class="spacer"></span>
             <div style="text-align: right;">
                 Wniosek nr: {{ wniosek.applicationId }}<br />
-                <span class="applicationData">Data złożenia: {{wniosek.applicationDateRequested}} <br />
+                <span class="applicationData">Data złożenia: {{wniosek.applicationDateRequested | date:'d-M-y'}}
+                    <br />
                     <span class="author">{{wniosek.userName}}</span>
                 </span>
             </div>
