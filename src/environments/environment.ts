@@ -7,6 +7,7 @@ export const environment = {
   //apiUrl: "http://localhost:3000/",
   //apiUrl: "http://bpsqldra.bpsa.pl/Arka.Backend/api/Session/",
   apiUrl: "https://tarcza.qa.bp.com.pl/api/",
+  getDocumentMethod: "QUERY" //PARAM
 };
 
 /*
