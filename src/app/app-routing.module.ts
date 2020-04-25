@@ -5,6 +5,7 @@ import { AuthGuard } from './services/auth.guard';
 import { BladComponent } from './blad/blad.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { PersonComponent } from './person/person.component';
 
 
 
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'logout',
     component: LogoutComponent
+  },
+  {
+    path: 'person',
+    component: PersonComponent
   },
   {
     path: '**',

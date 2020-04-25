@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthService } from './services/auth.service';
 import { WaitComponent } from './wait/wait.component';
+import { PersonComponent } from './person/person.component';
 
 @NgModule( {
   declarations: [
@@ -22,7 +23,8 @@ import { WaitComponent } from './wait/wait.component';
     BladComponent,
     LoginComponent,
     LogoutComponent,
-    WaitComponent
+    WaitComponent,
+    PersonComponent
   ],
   imports: [
     BrowserModule,

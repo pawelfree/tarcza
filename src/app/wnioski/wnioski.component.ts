@@ -21,6 +21,7 @@ export class WnioskiComponent implements OnInit {
   public zablokowanyPrzyciskNowyWniosek = false
   loading = false;
   loadingDocuments = false;
+  redirectingToApplication = false;
 
   constructor( private wnioskiService: WnioskiService,
     private router: Router,
@@ -121,6 +122,7 @@ export class WnioskiComponent implements OnInit {
     ).subscribe(
       res => {
         dialogRef.close();
+        this.redirectingToApplication = true;
         this.document.location.href = res['url'];
       }
     )
