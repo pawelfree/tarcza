@@ -20,6 +20,7 @@ export class WnioskiComponent implements OnInit {
   wnioski$ = this.wnioski.asObservable();
   public zablokowanyPrzyciskNowyWniosek = false
   loading = false;
+  loadingDocuments = false;
 
   constructor( private wnioskiService: WnioskiService,
     private router: Router,
@@ -67,15 +68,20 @@ export class WnioskiComponent implements OnInit {
 
   loadPdf( id: string ) {
     if ( environment.getDocumentMethod === 'PARAM' ) {
-      this.wnioskiService.pobierzDokument( id ).subscribe( res => {
+      this.loadingDocuments = true;
+      this.wnioskiService.pobierzDokument( id ).pipe( finalize( () => this.loadingDocuments = false ) ).subscribe( res => {
         if ( res ) {
-          window.open( "data:applicatio/pdf;base64," + res );
+          window.open( "data:applicatio/pdf;base64," + res, "_blank" );
         }
-      } );
+      },
+        err => {
+          console.log( "1002", err )
+        } );
     } else {
-      const options = "?documentId=" + id + "&requestId=" + this.objectID() + "&authorization=" + localStorage.getItem( 'id_token' );
+      const options = "?documentId=" + id + "&requestId=" + encodeURIComponent( this.objectID() ) + "&authorization=" + encodeURIComponent( localStorage.getItem( 'id_token' ) );
       const server = environment.apiUrl + 'getDocument';
       const link = server + options;
+      console.log( "QUERY", link )
       window.open( link, "_blank" );
     }
   }
@@ -87,17 +93,13 @@ export class WnioskiComponent implements OnInit {
   showAppeal( applicationStatus: string ) {
     var hiddenAppeal = true;
     hiddenAppeal = applicationStatus != "Odrzucony" ? false : true;
-    //TOTO pokazuje na podstawie statusu
     return hiddenAppeal;
-    //return false;
   }
 
   showDecision( decisionID: string ) {
     var showDecisionButton = false;
     showDecisionButton = !( decisionID ) ? false : true;
     return showDecisionButton;
-
-
   }
 
   showDocument( documentID: string ) {
@@ -178,5 +180,4 @@ export class WnioskiComponent implements OnInit {
     }
     return appStatusPl;
   }
-
 }

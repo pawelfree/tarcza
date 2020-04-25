@@ -24,6 +24,6 @@ export class WnioskiService {
     }
 
     pobierzDokument( id: string ): Observable<string> {
-        return this.http.get<string>( this.apiUrl + 'getDocument/' + id );
+        return this.http.get( this.apiUrl + 'getDocument/' + id, { responseType: 'text' } );
     }
 }

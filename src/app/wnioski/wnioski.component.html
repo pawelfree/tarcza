@@ -69,19 +69,19 @@
             <div align="end" class="document">
                 <span *ngIf="showDocument(wniosek.contractId)">
                     <span style="margin-right: 10px;">Pokaż umowę</span> <button mat-mini-fab color="basic"
-                        (click)="loadPdf(wniosek.contractId)">
+                        (click)="loadPdf(wniosek.contractId)" [disabled]="loadingDocuments">
                         <mat-icon color="accent">get_app</mat-icon>
                     </button>
                 </span>
                 <span *ngIf="showDecision(wniosek.decisionId)">
                     <span style="margin-right: 10px;margin-left:15px">Pokaż decyzję</span><button mat-mini-fab
-                        color="basic" (click)="loadPdf(wniosek.decisionId)">
+                        color="basic" (click)="loadPdf(wniosek.decisionId)" [disabled]="loadingDocuments">
                         <mat-icon color="accent">file_copy</mat-icon>
                     </button>
                 </span>
                 <span *ngIf="showAppeal(wniosek.applicationStatus)">
                     <span style="margin-right: 10px;margin-left:15px">Złóż odwołanie </span><button mat-mini-fab
-                        color="basic">
+                        [disabled]="loadingDocuments" color="basic">
                         <mat-icon color="warn">redo</mat-icon>
                     </button>
                 </span>

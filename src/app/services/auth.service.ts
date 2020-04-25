@@ -1,5 +1,4 @@
 import { Injectable, OnDestroy } from '@angular/core';
-// import { JwtHelperService } from "@auth0/angular-jwt";
 
 
 import { Router } from '@angular/router';
@@ -25,10 +24,6 @@ export class AuthService implements OnDestroy {
         }
     }
 
-    zweryfikuj( token: string ) {
-        // return this.jwt.decodeToken( token );
-    }
-
     setLogoutTimer( expirationDuration: number ) {
         this.tokenExpirationTimer = setTimeout( _ => {
             localStorage.removeItem( 'id_token' );
@@ -50,18 +45,16 @@ export class AuthService implements OnDestroy {
         localStorage.removeItem( 'id_token' );
         if ( redirect ) {
             this.router.navigateByUrl( '/logout' );
-
         }
     }
 
     public login( token: string ): Observable<boolean> {
-
         return this.wnioski.zaloguj( token )
             .pipe(
                 take( 1 ),
                 map( res => {
                     if ( res && res.isCompany && res.token ) {
-                        var expirationDuration = 30 * 1000;// this.jwt.getTokenExpirationDate( res.token ).getTime() - new Date().getTime();
+                        var expirationDuration = 10 * 60 * 1000;// this.jwt.getTokenExpirationDate( res.token ).getTime() - new Date().getTime();
                         localStorage.setItem( 'id_token', res.token );
                         this.setLogoutTimer( expirationDuration )
                         this.loggedIn.next( res );
