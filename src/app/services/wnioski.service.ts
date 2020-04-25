@@ -11,26 +11,19 @@ export class WnioskiService {
 
     constructor( private http: HttpClient ) { }
 
-    private objectID(): string {
-        const timestamp = ( new Date().getTime() / 1000 | 0 ).toString( 16 );
-        return timestamp + 'xxxxxxxxxxxxxxxx'.replace( /[x]/g, function () {
-            return ( Math.random() * 16 | 0 ).toString( 16 );
-        } ).toLowerCase();
-    };
-
     wszystkieWnioski(): Observable<Array<Wniosek>> {
-        const headers = new HttpHeaders( { 'requestId': this.objectID() } )
-        return this.http.get<Array<Wniosek>>( this.apiUrl + 'getApplicationList', { headers } );
+        // const headers = new HttpHeaders( { 'requestId': this.objectID() } )
+        return this.http.get<Array<Wniosek>>( this.apiUrl + 'getApplicationList' );
     }
 
     nowyWniosek(): Observable<any> {
 
-        const headers = new HttpHeaders( { 'requestId': this.objectID() } )
-        return this.http.get( this.apiUrl + 'getNewApplicationLink', { headers } );
+        // const headers = new HttpHeaders( { 'requestId': this.objectID() } )
+        return this.http.get( this.apiUrl + 'getNewApplicationLink' );
     }
 
     zaloguj( token: string ): Observable<User> {
-        const headers = new HttpHeaders( { 'requestId': this.objectID() } )
-        return this.http.get<User>( this.apiUrl + 'LoginUser/' + token, { headers } );
+        // const headers = new HttpHeaders( { 'requestId': this.objectID() } )
+        return this.http.get<User>( this.apiUrl + 'LoginUser/' + token );
     }
 }

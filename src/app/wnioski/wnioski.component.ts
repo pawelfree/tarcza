@@ -58,9 +58,17 @@ export class WnioskiComponent implements OnInit {
     return statusClass
   }
 
+  private objectID(): string {
+    const timestamp = ( new Date().getTime() / 1000 | 0 ).toString( 16 );
+    return timestamp + 'xxxxxxxxxxxxxxxx'.replace( /[x]/g, function () {
+      return ( Math.random() * 16 | 0 ).toString( 16 );
+    } ).toLowerCase();
+  };
+
   loadPdf( id: string ) {
-    const link = environment.apiUrl + 'getDocument/' + id;
+    const link = environment.apiUrl + 'getDocument/' + id + '/' + localStorage.getItem( 'id_token' ) + '/' + this.objectID();
     // const link = environment.apiUrl + 'getDocumentMock';
+    // this.document.location.href = link;
     window.open( link, "_blank" );
   }
   // showAppeal( applicationStatus: string, amountReq: number, amountGranded: number ) {
