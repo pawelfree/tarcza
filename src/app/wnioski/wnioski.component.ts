@@ -152,5 +152,38 @@ export class WnioskiComponent implements OnInit {
     return amountClass;
 
   }
+  applicationStatus(appStatus: string) {
+    var appStatusPl : string = "";
+    switch ( appStatus ) {
+      case "NEW": {
+        appStatusPl = "Wprowadzony";
+        break;
+      }
+      case "REJECTED-BAD-DATA": {
+        appStatusPl = "Odrzucony";
+        break;
+      }
+      case "REJECTED-AFTER-SCORING": {
+        appStatusPl = "Odrzucony";
+        break;
+      }
+      case "GRANTED": {
+        appStatusPl = "Przyznany";
+        break;
+      }
+      case "GRANTED-CHANGED": {
+        appStatusPl = "Przyznany";
+        break;
+      }
+      case "INITIATED": {
+        appStatusPl = "Wypłacony";
+        break;
+      } default: {
+        appStatusPl = "Nieznany";
+        break;
+      }
+    }
+    return appStatusPl;
+  }
 
 }

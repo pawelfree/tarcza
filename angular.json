@@ -108,5 +108,8 @@
       }
     }
   },
-  "defaultProject": "tarcza"
+  "defaultProject": "tarcza",
+  "cli": {
+    "analytics": "128c7e1b-9b6d-46e2-984e-53e0eed60bcd"
+  }
 }
