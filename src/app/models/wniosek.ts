@@ -8,4 +8,5 @@ export class Wniosek {
     amountGranted: string;
     contractId: string;
     decisionId: string;
+    nrNip: string;
 }

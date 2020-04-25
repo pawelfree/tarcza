@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Wniosek } from '../models/wniosek';
 import { WnioskiService } from '../services/wnioski.service';
 import { DOCUMENT } from '@angular/common';
-import { take, catchError, map, finalize } from 'rxjs/operators';
+import { take, catchError, map, finalize, tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { WaitComponent } from '../wait/wait.component';
@@ -31,6 +31,7 @@ export class WnioskiComponent implements OnInit {
     this.loading = true;
     this.wnioskiService.wszystkieWnioski().pipe(
       map( res => Array.from( res['applications'] ) ),
+      tap( console.log ),
       finalize( () => this.loading = false ) )
       .subscribe(
         ( res: Wniosek[] ) => this.wnioski.next( res ) );
@@ -81,7 +82,6 @@ export class WnioskiComponent implements OnInit {
       const options = "?documentId=" + id + "&requestId=" + encodeURIComponent( this.objectID() ) + "&authorization=" + encodeURIComponent( localStorage.getItem( 'id_token' ) );
       const server = environment.apiUrl + 'getDocument';
       const link = server + options;
-      console.log( "QUERY", link )
       window.open( link, "_blank" );
     }
   }

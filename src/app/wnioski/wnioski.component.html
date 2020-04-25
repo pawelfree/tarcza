@@ -35,6 +35,8 @@
             <div class="companyName">
                 {{wniosek.companyName}}
                 <br />
+                <span style="font-weight: 100">NIP: {{wniosek.nrNip}}</span>
+                <br />
                 <span style="font-weight: 100">Status wniosku: </span>
                 <span
                     [class]="statusColor(applicationStatus(wniosek.applicationStatus))">{{applicationStatus(wniosek.applicationStatus)}}</span>
