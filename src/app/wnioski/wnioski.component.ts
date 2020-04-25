@@ -37,6 +37,7 @@ export class WnioskiComponent implements OnInit {
       .subscribe(
         ( res: Wniosek[] ) => res ? res.length > 0 ? this.wnioski.next( res ) : res : res );
     this.zablokowanyPrzyciskNowyWniosek = false;
+    this.redirectingToApplication = false;
   }
 
   statusColor( applicationStatus: string ) {
