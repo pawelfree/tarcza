@@ -154,6 +154,10 @@ export class WnioskiComponent implements OnInit {
         appStatusPl = "Wprowadzony";
         break;
       }
+      case "SEND": {
+        appStatusPl = "Wysłany";
+        break;
+      }
       case "REJECTED-BAD-DATA": {
         appStatusPl = "Odrzucony";
         break;
