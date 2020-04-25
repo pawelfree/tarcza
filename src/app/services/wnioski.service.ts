@@ -12,18 +12,18 @@ export class WnioskiService {
     constructor( private http: HttpClient ) { }
 
     wszystkieWnioski(): Observable<Array<Wniosek>> {
-        // const headers = new HttpHeaders( { 'requestId': this.objectID() } )
         return this.http.get<Array<Wniosek>>( this.apiUrl + 'getApplicationList' );
     }
 
     nowyWniosek(): Observable<any> {
-
-        // const headers = new HttpHeaders( { 'requestId': this.objectID() } )
         return this.http.get( this.apiUrl + 'getNewApplicationLink' );
     }
 
     zaloguj( token: string ): Observable<User> {
-        // const headers = new HttpHeaders( { 'requestId': this.objectID() } )
         return this.http.get<User>( this.apiUrl + 'LoginUser/' + token );
+    }
+
+    pobierzDokument( id: string ): Observable<string> {
+        return this.http.get<string>( this.apiUrl + 'getDocument/' + id );
     }
 }

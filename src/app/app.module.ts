@@ -29,23 +29,10 @@ import { WaitComponent } from './wait/wait.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    AngularMaterialModule,
-    // JwtModule.forRoot( {
-    //   config: {
-    //     tokenGetter: () => {
-    //       const token = localStorage.getItem( "id_token" );
-    //       console.log( "geting from local", token )
-    //       return token;
-    //     },
-    //     whitelistedDomains: ["localhost", "http://*", "http://bpsqldra.bpsa.pl:80"],
-    //     headerName: 'Authorization',
-    //     throwNoTokenError: true
-    //   }
-    // } )
+    AngularMaterialModule
   ],
   providers: [
     WnioskiService,
-    // JwtHelperService,
     AuthService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],

@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Wniosek } from '../models/wniosek';
 import { WnioskiService } from '../services/wnioski.service';
 import { DOCUMENT } from '@angular/common';
-import { take, catchError, tap, map, finalize } from 'rxjs/operators';
+import { take, catchError, map, finalize } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { WaitComponent } from '../wait/wait.component';
@@ -66,18 +66,19 @@ export class WnioskiComponent implements OnInit {
   };
 
   loadPdf( id: string ) {
-    const link = environment.apiUrl + 'getDocument/' + id + '/' + localStorage.getItem( 'id_token' ) + '/' + this.objectID();
-    // const link = environment.apiUrl + 'getDocumentMock';
-    // this.document.location.href = link;
-    window.open( link, "_blank" );
+    if ( environment.getDocumentMethod === 'PARAM' ) {
+      this.wnioskiService.pobierzDokument( id ).subscribe( res => {
+        if ( res ) {
+          window.open( "data:applicatio/pdf;base64," + res );
+        }
+      } );
+    } else {
+      const options = "?documentId=" + id + "&requestId=" + this.objectID() + "&authorization=" + localStorage.getItem( 'id_token' );
+      const server = environment.apiUrl + 'getDocument';
+      const link = server + options;
+      window.open( link, "_blank" );
+    }
   }
-  // showAppeal( applicationStatus: string, amountReq: number, amountGranded: number ) {
-  //   var hiddenAppeal = true;
-  //   hiddenAppeal = amountGranded != amountReq ? false : true;
-  //   //TOTO na dzisiaj zawsza nie pokauje
-  //   //return hiddenAppeal;
-  //   return false;
-  // }
 
   showAmount( amount: number ) {
     return amount.toString().replace( /\B(?=(\d{3})+(?!\d))/g, " " ) + " zł.";
@@ -90,14 +91,6 @@ export class WnioskiComponent implements OnInit {
     return hiddenAppeal;
     //return false;
   }
-
-  // showAppeal( applicationStatus: string ) {
-  //   var hiddenAppeal = true;
-  //   hiddenAppeal = applicationStatus != "Odrzucony" ? false : true;
-  //   //TOTO pokazuje na podstawie statusu
-  //   return hiddenAppeal;
-  //   //return false;
-  // }
 
   showDecision( decisionID: string ) {
     var showDecisionButton = false;
@@ -152,8 +145,8 @@ export class WnioskiComponent implements OnInit {
     return amountClass;
 
   }
-  applicationStatus(appStatus: string) {
-    var appStatusPl : string = "";
+  applicationStatus( appStatus: string ) {
+    var appStatusPl: string = "";
     switch ( appStatus ) {
       case "NEW": {
         appStatusPl = "Wprowadzony";
