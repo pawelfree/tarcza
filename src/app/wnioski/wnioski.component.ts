@@ -52,7 +52,8 @@ export class WnioskiComponent implements OnInit {
   }
 
   loadPdf( id: string ) {
-    const link = environment.apiUrl + id;
+    const link = environment.apiUrl + 'getDocument/' + id;
+    // const link = environment.apiUrl + 'getDocumentMock';
     window.open( link, "_blank" );
   }
   // showAppeal( applicationStatus: string, amountReq: number, amountGranded: number ) {
