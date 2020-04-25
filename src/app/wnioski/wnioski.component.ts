@@ -174,7 +174,7 @@ export class WnioskiComponent implements OnInit {
         appStatusPl = "Wypłacony";
         break;
       } default: {
-        appStatusPl = "Nieznany";
+        appStatusPl = "Weryfikacja";
         break;
       }
     }

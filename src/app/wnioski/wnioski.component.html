@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="column">
-        <span *ngIf="wnioski$ | async" class="title">Twoje wnioski </span>
+        <span *ngIf="wnioski$ | async" class="title">Twoje wnioski o subwencje PFR </span>
     </div>
     <div class="column right">
         <span class="addButton"><span class="description">Dodaj wniosek</span>
@@ -37,7 +37,7 @@
                 <br />
                 <span style="font-weight: 100">Status wniosku: </span>
                 <span
-                    [class]="statusColor(wniosek.applicationStatus)">{{applicationStatus(wniosek.applicationStatus)}}</span>
+                    [class]="statusColor(applicationStatus(wniosek.applicationStatus))">{{applicationStatus(wniosek.applicationStatus)}}</span>
 
             </div>
 
