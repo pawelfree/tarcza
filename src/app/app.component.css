@@ -40,7 +40,7 @@
  }
 
 .logout {
-  background: transparent url('../../assets/ico/logout.png') center no-repeat;
+  background: transparent url('../assets/ico/logout.png') center no-repeat;
   border: none;
   text-align: center;
   text-decoration: none;
