@@ -49,6 +49,9 @@ export class AuthService implements OnDestroy {
     }
 
     public login( token: string ): Observable<LoginResult> {
+        if ( !token ) {
+            return of( LoginResult.FALSE );
+        }
         return this.wnioski.zaloguj( token )
             .pipe(
                 take( 1 ),
