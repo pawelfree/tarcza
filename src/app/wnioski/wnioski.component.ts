@@ -80,7 +80,7 @@ export class WnioskiComponent implements OnInit {
           console.log( "1002", err )
         } );
     } else {
-      const options = "?documentId=" + id + "&requestId=" + encodeURIComponent( this.objectID() ) + "&authorization=" + encodeURIComponent( localStorage.getItem( 'id_token' ) );
+      const options = "?documentId=" + encodeURIComponent( id ) + "&requestId=" + encodeURIComponent( this.objectID() ) + "&authorization=" + encodeURIComponent( localStorage.getItem( 'id_token' ) );
       const server = environment.apiUrl + 'getDocument';
       const link = server + options;
       window.open( link, "_blank" );
