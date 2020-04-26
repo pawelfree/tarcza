@@ -5,7 +5,7 @@
     <div class="column">
         <span *ngIf="wnioski$ | async" class="title">Twoje wnioski o subwencje PFR </span>
     </div>
-    <div class="column right" [hidden]="!(wnioski$ | async)">
+    <div class="column right" *ngIf="!loading">
         <span class="addButton"><span class="description">Złóż wniosek</span>
             <button mat-fab color="accent" [disabled]="zablokowanyPrzyciskNowyWniosek" (click)="nowyWniosek()">
                 <mat-icon>add</mat-icon>

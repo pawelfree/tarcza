@@ -32,9 +32,10 @@ export class WnioskiComponent implements OnInit {
     this.loading = true;
     this.wnioskiService.wszystkieWnioski().pipe(
       map( res => Array.from( res['applications'] ) ),
+      tap( console.log ),
       finalize( () => this.loading = false ) )
       .subscribe(
-        ( res: Wniosek[] ) => res ? res.length > 0 ? this.wnioski.next( res ) : res : res );
+        ( res: Wniosek[] ) => res ? ( res.length > 0 ? this.wnioski.next( res ) : this.wnioski.next( null ) ) : this.wnioski.next( null ) );
     this.zablokowanyPrzyciskNowyWniosek = false;
     this.redirectingToApplication = false;
   }
