@@ -38,6 +38,21 @@
     text-align: right;
    
  }
+
+.logout {
+  background: transparent url('../../assets/ico/logout.png') center no-repeat;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  
+
+}
     
 
 

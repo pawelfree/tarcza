@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { WaitComponent } from '../wait/wait.component';
 import { environment } from 'src/environments/environment';
+import { strict } from 'assert';
 
 @Component( {
   selector: 'app-wnioski',
@@ -94,6 +95,10 @@ export class WnioskiComponent implements OnInit {
 
   showAmount( amount: number ) {
     return amount.toString().replace( /\B(?=(\d{3})+(?!\d))/g, " " ) + " zł.";
+  }
+
+  showData (czas: string) {
+    return czas.replace(/([0-9]{4})-([0-9]{2})-([0-9]{2}).*/, '$3-$2-$1');
   }
 
   showAppeal( applicationStatus: string ) {

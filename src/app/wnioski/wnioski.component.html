@@ -6,10 +6,14 @@
         <span *ngIf="wnioski$ | async" class="title">Twoje wnioski o subwencje PFR </span>
     </div>
     <div class="column right" *ngIf="!loading">
-        <span class="addButton"><span class="description">Złóż wniosek</span>
-            <button mat-fab color="accent" [disabled]="zablokowanyPrzyciskNowyWniosek" (click)="nowyWniosek()">
-                <mat-icon>add</mat-icon>
-            </button></span>
+        <span class="addButton">
+            <span class="description">Złóż wniosek</span>
+            <span>
+            <button class="aButton" color="accent" [disabled]="zablokowanyPrzyciskNowyWniosek" (click)="nowyWniosek()">
+                 
+            </button>
+        </span>
+    </span>
 
     </div>
 </div>
@@ -46,7 +50,7 @@
             <span class="spacer"></span>
             <div style="text-align: right;">
                 Wniosek nr: {{ wniosek.applicationId }}<br />
-                <span class="applicationData">Data złożenia: {{wniosek.applicationDateRequested | date:'dd-MM-y'}}
+                <span class="applicationData">Data złożenia: {{showData(wniosek.applicationDateRequested)}}
                     <br />
                     <span class="author">{{wniosek.userName}}</span>
                 </span>
@@ -71,25 +75,24 @@
                 </table>
             </div>
             <div align="end" class="document">
-                <span *ngIf="showDocument(wniosek.contractId)">
-                    <span style="margin-right: 10px;">Pokaż umowę</span> <button mat-mini-fab color="basic"
-                        (click)="loadPdf(wniosek.contractId)" [disabled]="loadingDocuments">
-                        <mat-icon color="accent">get_app</mat-icon>
-                    </button>
-                </span>
-                <span *ngIf="showDecision(wniosek.decisionId)">
-                    <span style="margin-right: 10px;margin-left:15px">Pokaż decyzję</span><button mat-mini-fab
-                        color="basic" (click)="loadPdf(wniosek.decisionId)" [disabled]="loadingDocuments">
-                        <mat-icon color="accent">file_copy</mat-icon>
-                    </button>
-                </span>
-                <span *ngIf="showAppeal(wniosek.applicationStatus)">
-                    <span style="margin-right: 10px;margin-left:15px">Złóż odwołanie </span><button mat-mini-fab
-                        [disabled]="loadingDocuments" color="basic">
-                        <mat-icon color="warn">redo</mat-icon>
-                    </button>
-                </span>
-
+                <div class="guziki">
+                    <span *ngIf="showAppeal(wniosek.applicationStatus)">
+                        <button class="reapply" [disabled]="loadingDocuments" color="basic"></button>
+                        <span class="smallDesc">Złóż odwołanie </span>
+                    </span>
+                    <span *ngIf="showDecision(wniosek.decisionId)">
+                        <button class="decButton" color="basic" (click)="loadPdf(wniosek.decisionId)" [disabled]="loadingDocuments"></button>
+                        <span class="smallDesc">Pokaż decyzję</span> 
+                    </span>
+                    <span *ngIf="showDocument(wniosek.contractId)">
+                        <button class="agrButton" color="basic" (click)="loadPdf(wniosek.contractId)" [disabled]="loadingDocuments"></button>        
+                        <span class="smallDesc">Pokaż umowę</span> 
+                    </span>
+            
+                    
+                    
+                </div>
+                <div class="clear"> </div>
             </div>
 
         </mat-card-content>
