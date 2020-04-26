@@ -32,7 +32,6 @@ export class WnioskiComponent implements OnInit {
     this.loading = true;
     this.wnioskiService.wszystkieWnioski().pipe(
       map( res => Array.from( res['applications'] ) ),
-      tap( console.log ),
       finalize( () => this.loading = false ) )
       .subscribe(
         ( res: Wniosek[] ) => res ? res.length > 0 ? this.wnioski.next( res ) : res : res );
