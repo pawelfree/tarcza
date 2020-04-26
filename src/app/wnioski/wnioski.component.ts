@@ -170,11 +170,11 @@ export class WnioskiComponent implements OnInit {
         appStatusPl = "Wysłany";
         break;
       }
-      case "REJECTED-BAD-DATA": {
+      case "REJECTED_BAD_DATA": {
         appStatusPl = "Odrzucony";
         break;
       }
-      case "REJECTED-AFTER-SCORING": {
+      case "REJECTED_AFTER_SCORING": {
         appStatusPl = "Odrzucony";
         break;
       }
@@ -182,7 +182,7 @@ export class WnioskiComponent implements OnInit {
         appStatusPl = "Przyznany";
         break;
       }
-      case "GRANTED-CHANGED": {
+      case "GRANTED_CHANGED": {
         appStatusPl = "Przyznany";
         break;
       }
