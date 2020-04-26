@@ -22,7 +22,7 @@
                 "applicationId": "EFC12345678",
                 "userName": "Paweł Dudek",
                 "companyName": "Kwarantanna sp. z o.o",
-                "applicationDateRequested": "2020-01-01",
+                "applicationDateRequested": "2020-01-01 00:00:00",
                 "applicationStatus": "SEND",
                 "amountRequested": "100000",
                 "amountGranted": "100000",
