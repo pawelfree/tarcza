@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Wniosek } from '../models/wniosek';
 import { WnioskiService } from '../services/wnioski.service';
 import { DOCUMENT } from '@angular/common';
-import { take, catchError, map, finalize, tap } from 'rxjs/operators';
+import { take, catchError, finalize } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { WaitComponent } from '../wait/wait.component';
@@ -30,12 +30,8 @@ export class WnioskiComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.wnioskiService.wszystkieWnioski().pipe(
-      map( res => Array.from( res['applications'] ) ),
-      tap( console.log ),
-      finalize( () => this.loading = false ) )
-      .subscribe(
-        ( res: Wniosek[] ) => res ? ( res.length > 0 ? this.wnioski.next( res ) : this.wnioski.next( null ) ) : this.wnioski.next( null ) );
+    this.wnioskiService.wszystkieWnioski().pipe( finalize( () => this.loading = false ) )
+      .subscribe( ( res: Wniosek[] ) => res ? ( res.length > 0 ? this.wnioski.next( res ) : this.wnioski.next( null ) ) : this.wnioski.next( null ) );
     this.zablokowanyPrzyciskNowyWniosek = false;
     this.redirectingToApplication = false;
   }
