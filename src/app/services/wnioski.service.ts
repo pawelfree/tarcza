@@ -4,7 +4,7 @@ import { Wniosek } from '../models/wniosek';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { environment } from '../../environments/environment';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class WnioskiService {

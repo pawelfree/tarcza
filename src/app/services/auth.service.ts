@@ -1,47 +1,92 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { WnioskiService } from './wnioski.service';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of, Subscription } from 'rxjs';
 import { take, catchError, map } from 'rxjs/operators';
 import { User } from '../models/user';
 import { LoginResult } from '../models/login.constants';
+import { timer } from 'rxjs';
 
 @Injectable()
-export class AuthService implements OnDestroy {
+export class AuthService implements OnDestroy, OnInit {
 
+    private tokenExpirationTimer: Subscription;
+    private stopwatch: Subscription;
+    private expirationDuration: number;
     private loggedIn = new BehaviorSubject<User>( null );
     loggedIn$ = this.loggedIn.asObservable();
+    private sessionTimer = new BehaviorSubject<number>( 0 );
+    sessionTimer$ = this.sessionTimer.asObservable();
 
-    constructor( private router: Router,
-        private wnioski: WnioskiService ) { }
+    constructor( private router: Router, private wnioski: WnioskiService ) { }
 
-    private tokenExpirationTimer: any;
+    ngOnInit() {
+        this.expirationDuration = 0;
+    }
 
     ngOnDestroy() {
-        if ( this.tokenExpirationTimer ) {
-            clearTimeout( this.tokenExpirationTimer );
+        this.clearLogoutTimer();
+        this.clearStopwatchTimer();
+    }
+
+    setStopwatchTimer() {
+        this.stopwatch = timer( 0, 1000 ).subscribe( () => {
+            this.expirationDuration = this.expirationDuration - 1000;
+            const second = Math.floor( this.expirationDuration / 1000 );
+            if ( second >= 0 ) {
+                this.sessionTimer.next( second );
+            } else {
+                this.sessionTimer.next( 0 );
+            }
+        } );
+    }
+
+    clearStopwatchTimer() {
+        if ( this.stopwatch ) {
+            this.stopwatch.unsubscribe();
         }
     }
 
     setLogoutTimer( expirationDuration: number ) {
-        this.tokenExpirationTimer = setTimeout( _ => {
-            localStorage.removeItem( 'id_token' );
-            this.loggedIn.next( null );
-            this.router.navigateByUrl( '/logout' );
-        }, expirationDuration );
+        this.clearLogoutTimer();
+        this.tokenExpirationTimer = timer( expirationDuration ).subscribe( () => {
+            this.logout( true );
+        } );
     }
 
     clearLogoutTimer() {
         if ( this.tokenExpirationTimer ) {
-            clearTimeout( this.tokenExpirationTimer );
+            this.tokenExpirationTimer.unsubscribe()
         }
         this.tokenExpirationTimer = null;
+    }
+
+    parseJwt( token ) {
+        var base64Url = token.split( '.' )[1];
+        var base64 = base64Url.replace( /-/g, '+' ).replace( /_/g, '/' );
+        var jsonPayload = decodeURIComponent( atob( base64 ).split( '' ).map( function ( c ) {
+            return '%' + ( '00' + c.charCodeAt( 0 ).toString( 16 ) ).slice( -2 );
+        } ).join( '' ) );
+
+        return JSON.parse( jsonPayload );
+    };
+
+    public setToken( token: string ) {
+        let tokenExpSec = parseInt( this.parseJwt( token )['exp'] );
+        if ( isNaN( tokenExpSec ) ) {
+            this.expirationDuration = 5 * 60 * 1000
+        } else {
+            this.expirationDuration = tokenExpSec * 1000 - new Date().getTime();
+        }
+        localStorage.setItem( 'id_token', token );
+        this.setLogoutTimer( this.expirationDuration );
     }
 
     public logout( redirect: boolean = true ) {
         this.loggedIn.next( null );
         this.clearLogoutTimer();
+        this.clearStopwatchTimer();
         localStorage.removeItem( 'id_token' );
         if ( redirect ) {
             this.router.navigateByUrl( '/logout' );
@@ -60,9 +105,8 @@ export class AuthService implements OnDestroy {
                         if ( !res.isCompany ) {
                             return LoginResult.PERSON;
                         }
-                        var expirationDuration = 10 * 60 * 1000;// this.jwt.getTokenExpirationDate( res.token ).getTime() - new Date().getTime();
-                        localStorage.setItem( 'id_token', res.token );
-                        this.setLogoutTimer( expirationDuration )
+                        this.setToken( res.token );
+                        this.setStopwatchTimer();
                         this.loggedIn.next( res );
                         return LoginResult.TRUE;
                     } else {

@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Wniosek } from '../models/wniosek';
 import { WnioskiService } from '../services/wnioski.service';
 import { DOCUMENT } from '@angular/common';
@@ -23,9 +23,7 @@ export class WnioskiComponent implements OnInit {
   loadingDocuments = false;
   redirectingToApplication = false;
 
-  constructor( private wnioskiService: WnioskiService,
-    private router: Router,
-    public dialog: MatDialog,
+  constructor( private wnioskiService: WnioskiService, private router: Router, public dialog: MatDialog,
     @Inject( DOCUMENT ) private document: Document ) { }
 
   ngOnInit(): void {
