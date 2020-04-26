@@ -72,6 +72,9 @@
           "configurations": {
             "production": {
               "browserTarget": "tarcza:build:production"
+            },
+            "es5": {
+              "browserTarget": "tarcza:build:es5"
             }
           }
         },
