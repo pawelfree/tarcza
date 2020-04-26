@@ -51,6 +51,10 @@ export class WnioskiComponent implements OnInit {
         statusClass = "green";
         break;
       }
+      case "Przyznany": {
+        statusClass = "green";
+        break;
+      }
       case "Odrzucony": {
         statusClass = "red";
         break;
