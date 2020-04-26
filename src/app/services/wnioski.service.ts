@@ -4,6 +4,7 @@ import { Wniosek } from '../models/wniosek';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { environment } from '../../environments/environment';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class WnioskiService {
@@ -12,7 +13,8 @@ export class WnioskiService {
     constructor( private http: HttpClient ) { }
 
     wszystkieWnioski(): Observable<Array<Wniosek>> {
-        return this.http.get<Array<Wniosek>>( this.apiUrl + 'getApplicationList' );
+        return this.http.get<Array<Wniosek>>( this.apiUrl + 'getApplicationList' )
+        // .pipe( switchMap( res => [] ) );
     }
 
     nowyWniosek(): Observable<any> {
