@@ -28,6 +28,17 @@ export class WnioskiService {
         return this.http.get( this.apiUrl + 'getNewApplicationLink' );
     }
 
+    odswiezSesje(): Observable<string> {
+        return this.http.get( this.apiUrl + 'refreshToken', { responseType: 'text', observe: 'response' } ).pipe(
+            map( res => {
+                if ( res.status === 200 ) {
+                    return res.body;
+                } else {
+                    return null;
+                }
+            } ) );
+    }
+
     zaloguj( token: string ): Observable<User> {
         return this.http.get<User>( this.apiUrl + 'LoginUser/' + token );
     }

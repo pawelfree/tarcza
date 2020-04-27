@@ -2,7 +2,7 @@ import { Injectable, OnDestroy, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { WnioskiService } from './wnioski.service';
-import { BehaviorSubject, Observable, of, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, of, Subscription, pipe } from 'rxjs';
 import { take, catchError, map } from 'rxjs/operators';
 import { User } from '../models/user';
 import { LoginResult } from '../models/login.constants';
@@ -40,6 +40,15 @@ export class AuthService implements OnDestroy, OnInit {
                 this.sessionTimer.next( 0 );
             }
         } );
+    }
+
+    odswiezSesje() {
+        this.wnioski.odswiezSesje().pipe( take( 1 ) ).subscribe( res => {
+            if ( res ) {
+                this.setToken( res );
+            }
+        },
+            err => console.log( '1001' ) )
     }
 
     clearStopwatchTimer() {

@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { WaitComponent } from '../wait/wait.component';
 import { environment } from 'src/environments/environment';
 import { strict } from 'assert';
+import { AuthService } from '../services/auth.service';
 
 @Component( {
   selector: 'app-wnioski',
@@ -24,7 +25,7 @@ export class WnioskiComponent implements OnInit {
   loadingDocuments = false;
   redirectingToApplication = false;
 
-  constructor( private wnioskiService: WnioskiService, private router: Router, public dialog: MatDialog,
+  constructor( private wnioskiService: WnioskiService, private authService: AuthService, private router: Router, public dialog: MatDialog,
     @Inject( DOCUMENT ) private document: Document ) { }
 
   ngOnInit(): void {
@@ -77,9 +78,10 @@ export class WnioskiComponent implements OnInit {
         }
       },
         err => {
-          console.log( "1002", err )
+          console.log( "1002" );
         } );
     } else {
+      this.authService.odswiezSesje();
       const options = "?documentId=" + encodeURIComponent( id ) + "&requestId=" + encodeURIComponent( this.objectID() ) + "&authorization=" + encodeURIComponent( localStorage.getItem( 'id_token' ) );
       const server = environment.apiUrl + 'getDocument';
       const link = server + options;
@@ -91,8 +93,8 @@ export class WnioskiComponent implements OnInit {
     return amount.toString().replace( /\B(?=(\d{3})+(?!\d))/g, " " ) + " zł.";
   }
 
-  showData (czas: string) {
-    return czas.replace(/([0-9]{4})-([0-9]{2})-([0-9]{2}).*/, '$3-$2-$1');
+  showData( czas: string ) {
+    return czas.replace( /([0-9]{4})-([0-9]{2})-([0-9]{2}).*/, '$3-$2-$1' );
   }
 
   showAppeal( applicationStatus: string ) {
