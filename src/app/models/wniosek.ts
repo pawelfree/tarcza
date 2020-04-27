@@ -1,4 +1,4 @@
-export class Wniosek {
+export interface Wniosek {
     applicationId: string;
     userName: string;
     companyName: string;

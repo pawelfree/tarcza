@@ -8,7 +8,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { WaitComponent } from '../wait/wait.component';
 import { environment } from 'src/environments/environment';
-import { strict } from 'assert';
 import { AuthService } from '../services/auth.service';
 
 @Component( {

@@ -17,7 +17,9 @@ export class WnioskiService {
             .pipe( map( res => {
                 if ( res.status === 200 ) {
                     localStorage.setItem( 'id_token', res.headers.get( 'token' ) );
-                    return res.body['applications'];
+                    const table = res.body['applications'];
+                    table.map( obj => delete obj['errorsPFR'] );
+                    return table;
                 } else {
                     return [];
                 }
