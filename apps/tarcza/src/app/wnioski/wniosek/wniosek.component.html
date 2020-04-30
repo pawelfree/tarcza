@@ -36,7 +36,7 @@
         </div>
         <div align="end" class="document">
             <div class="guziki">
-                <span *ngIf="showAppeal(wniosek.applicationStatus)">
+                <span *ngIf="wniosek.isClaimAllowed">
                     <button class="reapply" [disabled]="loadingDocuments" color="basic"></button>
                     <span class="smallDesc">Złóż odwołanie </span>
                 </span>
@@ -55,3 +55,4 @@
         </div>
     </mat-card-content>
 </mat-card>
+<app-odwolania [odwolania]="wniosek.odwolania" *ngIf="wniosek.odwolania.length > 0"></app-odwolania>

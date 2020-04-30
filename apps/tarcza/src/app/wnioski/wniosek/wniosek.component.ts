@@ -22,12 +22,6 @@ export class WniosekComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  showAppeal(applicationStatus: string) {
-    let hiddenAppeal = true;
-    hiddenAppeal = applicationStatus !== 'Odrzucony' ? false : true;
-    return hiddenAppeal;
-  }
-
   checkAmount(amountReq: number, amountGranded: number) {
     let amountClass = '';
     switch (true) {
