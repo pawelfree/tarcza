@@ -7,9 +7,26 @@
     "build": "ng build",
     "dist": "ng build --prod",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "nx workspace-lint && ng lint",
     "server:l": "cp ./data/orig-db.json ./data/db.json && json-server --watch ./data/db.json",
-    "server:w": "copy .\\data\\orig-db.json .\\data\\db.json && json-server --watch .\\data\\db.json"
+    "server:w": "copy .\\data\\orig-db.json .\\data\\db.json && json-server --watch .\\data\\db.json",
+    "nx": "nx",
+    "affected:apps": "nx affected:apps",
+    "affected:libs": "nx affected:libs",
+    "affected:build": "nx affected:build",
+    "affected:e2e": "nx affected:e2e",
+    "affected:test": "nx affected:test",
+    "affected:lint": "nx affected:lint",
+    "affected:dep-graph": "nx affected:dep-graph",
+    "affected": "nx affected",
+    "format": "nx format:write",
+    "format:write": "nx format:write",
+    "format:check": "nx format:check",
+    "update": "ng update @nrwl/workspace",
+    "update:check": "ng update",
+    "dep-graph": "nx dep-graph",
+    "workspace-schematic": "nx workspace-schematic",
+    "help": "nx help"
   },
   "private": true,
   "dependencies": {
@@ -24,12 +41,14 @@
     "@angular/platform-browser-dynamic": "~9.1.2",
     "@angular/router": "~9.1.2",
     "@auth0/angular-jwt": "^4.0.0",
+    "@nrwl/workspace": "^9.2.3",
     "classlist": "^2.0.0",
     "classlist.js": "^1.1.20150312",
     "rxjs": "^6.5.5",
     "tslib": "^1.10.0",
     "web-animations-js": "^2.3.2",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "@nrwl/angular": "9.2.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.2",
@@ -52,6 +71,8 @@
     "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.8.3"
+    "typescript": "~3.8.3",
+    "@nrwl/workspace": "9.2.3",
+    "prettier": "1.19.1"
   }
 }

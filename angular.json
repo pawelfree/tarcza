@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
+  "newProjectRoot": "",
   "projects": {
     "tarcza": {
       "projectType": "application",
@@ -10,26 +10,26 @@
           "style": "scss"
         }
       },
-      "root": "",
-      "sourceRoot": "src",
+      "root": "apps/tarcza",
+      "sourceRoot": "apps/tarcza/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/tarcza",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "outputPath": "dist/apps/tarcza",
+            "index": "apps/tarcza/src/index.html",
+            "main": "apps/tarcza/src/main.ts",
+            "polyfills": "apps/tarcza/src/polyfills.ts",
+            "tsConfig": "apps/tarcza/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/.htaccess"
+              "apps/tarcza/src/favicon.ico",
+              "apps/tarcza/src/assets",
+              "apps/tarcza/src/.htaccess"
             ],
             "styles": [
-              "src/styles.scss"
+              "apps/tarcza/src/styles.scss"
             ],
             "scripts": []
           },
@@ -37,8 +37,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "apps/tarcza/src/environments/environment.ts",
+                  "with": "apps/tarcza/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -81,16 +81,16 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
+            "main": "apps/tarcza/src/test.ts",
+            "polyfills": "apps/tarcza/src/polyfills.ts",
+            "tsConfig": "apps/tarcza/tsconfig.spec.json",
+            "karmaConfig": "apps/tarcza/karma.conf.js",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "apps/tarcza/src/favicon.ico",
+              "apps/tarcza/src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "apps/tarcza/src/styles.scss"
             ],
             "scripts": []
           }
@@ -99,9 +99,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "apps/tarcza/tsconfig.app.json",
+              "apps/tarcza/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
