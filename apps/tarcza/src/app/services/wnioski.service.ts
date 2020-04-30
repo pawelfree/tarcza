@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Wniosek } from '../models/wniosek';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { User } from '../models/user';
 import { environment } from '../../environments/environment';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class WnioskiService {
@@ -27,7 +27,7 @@ export class WnioskiService {
     }
 
     nowyWniosek(): Observable<any> {
-        return this.http.get( this.apiUrl + 'getNewApplicationLink' );
+        return this.http.get( this.apiUrl + 'getNewApplicationLink' ).pipe(catchError(err => of(null)));
     }
 
     odswiezSesje(): Observable<string> {

@@ -4,9 +4,11 @@ export interface Wniosek {
     companyName: string;
     applicationDateRequested: string;
     applicationStatus: string;
-    amountRequested: string;
-    amountGranted: string;
+    amountRequested: number;
+    amountGranted: number;
     contractId: string;
     decisionId: string;
     nrNip: string;
+    parentApplicationId: string;
+    isClaimAllowed: boolean;
 }

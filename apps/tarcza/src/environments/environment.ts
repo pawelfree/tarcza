@@ -5,10 +5,11 @@
 export const environment = {
   production: false,
   //  apiUrl: "http://localhost:3000/",
-  apiUrl: "http://bpsqldra.bpsa.pl/Arka.Backend/api/Session/",
+  // apiUrl: 'http://bpsqldra.bpsa.pl/Arka.Backend/api/Session/',
   // apiUrl: "http://evbwwwqa4.qa.bp.com.pl/api/",
-  //apiUrl: "https://tarcza.qa.bp.com.pl/api/",
-  getDocumentMethod: "QUERY" //PARAM
+  // apiUrl: "https://tarcza.qa.bp.com.pl/api/",
+  apiUrl: 'http://localhost:3333/api/',
+  getDocumentMethod: 'QUERY' // PARAM
 };
 
 /*

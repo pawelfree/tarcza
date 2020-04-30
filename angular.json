@@ -28,9 +28,7 @@
               "apps/tarcza/src/assets",
               "apps/tarcza/src/.htaccess"
             ],
-            "styles": [
-              "apps/tarcza/src/styles.scss"
-            ],
+            "styles": ["apps/tarcza/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -85,13 +83,8 @@
             "polyfills": "apps/tarcza/src/polyfills.ts",
             "tsConfig": "apps/tarcza/tsconfig.spec.json",
             "karmaConfig": "apps/tarcza/karma.conf.js",
-            "assets": [
-              "apps/tarcza/src/favicon.ico",
-              "apps/tarcza/src/assets"
-            ],
-            "styles": [
-              "apps/tarcza/src/styles.scss"
-            ],
+            "assets": ["apps/tarcza/src/favicon.ico", "apps/tarcza/src/assets"],
+            "styles": ["apps/tarcza/src/styles.scss"],
             "scripts": []
           }
         },
@@ -102,16 +95,66 @@
               "apps/tarcza/tsconfig.app.json",
               "apps/tarcza/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "nestserver": {
+      "root": "apps/nestserver",
+      "sourceRoot": "apps/nestserver/src",
+      "projectType": "application",
+      "prefix": "nestserver",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/nestserver",
+            "main": "apps/nestserver/src/main.ts",
+            "tsConfig": "apps/nestserver/tsconfig.app.json",
+            "assets": ["apps/nestserver/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/nestserver/src/environments/environment.ts",
+                  "with": "apps/nestserver/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "nestserver:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/nestserver/tsconfig.app.json",
+              "apps/nestserver/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/nestserver/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/nestserver/jest.config.js",
+            "tsConfig": "apps/nestserver/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
     }
   },
-  "defaultProject": "tarcza",
-  "cli": {
-    "analytics": "128c7e1b-9b6d-46e2-984e-53e0eed60bcd"
-  }
+  "defaultProject": "tarcza"
 }

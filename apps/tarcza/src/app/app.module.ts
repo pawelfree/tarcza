@@ -16,11 +16,13 @@ import { AuthService } from './services/auth.service';
 import { WaitComponent } from './wait/wait.component';
 import { PersonComponent } from './person/person.component';
 import { MinutePipe } from './services/minute.pipe';
+import { WniosekComponent } from './wnioski/wniosek/wniosek.component';
 
 @NgModule( {
   declarations: [
     AppComponent,
     WnioskiComponent,
+    WniosekComponent,
     BladComponent,
     LoginComponent,
     LogoutComponent,
