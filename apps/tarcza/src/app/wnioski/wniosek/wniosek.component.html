@@ -54,5 +54,7 @@
             <div class="clear"> </div>
         </div>
     </mat-card-content>
+    <mat-card-footer>
+        <app-odwolania [odwolania]="wniosek.odwolania" *ngIf="wniosek.odwolania.length > 0"></app-odwolania>
+    </mat-card-footer>
 </mat-card>
-<app-odwolania [odwolania]="wniosek.odwolania" *ngIf="wniosek.odwolania.length > 0"></app-odwolania>
