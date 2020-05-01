@@ -59,6 +59,7 @@ export class WnioskiComponent implements OnInit {
       })
     ).subscribe(
       res => {
+        console.log('res',res);
         dialogRef.close();
         if (res) {
           this.redirectingToApplication = true;

@@ -1,0 +1,78 @@
+.document {
+  float: right;
+  margin-top: -3.35em;
+  font-size: 1em;
+}
+.document::after {
+  content: '';
+  clear: both;
+}
+.guziki {
+  float: right;
+}
+
+.guziki .agrButton {
+  background: #fff url('../../../assets/ico/agr1.png') center no-repeat;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  -webkit-box-shadow: 5px 3px 9px 0px rgba(73, 73, 73, 0.404);
+  -moz-box-shadow: 5px 3px 9px 0px rgba(73, 73, 73, 0.404);
+  box-shadow: 5px 3px 9px 0px rgba(73, 73, 73, 0.404);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 15px;
+  display: flex;
+  float: right;
+  cursor: pointer;
+}
+
+.guziki .decButton {
+  background: #fff url('../../../assets/ico/agr.png') center no-repeat;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  -webkit-box-shadow: 5px 3px 9px 0px rgba(73, 73, 73, 0.404);
+  -moz-box-shadow: 5px 3px 9px 0px rgba(73, 73, 73, 0.404);
+  box-shadow: 5px 3px 9px 0px rgba(73, 73, 73, 0.404);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 15px;
+  display: flex;
+  float: right;
+  cursor: pointer;
+}
+
+.guziki .reapply {
+  background: #fff url('../../../assets/ico/redo.png') center no-repeat;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  -webkit-box-shadow: 5px 3px 9px 0px rgba(73, 73, 73, 0.404);
+  -moz-box-shadow: 5px 3px 9px 0px rgba(73, 73, 73, 0.404);
+  box-shadow: 5px 3px 9px 0px rgba(73, 73, 73, 0.404);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 15px;
+  display: flex;
+  float: right;
+  cursor: pointer;
+}
+
+.guziki button:hover {
+  background-color: #a7d9e0;
+}
+.guziki::after {
+  content: '';
+  clear: both;
+}
+
+.smallDesc {
+  margin-right: 10px;
+  float: right;
+  line-height: 45px;
+  align-items: center;
+}

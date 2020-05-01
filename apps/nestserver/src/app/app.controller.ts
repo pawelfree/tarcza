@@ -27,4 +27,14 @@ export class AppController {
   refreshToken() {
     return this.appService.getToken();
   }
+
+  @Get('getNewApplicationLink')
+  newApllicationLink() {
+    return Math.random() > 0.5 ? { url: 'http://stackoverflow.com' } : { url: 'http://medium.com' };
+  }
+
+  @Get('getDocument')
+  getDocument(){
+    
+  }
 }

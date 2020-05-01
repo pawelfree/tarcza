@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { AuthService } from '../../services/auth.service';
 import { WnioskiService } from '../../services/wnioski.service';
 import { finalize } from 'rxjs/operators';
+import { objectID } from '../../services/objectid.service';
 
 
 @Component({
@@ -57,7 +58,7 @@ export class WniosekComponent implements OnInit {
         });
     } else {
       this.authService.odswiezSesje();
-      const options = '?documentId=' + encodeURIComponent(id) + '&requestId=' + encodeURIComponent(this.objectID()) + '&authorization=' + encodeURIComponent(localStorage.getItem('id_token'));
+      const options = '?documentId=' + encodeURIComponent(id) + '&requestId=' + encodeURIComponent(objectID()) + '&authorization=' + encodeURIComponent(localStorage.getItem('id_token'));
       const server = environment.apiUrl + 'getDocument';
       const link = server + options;
       window.open(link, '_blank');
@@ -108,13 +109,6 @@ export class WniosekComponent implements OnInit {
       }
     }
     return appStatusPl;
-  }
-
-  private objectID(): string {
-    const timestamp = (new Date().getTime() / 1000 | 0).toString(16);
-    return timestamp + 'xxxxxxxxxxxxxxxx'.replace(/[x]/g, () => {
-      return (Math.random() * 16 | 0).toString(16);
-    }).toLowerCase();
   }
 
   showDecision(decisionID: string) {

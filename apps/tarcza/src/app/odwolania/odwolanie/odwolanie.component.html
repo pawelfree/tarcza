@@ -1,9 +1,23 @@
 <mat-card>
-    <p>Identyfikator wniosku {{ odwolanie.applicationId}}</p>
-    <p>status wniosku: {{ odwolanie.applicationStatus }}</p>
-    <p>data wniosku: {{odwolanie.applicationDateRequested }}</p>
+    <p>Status wniosku: {{ odwolanie.applicationStatus }}</p>
+    <p>Odwołanie nr: {{ odwolanie.applicationId }}</p>
+    <p>Data złożenia: {{showDate(odwolanie.applicationDateRequested)}}</p>
+    <p>Składający: {{odwolanie.userName}}</p>
     <p>kwota wnioskowana: {{odwolanie.amountRequested }}</p>
     <p>kwota przyznana: {{odwolanie.amountGranted }}</p>
-    <p>dokument odwolania {{odwolanie.contractId}}</p>
-    <p>dokument decyzji: {{odwolanie.decisionId }}</p>
+    <div align="end" class="document">
+        <div class="guziki">
+            <span *ngIf="odwolanie.decisionId">
+                <button class="decButton" color="basic" (click)="loadPdf(odwolanie.decisionId)"
+                    [disabled]="loadingDocuments"></button>
+                <span class="smallDesc">Pokaż odwołanie</span>
+            </span>
+            <span *ngIf="odwolanie.contractId">
+                <button class="agrButton" color="basic" (click)="loadPdf(odwolanie.contractId)"
+                    [disabled]="loadingDocuments"></button>
+                <span class="smallDesc">Pokaż decyzję</span>
+            </span>
+        </div>
+        <div class="clear"></div>
+    </div>
 </mat-card>
