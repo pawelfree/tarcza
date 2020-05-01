@@ -8,7 +8,7 @@ async function bootstrap() {
 
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
-  app.enableCors();
+  app.enableCors({exposedHeaders: '*'});
 
   const port = process.env.port || 3333;
 

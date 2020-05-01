@@ -1,5 +1,4 @@
 import { Injectable, ExecutionContext, CallHandler, NestInterceptor } from '@nestjs/common';
-import { map } from 'rxjs/operators';
 import { AppService } from './app.service';
 
 @Injectable()

@@ -1,8 +1,8 @@
-import { Injectable, OnDestroy, OnInit } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { WnioskiService } from './wnioski.service';
-import { BehaviorSubject, Observable, of, Subscription, pipe } from 'rxjs';
+import { BehaviorSubject, Observable, of, Subscription } from 'rxjs';
 import { take, catchError, map } from 'rxjs/operators';
 import { User } from '../models/user';
 import { LoginResult } from '../models/login.constants';
@@ -70,19 +70,16 @@ export class AuthService implements OnDestroy {
     }
 
     parseJwt(token) {
-        var base64Url = token.split('.')[1];
-        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
-            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-        }).join(''));
-
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
         return JSON.parse(jsonPayload);
-    };
+    }
 
     public setToken(token: string) {
-        let tokenExpSec = parseInt(this.parseJwt(token)['exp']);
+        const tokenExpSec = parseInt(this.parseJwt(token)['exp'], 10);
         if (isNaN(tokenExpSec)) {
-            this.expirationDuration = 5 * 60 * 1000
+            this.expirationDuration = 5 * 60 * 1000;
         } else {
             this.expirationDuration = tokenExpSec * 1000 - new Date().getTime();
         }
@@ -112,6 +109,7 @@ export class AuthService implements OnDestroy {
                         if (!res.isCompany) {
                             return LoginResult.PERSON;
                         }
+                        console.log(res.token);
                         this.setToken(res.token);
                         this.setStopwatchTimer();
                         this.loggedIn.next(res);
