@@ -36,8 +36,9 @@ export class AppController {
   }
 
   @Get('getDocument/:id')
-  getDocumentBody() {
-      return 'http://localhost:3333/sample.pdf';
+  getDocumentBody(@Res() res: Response) {
+    const pa = join(__dirname, '..', '../../dist/apps/nestserver/assets/sample.pdf');
+    return res.send(readFileSync(pa).toString('base64'));
   }
 
   @Get('getDocument/')
