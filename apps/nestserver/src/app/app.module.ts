@@ -1,7 +1,5 @@
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
-import { ServeStaticModule } from '@nestjs/serve-static';
-import { join } from 'path';
 
 import { AppController } from './app.controller';
 import { APP_INTERCEPTOR } from '@nestjs/core';
@@ -11,10 +9,7 @@ import { AppService } from './app.service';
 @Module({
   imports: [
     // PassportModule,
-    JwtModule.register({ secret: 'JWT_PRIVATE_KEY'}),
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', '../../dist/apps/tarcza/')
-  }),
+    JwtModule.register({ secret: 'JWT_PRIVATE_KEY'})
   ],
   controllers: [AppController],
   providers: [

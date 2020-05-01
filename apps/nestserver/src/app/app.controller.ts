@@ -1,6 +1,9 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, HttpCode, Header, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import { applications } from './data';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import { Response } from 'express';
 
 @Controller()
 export class AppController {
@@ -15,7 +18,6 @@ export class AppController {
       userName: 'Paweł Rzewuski',
       token: this.appService.getToken()
     };
-
   }
 
   @Get('getApplicationList')
@@ -33,8 +35,18 @@ export class AppController {
     return Math.random() > 0.5 ? { url: 'http://stackoverflow.com' } : { url: 'http://medium.com' };
   }
 
-  @Get('getDocument')
-  getDocument(){
-    
+  @Get('getDocument/:id')
+  getDocumentBody() {
+      return 'http://localhost:3333/sample.pdf';
   }
+
+  @Get('getDocument/')
+  @HttpCode(201)
+  @Header('Content-Type', 'application/pdf')
+  @Header('Content-Disposition', 'attachment; filename=sample.pdf')
+  getDocument(@Res() res: Response) {
+    const pa = join(__dirname, '..', '../../dist/apps/nestserver/assets/sample.pdf');
+    return res.send(readFileSync(pa));
+  }
+
 }
