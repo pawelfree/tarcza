@@ -1,5 +1,5 @@
 <mat-card>
-    <p>Status wniosku: {{ odwolanie.applicationStatus }}</p>
+    <p>Status wniosku: {{ applicationStatus(odwolanie.applicationStatus)}}</p>
     <p>Odwołanie nr: {{ odwolanie.applicationId }}</p>
     <p>Data złożenia: {{showDate(odwolanie.applicationDateRequested)}}</p>
     <p>Składający: {{odwolanie.userName}}</p>

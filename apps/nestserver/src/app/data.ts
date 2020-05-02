@@ -15,6 +15,7 @@ export const applications = {
         isClaimAllowed: false,
         nrNip: '9531542419'
       },
+    
       {
         applicationId: 'EFC12345679',
         userName: 'Paweł Dudek',
@@ -50,12 +51,26 @@ export const applications = {
         userName: 'Wojciech Kowalski',
         companyName: 'Apteka s.c.',
         applicationDateRequested: '2020-01-01',
-        applicationStatus: 'Odrzucony',
+        applicationStatus: 'REJECTED_BAD_DATA',
         amountRequested: '50000',
         contractId: 'document_id_1',
         decisionId: 'decision_id_1',
         errorsPFR: 'to jest blad',
         parentApplicationId: '',
+        isClaimAllowed: false,
+        nrNip: '9531542419'
+      },
+      {
+        applicationId: 'EFC12345999',
+        userName: 'Wojciech Kowalski',
+        companyName: 'Apteka s.c.',
+        applicationDateRequested: '2020-01-01',
+        applicationStatus: 'REJECTED_BAD_DATA',
+        amountRequested: '50000',
+        contractId: 'document_id_1',
+        decisionId: 'decision_id_1',
+        errorsPFR: 'to jest blad',
+        parentApplicationId: 'EFC12345681',
         isClaimAllowed: false,
         nrNip: '9531542419'
       },
