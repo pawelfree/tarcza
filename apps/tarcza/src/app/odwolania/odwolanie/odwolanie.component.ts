@@ -40,7 +40,30 @@ export class OdwolanieComponent {
     }
   }
 
-  showDate(czas: string) {
-    return czas.replace(/([0-9]{4})-([0-9]{2})-([0-9]{2}).*/, '$3-$2-$1');
+  applicationStatus( appStatus: string) {
+    return this.wnioskiService.applicationStatus(appStatus);
   }
-}
+  checkAmount(amountReq: number, amountGranded: number) {
+    return this.wnioskiService.checkAmount(amountReq, amountGranded);
+  }
+
+  showAmount(amount: number) {
+    return this.wnioskiService.showAmount(amount);
+  }
+  showData(czas: string) {
+    return this.wnioskiService.showData(czas);
+  }
+
+  showDecision(decisionID: string) {
+    return this.wnioskiService.showDecision(decisionID);
+  }
+
+  showDocument(documentID: string) {
+    return this.wnioskiService.showDocument(documentID);
+  }
+
+  statusColor(applicationStatus: string) {
+    return this.wnioskiService.statusColor(applicationStatus);
+  }
+  
+ }

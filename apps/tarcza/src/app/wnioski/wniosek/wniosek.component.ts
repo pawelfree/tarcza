@@ -23,28 +23,6 @@ export class WniosekComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  checkAmount(amountReq: number, amountGranded: number) {
-    let amountClass = '';
-    switch (true) {
-      case (amountGranded / amountReq <= 0.25): {
-        amountClass = 'orange';
-        break;
-      }
-      case (amountGranded / amountReq > 0.25 && amountGranded / amountReq < 1): {
-        amountClass = 'red';
-        break;
-      }
-      case (amountGranded / amountReq === 1): {
-        amountClass = 'green';
-        break;
-      } default: {
-        break;
-      }
-    }
-    return amountClass;
-
-  }
-
   loadPdf(id: string) {
     if (environment.getDocumentMethod === 'PARAM') {
       this.loadingDocuments = true;
@@ -64,88 +42,29 @@ export class WniosekComponent implements OnInit {
       window.open(link, '_blank');
     }
   }
+  applicationStatus( appStatus: string) {
+    return this.wnioskiService.applicationStatus(appStatus);
+  }
+  checkAmount(amountReq: number, amountGranded: number) {
+    return this.wnioskiService.checkAmount(amountReq, amountGranded);
+  }
 
   showAmount(amount: number) {
-    return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' zł.';
+    return this.wnioskiService.showAmount(amount);
   }
-
   showData(czas: string) {
-    return czas.replace(/([0-9]{4})-([0-9]{2})-([0-9]{2}).*/, '$3-$2-$1');
-  }
-
-  applicationStatus(appStatus: string) {
-    let appStatusPl = '';
-    switch (appStatus) {
-      case 'NEW': {
-        appStatusPl = 'Wprowadzony';
-        break;
-      }
-      case 'SEND': {
-        appStatusPl = 'Wysłany';
-        break;
-      }
-      case 'REJECTED_BAD_DATA': {
-        appStatusPl = 'Odrzucony';
-        break;
-      }
-      case 'REJECTED_AFTER_SCORING': {
-        appStatusPl = 'Odrzucony';
-        break;
-      }
-      case 'GRANTED': {
-        appStatusPl = 'Przyznany';
-        break;
-      }
-      case 'GRANTED_CHANGED': {
-        appStatusPl = 'Przyznany';
-        break;
-      }
-      case 'INITIATED': {
-        appStatusPl = 'Wypłacony';
-        break;
-      } default: {
-        appStatusPl = 'Weryfikacja';
-        break;
-      }
-    }
-    return appStatusPl;
+    return this.wnioskiService.showData(czas);
   }
 
   showDecision(decisionID: string) {
-    let showDecisionButton = false;
-    showDecisionButton = !(decisionID) ? false : true;
-    return showDecisionButton;
+    return this.wnioskiService.showDecision(decisionID);
   }
 
   showDocument(documentID: string) {
-    let showDocumentButton = false;
-    showDocumentButton = !(documentID) ? false : true;
-    return showDocumentButton;
+    return this.wnioskiService.showDocument(documentID);
   }
 
   statusColor(applicationStatus: string) {
-    let statusClass = '';
-
-    switch (applicationStatus) {
-      case 'Złożony': {
-        statusClass = 'green';
-        break;
-      }
-      case 'Wysłany': {
-        statusClass = 'green';
-        break;
-      }
-      case 'Przyznany': {
-        statusClass = 'green';
-        break;
-      }
-      case 'Odrzucony': {
-        statusClass = 'red';
-        break;
-      } default: {
-        break;
-      }
-    }
-    return statusClass;
+    return this.wnioskiService.statusColor(applicationStatus);
   }
 }

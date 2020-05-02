@@ -56,4 +56,102 @@ export class WnioskiService {
                 }
             } ) );
     }
+    applicationStatus(appStatus: string) {
+        let appStatusPl = '';
+        switch (appStatus) {
+            case 'NEW': {
+                appStatusPl = 'Wprowadzony';
+                break;
+            }
+            case 'SEND': {
+                appStatusPl = 'Wysłany';
+                break;
+            }
+            case 'REJECTED_BAD_DATA': {
+                appStatusPl = 'Odrzucony';
+                break;
+            }
+            case 'REJECTED_AFTER_SCORING': {
+                appStatusPl = 'Odrzucony';
+                break;
+            }
+            case 'GRANTED': {
+                appStatusPl = 'Przyznany';
+                break;
+            }
+            case 'GRANTED_CHANGED': {
+                appStatusPl = 'Przyznany';
+                break;
+            }
+            case 'INITIATED': {
+                appStatusPl = 'Wypłacony';
+                break;
+            } default: {
+                appStatusPl = 'Weryfikacja';
+                break;
+            }
+        }
+        return appStatusPl;
+    }
+    checkAmount(amountReq: number, amountGranded: number) {
+        let amountClass = '';
+        switch (true) {
+          case (amountGranded / amountReq <= 0.25): {
+            amountClass = 'orange';
+            break;
+          }
+          case (amountGranded / amountReq > 0.25 && amountGranded / amountReq < 1): {
+            amountClass = 'red';
+            break;
+          }
+          case (amountGranded / amountReq === 1): {
+            amountClass = 'green';
+            break;
+          } default: {
+            break;
+          }
+        }
+        return amountClass;
+    }
+    showAmount(amount: number) {
+        return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' zł.';
+    }
+    showData(czas: string) {
+        return czas.replace(/([0-9]{4})-([0-9]{2})-([0-9]{2}).*/, '$3-$2-$1');
+    }
+    showDecision(decisionID: string) {
+        let showDecisionButton = false;
+        showDecisionButton = !(decisionID) ? false : true;
+        return showDecisionButton;
+    }
+    showDocument(documentID: string) {
+        let showDocumentButton = false;
+        showDocumentButton = !(documentID) ? false : true;
+        return showDocumentButton;
+    }
+    statusColor(applicationStatus: string) {
+        let statusClass = '';
+    
+        switch (applicationStatus) {
+          case 'Złożony': {
+            statusClass = 'green';
+            break;
+          }
+          case 'Wysłany': {
+            statusClass = 'green';
+            break;
+          }
+          case 'Przyznany': {
+            statusClass = 'green';
+            break;
+          }
+          case 'Odrzucony': {
+            statusClass = 'red';
+            break;
+          } default: {
+            break;
+          }
+        }
+        return statusClass;
+    }
 }
