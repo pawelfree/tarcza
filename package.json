@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "node ./dist/apps/nestserver/main",
     "serve": "ng serve",
+    "localserve": "ng serve nestserver",
     "build": "ng build",
     "dist": "ng build --prod",
     "test": "ng test",

@@ -28,7 +28,9 @@
               "apps/tarcza/src/assets",
               "apps/tarcza/src/.htaccess"
             ],
-            "styles": ["apps/tarcza/src/styles.scss"],
+            "styles": [
+              "apps/tarcza/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -83,8 +85,13 @@
             "polyfills": "apps/tarcza/src/polyfills.ts",
             "tsConfig": "apps/tarcza/tsconfig.spec.json",
             "karmaConfig": "apps/tarcza/karma.conf.js",
-            "assets": ["apps/tarcza/src/favicon.ico", "apps/tarcza/src/assets"],
-            "styles": ["apps/tarcza/src/styles.scss"],
+            "assets": [
+              "apps/tarcza/src/favicon.ico",
+              "apps/tarcza/src/assets"
+            ],
+            "styles": [
+              "apps/tarcza/src/styles.scss"
+            ],
             "scripts": []
           }
         },
@@ -95,7 +102,9 @@
               "apps/tarcza/tsconfig.app.json",
               "apps/tarcza/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -113,7 +122,9 @@
             "outputPath": "dist/apps/nestserver",
             "main": "apps/nestserver/src/main.ts",
             "tsConfig": "apps/nestserver/tsconfig.app.json",
-            "assets": ["apps/nestserver/src/assets"]
+            "assets": [
+              "apps/nestserver/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -142,7 +153,10 @@
               "apps/nestserver/tsconfig.app.json",
               "apps/nestserver/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/nestserver/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/nestserver/**"
+            ]
           }
         },
         "test": {
@@ -156,5 +170,8 @@
       }
     }
   },
-  "defaultProject": "tarcza"
+  "defaultProject": "tarcza",
+  "cli": {
+    "analytics": "184ada33-81e0-41a3-8421-8eb8637a4bb3"
+  }
 }
