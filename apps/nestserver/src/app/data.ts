@@ -5,7 +5,7 @@ export const applications = {
         userName: 'Paweł Dudek',
         companyName: 'Kwarantanna sp. z o.o',
         applicationDateRequested: '2019-12-01 00:00:00',
-        applicationStatus: 'SEND',
+        applicationStatus: 'GRANTED_CHANGED',
         amountRequested: '200000',
         amountGranted: '100000',
         contractId: 'document_id_1',
