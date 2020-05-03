@@ -6,6 +6,11 @@ mat-card-content {
   margin-top: 2rem;
 }
 
+mat-card-footer {
+  padding-bottom: 1em;
+  background-color: rgba(25, 160, 160, 0.07);
+}
+
 .aButton {
   background: #67b6c1 url('../../../assets/ico/add.png') center no-repeat;
   -webkit-box-shadow: 5px 3px 9px 0px rgba(73, 73, 73, 0.404);
@@ -236,6 +241,9 @@ a .download {
     margin: 0;
   }
   mat-card {
-    padding-bottom: 5em;
+    padding-bottom: 4em;
+  }
+  mat-card-footer {
+    margin-top: 4em;
   }
 }

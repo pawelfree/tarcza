@@ -1,12 +1,30 @@
-.document {
-  float: right;
-  margin-top: -3.35em;
-  font-size: 1em;
+mat-card {
+  margin: 10px;
 }
-.document::after {
-  content: '';
-  clear: both;
+
+mat-card-content {
+  margin-top: 2rem;
 }
+
+
+
+.aButton {
+  background: #67b6c1 url('../../../assets/ico/add.png') center no-repeat;
+  -webkit-box-shadow: 5px 3px 9px 0px rgba(73, 73, 73, 0.404);
+  -moz-box-shadow: 5px 3px 9px 0px rgba(73, 73, 73, 0.404);
+  box-shadow: 5px 3px 9px 0px rgba(73, 73, 73, 0.404);
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  cursor: pointer;
+}
+
 .guziki {
   float: right;
 }
@@ -75,4 +93,152 @@
   float: right;
   line-height: 45px;
   align-items: center;
+}
+
+button:hover {
+  background-color: #a7d9e0;
+}
+
+.row {
+  padding: 1em;
+}
+
+.column {
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+  padding: 10px;
+  line-height: 100px;
+  height: 100px;
+}
+
+.right {
+  text-align: right;
+}
+
+.row:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.title {
+  margin: 1em 0.5em 0.5em 1em;
+  font-size: 1.2em;
+  text-align: left;
+}
+
+.emptyApplication {
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+}
+ 
+.bimg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.addButton {
+  height: 80px;
+  line-height: 80px;
+  margin-right: 15px;
+  display: flex;
+  text-align: right;
+  float: right;
+}
+
+.addButton .description {
+  margin-right: 15px;
+
+  align-items: center;
+}
+
+.addButton::after {
+  clear: both;
+}
+
+.companyName {
+  font-weight: bold;
+  text-align: left;
+  font-size: 1.2em;
+}
+
+.author {
+  font-weight: 200;
+  font-size: 1em;
+}
+
+.applicationData {
+  font-weight: 200;
+  font-size: 0.8em;
+  text-align: right;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.amount {
+  font-size: 1.2em;
+  margin-left: 1.5em;
+  padding-bottom: 1em;
+}
+
+.amountInfo {
+  margin-left: 2em;
+  text-align: right;
+  width: 50%;
+}
+
+.document {
+  float: right;
+  margin-top: -3.35em;
+  font-size: 1em;
+}
+.document::after {
+  content: '';
+  clear: both;
+}
+a .download {
+  color: none;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+.orange {
+  color: orange;
+}
+
+.overlay {
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.05);
+  position: fixed;
+}
+
+@media (max-width: 768px) {
+  .document {
+    float: none;
+    margin: 1em;
+    font-size: 0.8em;
+  }
+  .guziki {
+    float: none;
+    margin: 0;
+  }
+  mat-card {
+    padding-bottom: 5em;
+  }
+
 }

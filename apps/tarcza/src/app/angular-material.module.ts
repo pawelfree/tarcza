@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
-
+import {MatTabsModule} from '@angular/material/tabs';
 @NgModule({
     exports: [
         MatCardModule,
@@ -21,7 +21,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
         MatIconModule,
         MatTableModule,
         MatDialogModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatTabsModule
     ]
 })
 export class AngularMaterialModule { }

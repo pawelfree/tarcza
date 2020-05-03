@@ -53,7 +53,7 @@
             </div>
         </div>
     </mat-card-content>
-    <mat-card-footer>
-        <app-odwolania [odwolania]="wniosek.odwolania" *ngIf="wniosek.odwolania.length > 0"></app-odwolania>
+    <mat-card-footer *ngIf="wniosek.odwolania.length > 0">
+        <app-odwolania [odwolania]="wniosek.odwolania"></app-odwolania>
     </mat-card-footer>
 </mat-card>
