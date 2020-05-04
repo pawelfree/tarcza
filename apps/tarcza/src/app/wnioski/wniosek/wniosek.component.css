@@ -3,18 +3,18 @@ mat-card {
   
 }
 .blue {
-  background-color: rgba(25, 160, 160, 0.04);
+  border: 1em solid  rgba(122, 180, 191, 0.07);
 }
 .pink {
-  background-color: rgba(83, 85, 95, 0.04);
+  border: 1em solid rgba(196, 60, 44, 0.07);
 }
 
-.darkBlue {
-  background-color: rgba(25, 160, 160, 0.07);
+.blue2 {
+  background-color: rgba(122, 180, 191, 0.1);
 }
 
-.darkPink {
-  background-color: rgba(83, 85, 95, 0.07);
+.pink2 {
+  background-color: rgba(196, 60, 44, 0.1);
 }
 
 mat-card-content {
@@ -250,6 +250,7 @@ a .download {
     float: none;
     margin: 1em;
     font-size: 0.8em;
+    padding-bottom: 1em;
   }
   .guziki {
     float: none;
