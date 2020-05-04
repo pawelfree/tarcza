@@ -109,7 +109,6 @@ export class AuthService implements OnDestroy {
                         if (!res.isCompany) {
                             return LoginResult.PERSON;
                         }
-                        console.log(res.token);
                         this.setToken(res.token);
                         this.setStopwatchTimer();
                         this.loggedIn.next(res);
