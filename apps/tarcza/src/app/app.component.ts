@@ -13,8 +13,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   loggedIn$: Observable<User>;
   session$: Observable<number>;
-  private subs: Subscription;
-  private counter = 0;
+  private subs: Subscription = null;
 
   constructor( private auth: AuthService ) { }
 
@@ -26,7 +25,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subs = this.session$.pipe(
       distinctUntilChanged(),
       filter(timer => timer > 0 && timer < 90),
-      tap(timer => console.log('timer', timer)),
       switchMapTo(fromEvent<any>(document,'mousemove').pipe(take(1))),
       tap(_ => {
         this.odswiezSesje();
@@ -45,6 +43,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subs.unsubscribe();
+    if (this.subs) {
+      this.subs.unsubscribe();
+    }
   }
 }
