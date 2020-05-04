@@ -8,18 +8,19 @@
   <div class="session" *ngIf="(loggedIn$ | async) as loggedIn">
     {{ loggedIn.userName }}
     <br />
-    <div *ngIf="session$ | async as session">{{ session | minute }} {{session}}</div>
+    <div *ngIf="session$ |async as session" >{{ session | minute }}<span (click)="odswiezSesje()" [style]="session > 120 ? 'display:none' : 'cursor: pointer'"> | odśwież sesję</span></div>
   </div>
   <img src="../assets/ico/logout.png" *ngIf="loggedIn$ | async"  class="logout" (click)="logout()" style="cursor: pointer"/>
   <!--<mat-icon *ngIf="loggedIn$ | async" (click)="logout()" style="cursor: pointer">power_settings_new</mat-icon>-->
 </mat-toolbar>
 
-<router-outlet></router-outlet>
-
+<div> 
+<router-outlet ></router-outlet>
+</div>
 <div class="footer">
   <div class="row">
     <div class="column"> Infolinia 801 100 500 lub 52 34 99 499</div>
-    <div class="column right">Bank Pocztowy S.A. Tarcza PFR v1.7.0</div>
+    <div class="column right">Bank Pocztowy S.A. Tarcza PFR v2.0.1</div>
   </div>
 
 </div>

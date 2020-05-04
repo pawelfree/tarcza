@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Observable } from 'rxjs';
 import { User } from './models/user';
+import { Next } from '@nestjs/common';
+import { __asyncValues, __values } from 'tslib';
 
 @Component( {
   selector: 'app-root',
@@ -12,7 +14,7 @@ export class AppComponent implements OnInit {
 
   loggedIn$: Observable<User>;
   session$: Observable<number>;
-
+  
   constructor( private auth: AuthService ) { }
 
   ngOnInit(): void {
@@ -24,5 +26,8 @@ export class AppComponent implements OnInit {
   logout() {
     this.auth.logout();
   }
-
+  odswiezSesje() {
+    this.auth.odswiezSesje();
+  }
+ 
 }
