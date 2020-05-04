@@ -14,9 +14,12 @@ import { objectID } from '../../services/objectid.service';
 })
 export class WniosekComponent implements OnInit {
 
-  @Input()
+  @Input() 
   wniosek: Wniosek;
+  @Input()
+  even: boolean;
   loadingDocuments = false;
+  
 
   constructor(private readonly authService: AuthService, private readonly wnioskiService: WnioskiService) { }
 
@@ -67,4 +70,5 @@ export class WniosekComponent implements OnInit {
   statusColor(applicationStatus: string) {
     return this.wnioskiService.statusColor(applicationStatus);
   }
+  
 }

@@ -25,4 +25,9 @@ export class AppComponent implements OnInit {
     this.auth.logout();
   }
 
+  checkSession(session: number) {
+    if (session < 250) {
+      this.authService.odswiezSesje();
+    }
+  }
 }

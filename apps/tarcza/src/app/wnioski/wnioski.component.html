@@ -31,5 +31,5 @@
 </div>
 
 <div *ngIf="!loading">
-    <app-wniosek [wniosek]="wniosek" *ngFor="let wniosek of wnioski$ | async"></app-wniosek>
+    <app-wniosek [even]="even" [wniosek]="wniosek" *ngFor="let wniosek of wnioski$ | async; let even = even;"></app-wniosek>
 </div>

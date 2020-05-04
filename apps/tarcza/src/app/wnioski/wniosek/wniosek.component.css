@@ -1,5 +1,20 @@
 mat-card {
   margin: 10px;
+  
+}
+.blue {
+  background-color: rgba(25, 160, 160, 0.04);
+}
+.pink {
+  background-color: rgba(83, 85, 95, 0.04);
+}
+
+.darkBlue {
+  background-color: rgba(25, 160, 160, 0.07);
+}
+
+.darkPink {
+  background-color: rgba(83, 85, 95, 0.07);
 }
 
 mat-card-content {
@@ -8,7 +23,7 @@ mat-card-content {
 
 mat-card-footer {
   padding-bottom: 1em;
-  background-color: rgba(25, 160, 160, 0.07);
+ 
 }
 
 .aButton {
