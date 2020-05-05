@@ -94,4 +94,32 @@
   font-size: 1.2em;
 }
 
+@media (max-width: 1024px) {
+  .warning {
+    font-size: 1em;
+  }
+ 
+}
+@media (max-width: 800px) {
+    .logo {
+      margin-top: -3em;
+    }
+    .warning {
+      position: absolute;
+      background: transparent url('../assets/ico/clock.png') top center no-repeat;
+      line-height: 20px;
+      height: 120px;
+      padding-top: 50px;
+      padding-left: 0;
+      left:0;
+      text-align: center;
+      top:80px;
+      width: 100%;
+      font-size: 0.8em;
+      overflow-wrap: break-word;
+    }
 
+    .mat-toolbar-row, .mat-toolbar-single-row {
+      height: 154px;
+    }
+}
