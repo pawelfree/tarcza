@@ -30,58 +30,13 @@
   float: left;
   width: 50%;
   padding: 10px;
-
-  
-  
 }
 
 .right {
     text-align: right;
-   
  }
 
-
-.session .logout {
-  margin-top: -2em;
-  float: right;
-  text-align: right;
-  line-height: 24px;
-  height: 24px;
-  text-transform: uppercase;
-}
-
-
-    
-.session .logout .logoutButton {
-  
-  background: transparent url('../assets/ico/logout.png') center no-repeat;
-  border: none;
-  text-align: center;
-  text-decoration: none;
-
-  width: 24px;
-  height: 24px;
-
-  margin-left: 10px;
  
-  float: right;
-}
-  .logout::after  .lougoutButton::after{
-    clear: both;
-    content: '';
-  }
-
-.warning {
-  margin-right: 75%;
-  float: left;
-  line-height: 24px;
-
-}
-
-.warning .warningImg {
-  line-height: 24px;
-}
-
 .row:after {
   content: "";
   display: table;
@@ -98,11 +53,45 @@
   height: auto;
   padding: 0;
   text-align: right;
- 
 }
 
-.session .user {
-  margin-top: 1em;
+.logout {
+  position: absolute;
+  top: 0.5em;
+  right: 1em;
+  background: transparent url('../assets/ico/logout.png') right no-repeat;;
+  text-align: left;
+  line-height: 24px;
+  height: 24px;
+  padding-right: 30px;
+  text-transform: uppercase;
+}
+
+.logout::after {
+    clear: both;
+    content: '';
+}
+
+.warning {
+  background: transparent url('../assets/ico/clock.png') left no-repeat;
+  margin-right: 50%;
+  padding-left: 50px;
+  line-height: 50px;
+  font-size: 15px;
+  height: 50px;
+}
+
+.warning::after {
+  clear: both;
+  content: '';
+}
+ .user {
+  position: absolute;
+  top: 3em;
+  right: 1em;
+  text-align: right;
+  line-height: 1.3em; 
+  font-size: 1.2em;
 }
 
 

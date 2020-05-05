@@ -6,18 +6,19 @@
   <span class="spacer"></span>
 
   <div *ngIf="session$ |async as session" class="session" >
-    <div class="warning"><img src="../assets/ico/clock.png" class="warningImg"/> 
-      Twoja sesja wygaśnie za {{ session | minute }}. Kliknij w dowolne miejsce żeby pozostać zalogowanym.
+    <div class="warning" [hidden]="timerWaring(session)">
+      Twoja sesja wygaśnie za {{ session }} sekund. Kliknij w dowolne miejsce aby pozostać zalogowanym.
     </div>
     
-    <div class="logout" (click)="logout()" style="cursor: pointer">Wyloguj 
-      <span *ngIf="loggedIn$ | async"  class="logoutButton"></span></div>
+   <div class="logout" (click)="logout()" style="cursor: pointer">Wyloguj 
+      <span *ngIf="loggedIn$ | async"  class="logoutButton"></span>
+    </div>
   
   
        <div *ngIf="(loggedIn$ | async) as loggedIn" class="user">
     {{ loggedIn.userName }}
     <br />
-    {{ session | minute }}<span (click)="odswiezSesje()" [style]="session > 120 ? 'display:none' : 'cursor: pointer'"> | odśwież sesję</span>
+    {{ session | minute }}
   </div>
     
 

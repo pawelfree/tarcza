@@ -15,8 +15,10 @@ export class AppComponent implements OnInit, OnDestroy {
   session$: Observable<number>;
   private subs: Subscription = null;
   private unsubscribe$ = new Subject<void>();
+  private timerWarn: number = 90;
 
   constructor( private auth: AuthService ) { }
+
 
   ngOnInit(): void {
     localStorage.removeItem( 'id_token' )
@@ -25,14 +27,18 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.subs = this.session$.pipe(
       distinctUntilChanged(),
-      filter(timer => timer > 0 && timer < 90),
-      switchMapTo(fromEvent<any>(document,'mousemove').pipe(takeUntil(this.unsubscribe$), take(1))),
+      filter(timer => timer > 0 && timer < this.timerWarn),
+      switchMapTo(fromEvent<any>(document,'click').pipe(takeUntil(this.unsubscribe$), take(1))),
       tap(_ => {
         this.odswiezSesje();
       }),
       delay(3000)
     ).subscribe();
 
+  }
+
+  timerWaring(sec: number) {
+    return sec > this.timerWarn ? true : false;
   }
 
   logout() {
