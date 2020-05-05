@@ -254,6 +254,10 @@ button:hover {
         mat-card {
             padding-bottom: 5em;
         }
+        .column {
+            clear: both;
+            width: 100%;
+        }
 
 }
 
