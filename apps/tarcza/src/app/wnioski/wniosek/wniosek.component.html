@@ -1,5 +1,5 @@
-<mat-card [class]="even == true ? 'pink' : 'blue'"> 
-<mat-card>
+
+<mat-card [class]="even == true ? 'pink' : 'blue'">
     <mat-card-header>
         <div class="companyName">
             {{wniosek.companyName}}
@@ -54,8 +54,7 @@
             </div>
         </div>
     </mat-card-content>
-    <mat-card-footer *ngIf="wniosek.odwolania.length > 0" [class]="even == true ? 'darkPink' : 'darkBlue'">
+    <mat-card-footer *ngIf="wniosek.odwolania.length > 0" [class]="even == true ? 'pink2' : 'blue2'">
         <app-odwolania [odwolania]="wniosek.odwolania"></app-odwolania>
     </mat-card-footer>
-</mat-card>
 </mat-card>
