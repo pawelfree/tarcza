@@ -19,7 +19,7 @@ export class AuthService implements OnDestroy {
     private sessionTimer = new BehaviorSubject<number>(0);
     sessionTimer$ = this.sessionTimer.asObservable();
 
-    constructor(private router: Router, private wnioski: WnioskiService) { 
+    constructor(private router: Router, private wnioski: WnioskiService) {
         this.expirationDuration = 0;
     }
 
@@ -41,12 +41,14 @@ export class AuthService implements OnDestroy {
     }
 
     odswiezSesje() {
-        this.wnioski.odswiezSesje().pipe(take(1)).subscribe(res => {
-            if (res) {
-                this.setToken(res);
-            }
-        },
-            err => console.log('1001'))
+        if (this.loggedIn.value) {
+            this.wnioski.odswiezSesje().pipe(take(1)).subscribe(res => {
+                if (res) {
+                    this.setToken(res);
+                }
+            },
+                err => console.log('1001'));
+        }
     }
 
     clearStopwatchTimer() {

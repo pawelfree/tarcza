@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from './services/auth.service';
-import { Observable, fromEvent, Subscription } from 'rxjs';
+import { Observable, fromEvent, Subscription, Subject } from 'rxjs';
 import { User } from './models/user';
-import { tap, filter, distinctUntilChanged, take, switchMapTo, delay } from 'rxjs/operators';
+import { tap, filter, distinctUntilChanged, take, switchMapTo, delay, takeUntil } from 'rxjs/operators';
 
 @Component( {
   selector: 'app-root',
@@ -14,6 +14,7 @@ export class AppComponent implements OnInit, OnDestroy {
   loggedIn$: Observable<User>;
   session$: Observable<number>;
   private subs: Subscription = null;
+  private unsubscribe$ = new Subject<void>();
 
   constructor( private auth: AuthService ) { }
 
@@ -25,7 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subs = this.session$.pipe(
       distinctUntilChanged(),
       filter(timer => timer > 0 && timer < 90),
-      switchMapTo(fromEvent<any>(document,'mousemove').pipe(take(1))),
+      switchMapTo(fromEvent<any>(document,'mousemove').pipe(takeUntil(this.unsubscribe$), take(1))),
       tap(_ => {
         this.odswiezSesje();
       }),
@@ -43,6 +44,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
     if (this.subs) {
       this.subs.unsubscribe();
     }
