@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.pipe(
       take( 1 ),
-      switchMap( param => this.auth.login( param['UfChecksum'] ) )
+      switchMap( param => this.auth.login( param.UfChecksum ) )
     ).subscribe( result => {
       switch ( result ) {
         case LoginResult.TRUE:

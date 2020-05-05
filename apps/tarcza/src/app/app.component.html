@@ -5,34 +5,29 @@
   </span>
   <span class="spacer"></span>
 
-  <div *ngIf="session$ |async as session" class="session" >
+  <div *ngIf="session$ | async as session" class="session">
     <div class="warning" [hidden]="timerWaring(session)">
       Twoja sesja wygaśnie za {{ session }} sekund. Kliknij w dowolne miejsce aby pozostać zalogowanym.
     </div>
-    
-   <div class="logout" (click)="logout()" style="cursor: pointer">Wyloguj 
-      <span *ngIf="loggedIn$ | async"  class="logoutButton"></span>
+
+    <div class="logout" (click)="logout()" style="cursor: pointer">Wyloguj
+      <span *ngIf="loggedIn$ | async" class="logoutButton"></span>
     </div>
-  
-  
-       <div *ngIf="(loggedIn$ | async) as loggedIn" class="user">
-    {{ loggedIn.userName }}
-    <br />
-    {{ session | minute }}
+
+    <div *ngIf="(loggedIn$ | async) as loggedIn" class="user">
+      {{ loggedIn.userName }}
+      <br />
+      {{ session | minute }}
+    </div>
   </div>
-    
-
-  </div>    
-
 </mat-toolbar>
 
-<div> 
-<router-outlet ></router-outlet>
+<div>
+  <router-outlet></router-outlet>
 </div>
 <div class="footer">
   <div class="row">
     <div class="column"> Infolinia 801 100 500 lub 52 34 99 499</div>
     <div class="column right">Bank Pocztowy S.A. Tarcza PFR v2.0.1</div>
   </div>
-
 </div>

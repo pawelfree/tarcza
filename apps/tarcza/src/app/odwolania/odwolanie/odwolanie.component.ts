@@ -4,7 +4,7 @@ import { environment } from '../../../environments/environment';
 import { finalize } from 'rxjs/operators';
 import { WnioskiService } from '../../services/wnioski.service';
 import { AuthService } from '../../services/auth.service';
-import { objectID } from '../../services/objectid.service';
+import { objectID } from '../../services/objectid';
 
 @Component({
   selector: 'app-odwolanie',
@@ -33,14 +33,16 @@ export class OdwolanieComponent {
         });
     } else {
       this.authService.odswiezSesje();
-      const options = '?documentId=' + encodeURIComponent(id) + '&requestId=' + encodeURIComponent(objectID()) + '&authorization=' + encodeURIComponent(localStorage.getItem('id_token'));
+      const options = '?documentId=' + encodeURIComponent(id) +
+        '&requestId=' + encodeURIComponent(objectID()) +
+        '&authorization=' + encodeURIComponent(localStorage.getItem('id_token'));
       const server = environment.apiUrl + 'getDocument';
       const link = server + options;
       window.open(link, '_blank');
     }
   }
 
-  applicationStatus( appStatus: string) {
+  applicationStatus(appStatus: string) {
     return this.wnioskiService.applicationStatus(appStatus);
   }
   checkAmount(amountReq: number, amountGranded: number) {
@@ -65,5 +67,5 @@ export class OdwolanieComponent {
   statusColor(applicationStatus: string) {
     return this.wnioskiService.statusColor(applicationStatus);
   }
-  
- }
+
+}

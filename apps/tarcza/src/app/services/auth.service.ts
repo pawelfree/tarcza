@@ -66,7 +66,7 @@ export class AuthService implements OnDestroy {
 
     clearLogoutTimer() {
         if (this.tokenExpirationTimer) {
-            this.tokenExpirationTimer.unsubscribe()
+            this.tokenExpirationTimer.unsubscribe();
         }
         this.tokenExpirationTimer = null;
     }
@@ -79,7 +79,7 @@ export class AuthService implements OnDestroy {
     }
 
     public setToken(token: string) {
-        const tokenExpSec = parseInt(this.parseJwt(token)['exp'], 10);
+        const tokenExpSec = parseInt(this.parseJwt(token).exp, 10);
         if (isNaN(tokenExpSec)) {
             this.expirationDuration = 5 * 60 * 1000;
         } else {
@@ -116,7 +116,7 @@ export class AuthService implements OnDestroy {
                         this.loggedIn.next(res);
                         return LoginResult.TRUE;
                     } else {
-                        localStorage.removeItem('id_token')
+                        localStorage.removeItem('id_token');
                         this.loggedIn.next(null);
                         return LoginResult.FALSE;
                     }
