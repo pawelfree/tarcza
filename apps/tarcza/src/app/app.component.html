@@ -5,13 +5,24 @@
   </span>
   <span class="spacer"></span>
 
-  <div class="session" *ngIf="(loggedIn$ | async) as loggedIn">
+  <div *ngIf="session$ |async as session" class="session" >
+    <div class="warning"><img src="../assets/ico/clock.png" class="warningImg"/> 
+      Twoja sesja wygaśnie za {{ session | minute }}. Kliknij w dowolne miejsce żeby pozostać zalogowanym.
+    </div>
+    
+    <div class="logout" (click)="logout()" style="cursor: pointer">Wyloguj 
+      <span *ngIf="loggedIn$ | async"  class="logoutButton"></span></div>
+  
+  
+       <div *ngIf="(loggedIn$ | async) as loggedIn" class="user">
     {{ loggedIn.userName }}
     <br />
-    <div *ngIf="session$ |async as session" >{{ session | minute }}<span (click)="odswiezSesje()" [style]="session > 120 ? 'display:none' : 'cursor: pointer'"> | odśwież sesję</span></div>
+    {{ session | minute }}<span (click)="odswiezSesje()" [style]="session > 120 ? 'display:none' : 'cursor: pointer'"> | odśwież sesję</span>
   </div>
-  <img src="../assets/ico/logout.png" *ngIf="loggedIn$ | async"  class="logout" (click)="logout()" style="cursor: pointer"/>
-  <!--<mat-icon *ngIf="loggedIn$ | async" (click)="logout()" style="cursor: pointer">power_settings_new</mat-icon>-->
+    
+
+  </div>    
+
 </mat-toolbar>
 
 <div> 

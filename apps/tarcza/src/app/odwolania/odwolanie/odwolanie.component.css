@@ -1,5 +1,12 @@
 mat-card {
   margin: 10px;
+  width: 92%;
+  float: right;
+}
+
+mat-card::after {
+  clear: both;
+  content: '';
 }
 
 mat-card-content {

@@ -24,6 +24,7 @@
 }
 
 
+
 .column {
   box-sizing: border-box;
   float: left;
@@ -39,22 +40,47 @@
    
  }
 
-.logout {
+
+.session .logout {
+  margin-top: -2em;
+  float: right;
+  text-align: right;
+  line-height: 24px;
+  height: 24px;
+  text-transform: uppercase;
+}
+
+
+    
+.session .logout .logoutButton {
+  
   background: transparent url('../assets/ico/logout.png') center no-repeat;
   border: none;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+
   width: 24px;
   height: 24px;
-  border-radius: 50%;
-  margin: 0 auto;
-  display: flex;
-  
+
+  margin-left: 10px;
+ 
+  float: right;
+}
+  .logout::after  .lougoutButton::after{
+    clear: both;
+    content: '';
+  }
+
+.warning {
+  margin-right: 75%;
+  float: left;
+  line-height: 24px;
 
 }
-    
 
+.warning .warningImg {
+  line-height: 24px;
+}
 
 .row:after {
   content: "";
@@ -66,10 +92,17 @@
   display: none;
 }
 .session {
+  width: 75%;
   font-size: 0.6em;
   line-height: 100%;
   height: auto;
-  padding: 1em;
+  padding: 0;
+  text-align: right;
+ 
+}
+
+.session .user {
+  margin-top: 1em;
 }
 
 

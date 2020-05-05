@@ -2,13 +2,19 @@ mat-card {
   margin: 10px;
   
 }
+
 .blue {
-  border: 1em solid  rgba(122, 180, 191, 0.07);
+  border: 1em solid  rgba(122, 180, 191, 0.1);
 }
+
+.pink {
+  border: 1em solid rgba(122, 180, 191, 0.07);
+}
+/*
 .pink {
   border: 1em solid rgba(196, 60, 44, 0.07);
 }
-
+*/
 .blue2 {
   background-color: rgba(122, 180, 191, 0.1);
 }
@@ -199,7 +205,7 @@ button:hover {
 }
 
 .amount {
-  font-size: 1.2em;
+  font-size: 1.35em;
   margin-left: 1.5em;
   padding-bottom: 1em;
 }

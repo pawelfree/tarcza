@@ -134,6 +134,10 @@ button:hover {
     margin: 1em 0.5em 0.5em 1em;
     font-size: 1.2em;
     text-align: left;
+    color: #7ab4bf;
+    text-transform: uppercase;
+    font-weight: bold;
+
 
 }
 

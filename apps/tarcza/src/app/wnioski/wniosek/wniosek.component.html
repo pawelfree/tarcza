@@ -54,7 +54,9 @@
             </div>
         </div>
     </mat-card-content>
-    <mat-card-footer *ngIf="wniosek.odwolania.length > 0" [class]="even == true ? 'pink2' : 'blue2'">
+  <!--  <mat-card-footer *ngIf="wniosek.odwolania.length > 0" [class]="even == true ? 'pink2' : 'blue2'">-->
+  
+    <mat-card-footer *ngIf="wniosek.odwolania.length > 0" >
         <app-odwolania [odwolania]="wniosek.odwolania"></app-odwolania>
     </mat-card-footer>
 </mat-card>
