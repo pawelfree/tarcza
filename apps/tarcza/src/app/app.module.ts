@@ -23,16 +23,16 @@ import { OdwolaniaComponent } from './odwolania/odwolania.component';
 @NgModule( {
   declarations: [
     AppComponent,
-    WnioskiComponent,
-    WniosekComponent,
-    OdwolaniaComponent,
-    OdwolanieComponent,
     BladComponent,
     LoginComponent,
     LogoutComponent,
-    WaitComponent,
+    MinutePipe,
+    OdwolaniaComponent,
+    OdwolanieComponent,
     PersonComponent,
-    MinutePipe
+    WaitComponent,
+    WniosekComponent,
+    WnioskiComponent
   ],
   imports: [
     BrowserModule,

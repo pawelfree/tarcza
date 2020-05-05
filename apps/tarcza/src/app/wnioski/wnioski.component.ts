@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Wniosek } from '../models/wniosek';
 import { WnioskiService } from '../services/wnioski.service';
@@ -15,7 +15,7 @@ import { WaitComponent } from '../wait/wait.component';
 })
 export class WnioskiComponent implements OnInit {
 
-  private wnioski = new BehaviorSubject<Array<Wniosek>>(null);
+  private wnioski = new BehaviorSubject<Array<Wniosek>>([]);
   wnioski$ = this.wnioski.asObservable();
   public zablokowanyPrzyciskNowyWniosek = false;
   loading = false;

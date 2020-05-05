@@ -18,9 +18,9 @@
 </div>
 <mat-divider></mat-divider>
 <div *ngIf="!loading">
-    <mat-card *ngIf="!(wnioski$ | async)">
+    <mat-card *ngIf="(wnioski$ | async) === null || []">
         <mat-card-header>
-            <div class="emptyApplication">Nie masz żadnych aktywnych wniosków. Dodaj pierwszy wniosek.</div>
+            <div class="emptyApplication">Nie masz żadnych aktywnych wniosków. Złóż pierwszy wniosek.</div>
         </mat-card-header>
     </mat-card>
 </div>

@@ -13,12 +13,16 @@ export class WnioskiService {
     constructor(private http: HttpClient) { }
 
     wszystkieWnioski(): Observable<Array<Wniosek>> {
-        return this.http.get<Array<Wniosek>>(this.apiUrl + 'getApplicationList', { observe: 'response' })
-            .pipe(map(res => {
+        return this.http.get<{applications: Array<any>}>(this.apiUrl + 'getApplicationList', { observe: 'response' })
+            .pipe(
+                catchError(err => {
+                    console.log('1004');
+                    return []; }),
+                map(res => {
                 if (res.status === 200) {
                     localStorage.setItem('id_token', res.headers.get('token'));
-                    const table = res.body['applications'];
-                    table.map(obj => delete obj['errorsPFR']);
+                    const table = res.body.applications;
+                    table.map(obj => delete obj.errorsPFR);
                     return table;
                 } else {
                     return [];
