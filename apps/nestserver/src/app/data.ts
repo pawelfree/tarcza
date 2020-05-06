@@ -12,7 +12,7 @@ export const applications = {
       decisionId: 'decision_id_1',
       errorsPFR: 'to jest blad',
       parentApplicationId: '',
-      isClaimAllowed: false,
+      isClaimAllowed: true,
       nrNip: '9531542419'
     },
 
@@ -79,7 +79,7 @@ export const applications = {
       userName: 'TOmasz Nowak',
       companyName: 'Piekarnia Kamień',
       applicationDateRequested: '2019-02-01',
-      applicationStatus: 'Złożony',
+      applicationStatus: 'GRANTED_CHANGED',
       amountRequested: '100000',
       amountGranted: '8000',
       contractId: 'document_id_1',
