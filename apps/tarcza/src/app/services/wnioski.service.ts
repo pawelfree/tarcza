@@ -20,7 +20,7 @@ export class WnioskiService {
                     return []; }),
                 map(res => {
                 if (res.status === 200) {
-                    localStorage.setItem('id_token', res.headers.get('token'));
+                    sessionStorage.setItem('id_token', res.headers.get('token'));
                     const table = res.body.applications;
                     table.map(obj => delete obj.errorsPFR);
                     return table;
@@ -53,7 +53,7 @@ export class WnioskiService {
         return this.http.get(this.apiUrl + 'getDocument/' + id, { responseType: 'text', observe: 'response' })
             .pipe(map(res => {
                 if (res.status === 200) {
-                    localStorage.setItem('id_token', res.headers.get('token'));
+                    sessionStorage.setItem('id_token', res.headers.get('token'));
                     return res.body;
                 } else {
                     return null;

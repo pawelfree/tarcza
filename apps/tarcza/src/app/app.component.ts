@@ -21,7 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    localStorage.removeItem('id_token');
+    sessionStorage.removeItem('id_token');
     this.loggedIn$ = this.auth.loggedIn$;
     this.session$ = this.auth.sessionTimer$;
 

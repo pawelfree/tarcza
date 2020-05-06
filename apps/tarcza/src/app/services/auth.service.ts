@@ -85,7 +85,7 @@ export class AuthService implements OnDestroy {
         } else {
             this.expirationDuration = tokenExpSec * 1000 - new Date().getTime();
         }
-        localStorage.setItem('id_token', token);
+        sessionStorage.setItem('id_token', token);
         this.setLogoutTimer(this.expirationDuration);
     }
 
@@ -93,7 +93,7 @@ export class AuthService implements OnDestroy {
         this.loggedIn.next(null);
         this.clearLogoutTimer();
         this.clearStopwatchTimer();
-        localStorage.removeItem('id_token');
+        sessionStorage.removeItem('id_token');
         if (redirect) {
             this.router.navigateByUrl('/logout');
         }
@@ -116,7 +116,7 @@ export class AuthService implements OnDestroy {
                         this.loggedIn.next(res);
                         return LoginResult.TRUE;
                     } else {
-                        localStorage.removeItem('id_token');
+                        sessionStorage.removeItem('id_token');
                         this.loggedIn.next(null);
                         return LoginResult.FALSE;
                     }

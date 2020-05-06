@@ -7,7 +7,7 @@ export class AuthGuard implements CanActivate {
     constructor(private readonly router: Router) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree {
-        const idToken = localStorage.getItem('id_token');
+        const idToken = sessionStorage.getItem('id_token');
 
         if (idToken) {
             return true;

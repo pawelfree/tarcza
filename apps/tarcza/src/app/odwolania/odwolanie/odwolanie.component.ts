@@ -35,7 +35,7 @@ export class OdwolanieComponent {
       this.authService.odswiezSesje();
       const options = '?documentId=' + encodeURIComponent(id) +
         '&requestId=' + encodeURIComponent(objectID()) +
-        '&authorization=' + encodeURIComponent(localStorage.getItem('id_token'));
+        '&authorization=' + encodeURIComponent(sessionStorage.getItem('id_token'));
       const server = environment.apiUrl + 'getDocument';
       const link = server + options;
       window.open(link, '_blank');
