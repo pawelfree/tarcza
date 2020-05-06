@@ -12,7 +12,7 @@ export const applications = {
       decisionId: 'decision_id_1',
       errorsPFR: 'to jest blad',
       parentApplicationId: '',
-      isClaimAllowed: true,
+      isClaimAllowed: false,
       nrNip: '9531542419'
     },
 
@@ -57,7 +57,7 @@ export const applications = {
       decisionId: 'decision_id_1',
       errorsPFR: 'to jest blad',
       parentApplicationId: '',
-      isClaimAllowed: false,
+      isClaimAllowed: true,
       nrNip: '9531542419'
     },
     {
