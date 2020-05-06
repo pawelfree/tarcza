@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { WnioskiComponent } from './wnioski/wnioski.component';
+import { WnioskiComponent } from './components/wnioski/wnioski.component';
 import { AuthGuard } from './services/auth.guard';
-import { BladComponent } from './blad/blad.component';
-import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
-import { PersonComponent } from './person/person.component';
+import { BladComponent } from './components/blad/blad.component';
+import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { PersonComponent } from './components/person/person.component';
 
 const routes: Routes = [
   {

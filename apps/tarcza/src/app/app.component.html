@@ -10,14 +10,15 @@
       Twoja sesja wygaśnie za {{ session }} sekund. Kliknij w dowolne miejsce aby pozostać zalogowanym.
     </div>
 
-    <div class="logout" (click)="logout()" style="cursor: pointer">Wyloguj
-      <span *ngIf="loggedIn$ | async" class="logoutButton"></span>
-    </div>
-
-    <div *ngIf="(loggedIn$ | async) as loggedIn" class="user">
-      {{ loggedIn.userName }}
-      <br />
-      {{ session | minute }}
+    <div *ngIf="(loggedIn$ | async) as loggedIn">
+      <div class="logout" (click)="logout()" style="cursor: pointer">Wyloguj
+        <span class="logoutButton"></span>
+      </div>
+      <div class="user">
+        {{ loggedIn.userName }}
+        <br />
+        {{ session | minute }}
+      </div>
     </div>
   </div>
 </mat-toolbar>

@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Wniosek } from '../../models/wniosek';
-import { environment } from '../../../environments/environment';
-import { AuthService } from '../../services/auth.service';
-import { WnioskiService } from '../../services/wnioski.service';
+import { Wniosek } from '../../../models/wniosek';
+import { environment } from '../../../../environments/environment';
+import { AuthService } from '../../../services/auth.service';
+import { WnioskiService } from '../../../services/wnioski.service';
 import { finalize } from 'rxjs/operators';
-import { objectID } from '../../services/objectid';
+import { objectID } from '../../../services/objectid';
 
 
 @Component({

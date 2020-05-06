@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Wniosek } from '../models/wniosek';
+import { Wniosek } from '../../models/wniosek';
 
 @Component({
     selector: 'app-odwolania',

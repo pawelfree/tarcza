@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take, switchMap } from 'rxjs/operators';
-import { AuthService } from '../services/auth.service';
-import { LoginResult } from '../models/login.constants';
+import { AuthService } from '../../services/auth.service';
+import { LoginResult } from '../../models/login.constants';
 
 @Component( {
   selector: 'app-login',

@@ -1,22 +1,39 @@
 mat-card {
   margin: 10px;
-  width: 92%;
-  float: right;
+  
 }
 
-mat-card::after {
-  clear: both;
-  content: '';
+.blue {
+  border: 1em solid  rgba(122, 180, 191, 0.1);
+}
+
+.pink {
+  border: 1em solid rgba(122, 180, 191, 0.07);
+}
+/*
+.pink {
+  border: 1em solid rgba(196, 60, 44, 0.07);
+}
+*/
+.blue2 {
+  background-color: rgba(122, 180, 191, 0.1);
+}
+
+.pink2 {
+  background-color: rgba(196, 60, 44, 0.1);
 }
 
 mat-card-content {
   margin-top: 2rem;
 }
 
-
+mat-card-footer {
+  padding-bottom: 1em;
+ 
+}
 
 .aButton {
-  background: #67b6c1 url('../../../assets/ico/add.png') center no-repeat;
+  background: #67b6c1 url('../../../../assets/ico/add.png') center no-repeat;
   -webkit-box-shadow: 5px 3px 9px 0px rgba(73, 73, 73, 0.404);
   -moz-box-shadow: 5px 3px 9px 0px rgba(73, 73, 73, 0.404);
   box-shadow: 5px 3px 9px 0px rgba(73, 73, 73, 0.404);
@@ -37,7 +54,7 @@ mat-card-content {
 }
 
 .guziki .agrButton {
-  background: #fff url('../../../assets/ico/agr1.png') center no-repeat;
+  background: #fff url('../../../../assets/ico/agr1.png') center no-repeat;
   border: none;
   text-align: center;
   text-decoration: none;
@@ -54,7 +71,7 @@ mat-card-content {
 }
 
 .guziki .decButton {
-  background: #fff url('../../../assets/ico/agr.png') center no-repeat;
+  background: #fff url('../../../../assets/ico/agr.png') center no-repeat;
   border: none;
   text-align: center;
   text-decoration: none;
@@ -71,7 +88,7 @@ mat-card-content {
 }
 
 .guziki .reapply {
-  background: #fff url('../../../assets/ico/redo.png') center no-repeat;
+  background: #fff url('../../../../assets/ico/redo.png') center no-repeat;
   border: none;
   text-align: center;
   text-decoration: none;
@@ -94,6 +111,7 @@ mat-card-content {
   content: '';
   clear: both;
 }
+
 
 .guzik {
   float: right;
@@ -122,6 +140,7 @@ button:hover {
   line-height: 100px;
   height: 100px;
 }
+
 
 .right {
   text-align: right;
@@ -192,7 +211,7 @@ button:hover {
 }
 
 .amount {
-  font-size: 1.2em;
+  font-size: 1.35em;
   margin-left: 1.5em;
   padding-bottom: 1em;
 }
@@ -234,7 +253,7 @@ a .download {
   width: 100%;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.2);
   position: fixed;
 }
 
@@ -243,6 +262,7 @@ a .download {
     float: none;
     margin: 1em;
     font-size: 0.8em;
+    padding-bottom: 1em;
   }
   .guziki {
     float: none;
@@ -254,8 +274,11 @@ a .download {
     width: 33%;
     float: right;
   }
+
   mat-card {
     padding-bottom: 1em;
   }
-
+  mat-card-footer {
+    margin-top: 4em;
+  }
 }

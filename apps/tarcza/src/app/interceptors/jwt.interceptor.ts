@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { objectID } from './objectid';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
-    constructor() { }
 
+    constructor() { }
 
     intercept( req: HttpRequest<any>, next: HttpHandler ): Observable<HttpEvent<any>> {
 
@@ -14,18 +13,13 @@ export class JwtInterceptor implements HttpInterceptor {
 
         if ( idToken ) {
             const cloned = req.clone( {
-                headers: req.headers.set( 'Authorization', 'Bearer ' + idToken ).set( 'requestID', objectID() )
+                headers: req.headers.set( 'Authorization', 'Bearer ' + idToken )
             } );
 
             return next.handle( cloned );
         }
         else {
-
-            const cloned = req.clone( {
-                headers: req.headers.set( 'requestID', objectID() )
-            } );
-
-            return next.handle( cloned );
+            return next.handle( req );
         }
     }
 }

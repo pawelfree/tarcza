@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Wniosek } from '../models/wniosek';
-import { WnioskiService } from '../services/wnioski.service';
+import { Wniosek } from '../../models/wniosek';
+import { WnioskiService } from '../../services/wnioski.service';
 import { DOCUMENT } from '@angular/common';
 import { take, catchError, finalize, map } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';

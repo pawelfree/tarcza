@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { Wniosek } from '../../models/wniosek';
-import { environment } from '../../../environments/environment';
+import { Wniosek } from '../../../models/wniosek';
+import { environment } from '../../../../environments/environment';
 import { finalize } from 'rxjs/operators';
-import { WnioskiService } from '../../services/wnioski.service';
-import { AuthService } from '../../services/auth.service';
-import { objectID } from '../../services/objectid';
+import { WnioskiService } from '../../../services/wnioski.service';
+import { AuthService } from '../../../services/auth.service';
+import { objectID } from '../../../services/objectid';
 
 @Component({
   selector: 'app-odwolanie',

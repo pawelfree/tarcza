@@ -7,7 +7,7 @@ mat-card-content {
 }
 
 .aButton {
-    background: #67b6c1 url('../../assets/ico/add.png') center no-repeat;
+    background: #67b6c1 url('../../../assets/ico/add.png') center no-repeat;
     -webkit-box-shadow: 5px 3px 9px 0px rgba(73, 73, 73, 0.404);
     -moz-box-shadow: 5px 3px 9px 0px rgba(73, 73, 73, 0.404);
     box-shadow: 5px 3px 9px 0px rgba(73, 73, 73, 0.404);    
@@ -31,7 +31,7 @@ mat-card-content {
 
 .guziki .agrButton {
 
-    background: #fff url('../../assets/ico/agr1.png') center no-repeat;
+    background: #fff url('../../../assets/ico/agr1.png') center no-repeat;
     border: none;
     text-align: center;
     text-decoration: none;
@@ -48,7 +48,7 @@ mat-card-content {
 }
 
 .guziki .decButton {
-    background: #fff url('../../assets/ico/agr.png') center no-repeat;
+    background: #fff url('../../../assets/ico/agr.png') center no-repeat;
     border: none;
     text-align: center;
     text-decoration: none;
@@ -65,7 +65,7 @@ mat-card-content {
 }
 
 .guziki .reapply {
-    background: #fff url('../../assets/ico/redo.png') center no-repeat;
+    background: #fff url('../../../assets/ico/redo.png') center no-repeat;
     border: none;
     text-align: center;
     text-decoration: none;
