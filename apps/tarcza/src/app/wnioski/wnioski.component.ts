@@ -38,7 +38,7 @@ export class WnioskiComponent implements OnInit {
           }
           return wn;
         } else {
-          return null;
+          return [];
         }
       }),
       finalize(() => this.loading = false))
