@@ -38,20 +38,26 @@
         </div>
         <div align="end" class="document">
             <div class="guziki">
+                <div class="guzik">
                 <span *ngIf="wniosek.isClaimAllowed">
                     <button class="reapply" [disabled]="loadingDocuments" color="basic"></button>
                     <span class="smallDesc">Złóż odwołanie </span>
                 </span>
+                </div>
+                <div class="guzik">
                 <span *ngIf="showDecision(wniosek.decisionId)">
                     <button class="decButton" color="basic" (click)="loadPdf(wniosek.decisionId)"
                         [disabled]="loadingDocuments"></button>
                     <span class="smallDesc">Pokaż decyzję</span>
                 </span>
+                </div>
+                <div class="guzik">
                 <span *ngIf="showDocument(wniosek.contractId)">
                     <button class="agrButton" color="basic" (click)="loadPdf(wniosek.contractId)"
                         [disabled]="loadingDocuments"></button>
                     <span class="smallDesc">Pokaż umowę</span>
                 </span>
+                </div>
             </div>
         </div>
     </mat-card-content>

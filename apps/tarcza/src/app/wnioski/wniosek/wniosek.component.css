@@ -112,6 +112,11 @@ mat-card-footer {
   clear: both;
 }
 
+
+.guzik {
+  float: right;
+}
+
 .smallDesc {
   margin-right: 10px;
   float: right;
@@ -135,6 +140,7 @@ button:hover {
   line-height: 100px;
   height: 100px;
 }
+
 
 .right {
   text-align: right;
@@ -260,10 +266,17 @@ a .download {
   }
   .guziki {
     float: none;
-    margin: 0;
+    margin-bottom: 3em;
+    padding-bottom: 2em;
   }
+ 
+  .guzik {
+    width: 33%;
+    float: right;
+  }
+
   mat-card {
-    padding-bottom: 4em;
+    padding-bottom: 1em;
   }
   mat-card-footer {
     margin-top: 4em;

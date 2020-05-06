@@ -95,6 +95,10 @@ mat-card-content {
   clear: both;
 }
 
+.guzik {
+  float: right;
+}
+
 .smallDesc {
   margin-right: 10px;
   float: right;
@@ -242,10 +246,16 @@ a .download {
   }
   .guziki {
     float: none;
-    margin: 0;
+    margin-bottom: 3em;
+    padding-bottom: 2em;
+  }
+ 
+  .guzik {
+    width: 33%;
+    float: right;
   }
   mat-card {
-    padding-bottom: 5em;
+    padding-bottom: 1em;
   }
 
 }

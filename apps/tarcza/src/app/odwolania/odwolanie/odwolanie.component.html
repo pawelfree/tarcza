@@ -37,17 +37,20 @@
                 </div>
                 <div align="end" class="document">
                     <div class="guziki">
-                    
-                        <span *ngIf="showDecision(odwolanie.decisionId)">
-                            <button class="decButton" color="basic" (click)="loadPdf(odwolanie.decisionId)"
-                                [disabled]="loadingDocuments"></button>
-                            <span class="smallDesc">Pokaż decyzję</span>
-                        </span>
-                        <span *ngIf="showDocument(odwolanie.contractId)">
-                            <button class="agrButton" color="basic" (click)="loadPdf(odwolanie.contractId)"
-                                [disabled]="loadingDocuments"></button>
-                            <span class="smallDesc">Pokaż umowę</span>
-                        </span>
+                        <div class="guzik">
+                            <span *ngIf="showDecision(odwolanie.decisionId)">
+                                <button class="decButton" color="basic" (click)="loadPdf(odwolanie.decisionId)"
+                                    [disabled]="loadingDocuments"></button>
+                                <span class="smallDesc">Pokaż decyzję</span>
+                            </span>
+                        </div>
+                        <div class="guzik">
+                            <span *ngIf="showDocument(odwolanie.contractId)">
+                                <button class="agrButton" color="basic" (click)="loadPdf(odwolanie.contractId)"
+                                    [disabled]="loadingDocuments"></button>
+                                <span class="smallDesc">Pokaż umowę</span>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </mat-card-content>
