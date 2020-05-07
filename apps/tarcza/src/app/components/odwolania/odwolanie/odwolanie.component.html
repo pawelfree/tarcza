@@ -16,7 +16,7 @@
                     Odwołanie nr: {{ odwolanie.applicationId }}<br />
                     <span class="author">{{odwolanie.userName}}</span><br />
                     <span class="applicationData">Data złożenia: {{showData(odwolanie.applicationDateRequested)}}</span> <br />
-                    <span *ngIf=(odwolanie.applicationDateDecision) class="applicationData">Decyzja z dnia: {{showData(odwolanie.applicationDateDecision)}}</span>
+                    <span *ngIf=(odwolanie.applicationDateDecision) class="applicationData">Data wydania decyzji: {{showData(odwolanie.applicationDateDecision)}}</span>
                     
                 </div>
             </mat-card-header>

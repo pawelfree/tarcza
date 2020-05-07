@@ -47,6 +47,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   odswiezSesje() {
     this.auth.odswiezSesje();
+
   }
 
   ngOnDestroy() {

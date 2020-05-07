@@ -16,7 +16,7 @@
             Wniosek nr: {{ wniosek.applicationId }}<br />
             <span class="author">{{wniosek.userName}}</span><br />
             <span class="applicationData">Data złożenia: {{showData(wniosek.applicationDateRequested)}}</span><br /> 
-            <span *ngIf=(wniosek.applicationDateDecision) class="applicationData">Decyzja z dnia: {{showData(wniosek.applicationDateDecision)}}</span>
+            <span *ngIf=(wniosek.applicationDateDecision) class="applicationData">Data wydania decyzji: {{showData(wniosek.applicationDateDecision)}}</span>
            
            
         </div>

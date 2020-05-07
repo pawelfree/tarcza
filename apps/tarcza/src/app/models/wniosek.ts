@@ -11,6 +11,6 @@ export interface Wniosek {
     decisionId: string;
     nrNip: string;
     parentApplicationId: string;
-    isClaimAllowed: boolean;
+    isClaimAllowed: string;
     odwolania: Wniosek[];
 }
