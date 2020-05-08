@@ -50,4 +50,13 @@ export class AppController {
     return res.send(readFileSync(pa));
   }
 
+  @Get('getClaimLink')
+  getClaimLink(@Res() response: Response) {
+    if (Math.random() > 0.5) {
+      return  { url: 'http://onet.pl' };
+    } else {
+      response.status(403).json({InternalStatusCode: 'KOD_BLEDU'});
+    }
+  }
+
 }
