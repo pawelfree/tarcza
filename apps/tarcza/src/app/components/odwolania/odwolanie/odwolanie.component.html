@@ -1,84 +1,54 @@
+<mat-card>
+    <mat-card-header>
+        <div class="">
+            Odwołanie do wniosku: {{ odwolanie.parentApplicationId }}
+            <br />
+            <span style="font-weight: 100">Status odwołania: </span>
+            <span
+                [class]="statusColor(applicationStatus(odwolanie.applicationStatus))">{{applicationStatus(odwolanie.applicationStatus)}}</span>
 
-
-        <mat-card>
-
-            <mat-card-header>
-                <div class="">
-                    Odwołanie do wniosku: {{ odwolanie.parentApplicationId }}
-                    <br />
-                    <span style="font-weight: 100">Status odwołania: </span>
-                    <span
-                        [class]="statusColor(applicationStatus(odwolanie.applicationStatus))">{{applicationStatus(odwolanie.applicationStatus)}}</span>
-
-                </div>
-                <span class="spacer"></span>
-                <div style="text-align: right;">
-                    Odwołanie nr: {{ odwolanie.applicationId }}<br />
-                    <span class="author">{{odwolanie.userName}}</span><br />
-                    <span class="applicationData">Data złożenia odwołania: {{showData(odwolanie.applicationDateRequested)}}</span> <br />
-                    <span *ngIf=(odwolanie.applicationDateDecision) class="applicationData">Data wydania decyzji: {{showData(odwolanie.applicationDateDecision)}}</span>
-                    
-                </div>
-            </mat-card-header>
-            <mat-card-content>
-                <div class="amount" layout="column">
-                    <table>
-                        <tr>
-                            <td>Wnioskowana kwota</td>
-                            <td class="amountInfo">{{showAmount(odwolanie.amountRequested)}}</td>
-                        </tr>
-                        <tr *ngIf="odwolanie.amountGranted">
-                            <td>Kwota przyznana</td>
-                            <td class="amountInfo"><span
-                                    [class]="checkAmount(odwolanie.amountRequested,odwolanie.amountGranted)">{{showAmount(odwolanie.amountGranted)}}</span>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div align="end" class="document">
-                    <div class="guziki">
-                        <div class="guzik">
-                            <span *ngIf="showDecision(odwolanie.decisionId)">
-                                <button class="decButton" color="basic" (click)="loadPdf(odwolanie.decisionId)"
-                                    [disabled]="loadingDocuments"></button>
-                                <span class="smallDesc">Pokaż decyzję</span>
-                            </span>
-                        </div>
-                        <div class="guzik">
-                            <span *ngIf="showDocument(odwolanie.contractId)">
-                                <button class="agrButton" color="basic" (click)="loadPdf(odwolanie.contractId)"
-                                    [disabled]="loadingDocuments"></button>
-                                <span class="smallDesc">Pokaż umowę</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </mat-card-content>
-
-
-
-
-
-
-        <!-- <p>Status wniosku: {{ applicationStatus(odwolanie.applicationStatus)}}</p>
-            <p>Odwołanie nr: {{ odwolanie.applicationId }}</p>
-            <p>Data złożenia: {{showData(odwolanie.applicationDateRequested)}}</p>
-            <p>Składający: {{odwolanie.userName}}</p>
-            <p>kwota wnioskowana: {{odwolanie.amountRequested }}</p>
-            <p>kwota przyznana: {{odwolanie.amountGranted }}</p>
-            <div align="end" class="document">
-                <div class="guziki">
-                    <span *ngIf="odwolanie.decisionId">
+        </div>
+        <span class="spacer"></span>
+        <div style="text-align: right;">
+            Odwołanie nr: {{ odwolanie.applicationId }}<br />
+            <span class="author">{{odwolanie.userName}}</span><br />
+            <span class="applicationData">Data złożenia odwołania: {{showData(odwolanie.applicationDateRequested)}}</span> <br />
+            <span *ngIf=(odwolanie.applicationDateDecision) class="applicationData">Data wydania decyzji: {{showData(odwolanie.applicationDateDecision)}}</span>
+            
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="amount" layout="column">
+            <table>
+                <tr>
+                    <td>Wnioskowana kwota</td>
+                    <td class="amountInfo">{{showAmount(odwolanie.amountRequested)}}</td>
+                </tr>
+                <tr *ngIf="odwolanie.amountGranted">
+                    <td>Kwota przyznana</td>
+                    <td class="amountInfo"><span
+                            [class]="checkAmount(odwolanie.amountRequested,odwolanie.amountGranted)">{{showAmount(odwolanie.amountGranted)}}</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div align="end" class="document">
+            <div class="guziki">
+                <div class="guzik">
+                    <span *ngIf="showDecision(odwolanie.decisionId)">
                         <button class="decButton" color="basic" (click)="loadPdf(odwolanie.decisionId)"
-                            [disabled]="loadingDocuments"></button>
-                        <span class="smallDesc">Pokaż odwołanie</span>
-                    </span>
-                    <span *ngIf="odwolanie.contractId">
-                        <button class="agrButton" color="basic" (click)="loadPdf(odwolanie.contractId)"
                             [disabled]="loadingDocuments"></button>
                         <span class="smallDesc">Pokaż decyzję</span>
                     </span>
                 </div>
-                <div class="clear"></div>
-            </div>-->
-        </mat-card>
+                <div class="guzik">
+                    <span *ngIf="showDocument(odwolanie.contractId)">
+                        <button class="agrButton" color="basic" (click)="loadPdf(odwolanie.contractId)"
+                            [disabled]="loadingDocuments"></button>
+                        <span class="smallDesc">Pokaż umowę</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
