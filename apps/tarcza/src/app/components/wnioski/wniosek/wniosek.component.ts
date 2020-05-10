@@ -84,7 +84,7 @@ export class WniosekComponent implements OnInit {
         message: kodBledu
       }
     });
-    errorRef.afterClosed().subscribe((confirmed: boolean) => {
+    errorRef.afterClosed().pipe(take(1)).subscribe((confirmed: boolean) => {
       if (confirmed) {
         this.router.navigateByUrl('/wnioski');
       }
