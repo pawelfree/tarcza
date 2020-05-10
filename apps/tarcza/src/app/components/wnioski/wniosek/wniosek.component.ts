@@ -81,12 +81,11 @@ export class WniosekComponent implements OnInit {
   showErrorDialog(kodBledu: string) {
     const errorRef = this.dialog.open(ErrorComponent,{disableClose: true,
       data:{
-        message: kodBledu + ' Alicja w krainie czarów'
+        message: kodBledu
       }
     });
     errorRef.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
-        console.log('Ala ma kota, okno zamknięte');
         this.router.navigateByUrl('/wnioski');
       }
     });

@@ -1,13 +1,7 @@
-
-
-
 <div>
-    <div class="title">Wystąpił nieoczekiwany błąd</div>
-    <div class="content"> Nie możesz w tej chwili złozyć odwołania. 
-        {{ data.message }}</div>
-
-
-        <div class="right">
-       <button mat-raised-button color="primary" class="errorButton" (click)="dialogClose()">Wróć do listy wniosków</button>
+    <div class="title">Odwołanie nie jest możliwe</div>
+    <div class="content">{{ msgContent(data.message) }}</div>
+    <div class="mat-dialog-actions">
+       <button class="errorButton" (click)="dialogClose()">Wróć do listy wniosków</button>
     </div>
 </div>

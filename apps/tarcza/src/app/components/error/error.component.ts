@@ -15,8 +15,19 @@ export class ErrorComponent {
       data.message; 
     }
 
+
+
   dialogClose(): void {
     this.dialogRef.close(true);
+  }
+
+  msgContent(kodBledu: string) {
+    let msg = "Wystąpił nieoczekiwany błąd";
+    if (kodBledu) {
+        msg = "W tej chiwli nie można złożyć odwołania";
+    }    
+    return msg;
+
   }
 
 }

@@ -61,7 +61,7 @@ export const applications = {
       decisionId: 'decision_id_1',
       errorsPFR: 'to jest blad',
       parentApplicationId: '',
-      isClaimAllowed: 'odwolanie_id_1',
+      isClaimAllowed: '',
       nrNip: '9531542419'
     },
     {
