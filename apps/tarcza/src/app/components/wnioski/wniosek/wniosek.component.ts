@@ -79,7 +79,6 @@ export class WniosekComponent {
     });
     errorRef.afterClosed().pipe(take(1)).subscribe((confirmed: boolean) => {
       if (confirmed) {
-        this.router.navigateByUrl('/wnioski');
         this.wnioskiService.wszystkieWnioski();
       }
     });

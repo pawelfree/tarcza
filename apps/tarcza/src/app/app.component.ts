@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { WnioskiService } from './services/wnioski.service';
 import { Observable, fromEvent, Subscription, Subject } from 'rxjs';
 import { User } from './models/user';
 import { tap, filter, distinctUntilChanged, take, switchMapTo, delay, takeUntil } from 'rxjs/operators';
@@ -17,7 +18,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
   private timerWarn = 90;
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private wnioskiService: WnioskiService) { }
 
 
   ngOnInit(): void {
@@ -47,7 +48,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   odswiezSesje() {
     this.auth.odswiezSesje();
-
+    this.wnioskiService.wszystkieWnioski();
   }
 
   ngOnDestroy() {
