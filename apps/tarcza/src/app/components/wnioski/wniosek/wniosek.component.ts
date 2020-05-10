@@ -69,14 +69,7 @@ export class WniosekComponent implements OnInit {
       }, err => {
         if (err.status === 403) {
             dialogRef.close();
-            const errorDialog = this.dialog.open(ErrorComponent, {data: { message: err.error.InternalStatusCode }});
-            errorDialog.afterClosed().subscribe(result => {
-              console.log('Ala ma kota, okno zamknięte');
-              this.router.navigateByUrl('/wnioski');
-              return null;
-            });
-
-
+            this.showErrorDialog(err.error.InternalStatusCode);
         } else {
           dialogRef.close();
           this.router.navigateByUrl('/error');
@@ -84,6 +77,22 @@ export class WniosekComponent implements OnInit {
         }
       });
   }
+
+  showErrorDialog(kodBledu: string) {
+    const errorRef = this.dialog.open(ErrorComponent,{disableClose: true,
+      data:{
+        message: kodBledu + ' Alicja w krainie czarów'
+      }
+    });
+    errorRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        console.log('Ala ma kota, okno zamknięte');
+        this.router.navigateByUrl('/wnioski');
+      }
+    });
+    
+  }
+
 
   applicationStatus(appStatus: string) {
     return this.wnioskiService.applicationStatus(appStatus);

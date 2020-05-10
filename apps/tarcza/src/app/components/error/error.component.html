@@ -1,7 +1,13 @@
-<h1 mat-dialog-title>Nieoczekiwanie wystąpił błąd</h1>
-<div mat-dailog-content>
-    <p >{{ data.message }}</p>
-</div>
-<div mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="true">OK</button>
+
+
+
+<div>
+    <div class="title">Wystąpił nieoczekiwany błąd</div>
+    <div class="content"> Nie możesz w tej chwili złozyć odwołania. 
+        {{ data.message }}</div>
+
+
+        <div class="right">
+       <button mat-raised-button color="primary" class="errorButton" (click)="dialogClose()">Wróć do listy wniosków</button>
+    </div>
 </div>

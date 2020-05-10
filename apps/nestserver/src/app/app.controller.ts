@@ -54,7 +54,7 @@ export class AppController {
   getClaimLink(@Res() response: Response) {
     const losowe = Math.random();
     console.log(losowe);
-    if (losowe > 0.5) {
+    if (losowe > 1) {
       response.status(200).json({ url: 'http://onet.pl' });
     } else {
       response.status(403).json({InternalStatusCode: 'KOD_BLEDU'});
