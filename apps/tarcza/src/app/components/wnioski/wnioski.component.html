@@ -5,7 +5,7 @@
     <div class="column">
         <span *ngIf="wnioski$ | async" class="title">Twoje wnioski o subwencję PFR</span>
     </div>
-    <div class="column right" *ngIf="!loading">
+    <div class="column right" *ngIf="!(loading$ | async)">
         <span class="addButton">
             <span class="description">Złóż wniosek</span>
             <span>
@@ -17,7 +17,7 @@
     </div>
 </div>
 <mat-divider></mat-divider>
-<div *ngIf="!loading">
+<div *ngIf="!(loading$ | async)">
     <mat-card *ngIf="!(wnioski$ | async)">
         <mat-card-header>
             <div class="emptyApplication">Nie masz żadnych aktywnych wniosków. Złóż pierwszy wniosek.</div>
@@ -25,11 +25,11 @@
     </mat-card>
 </div>
 
-<div *ngIf="loading">
+<div *ngIf="loading$ | async">
     <p style="text-align: center;">Szukam Twoich wcześniejszych wniosków ...</p>
     <mat-spinner style="margin: 0 auto;"></mat-spinner>
 </div>
 
-<div *ngIf="!loading">
+<div *ngIf="!(loading$ | async)">
     <app-wniosek [even]="even" [wniosek]="wniosek" *ngFor="let wniosek of wnioski$ | async; let even = even;"></app-wniosek>
 </div>

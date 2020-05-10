@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Wniosek } from '../../models/wniosek';
 import { WnioskiService } from '../../services/wnioski.service';
 import { DOCUMENT } from '@angular/common';
-import { take, catchError, finalize, map } from 'rxjs/operators';
+import { take, catchError } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { WaitComponent } from '../wait/wait.component';
@@ -15,36 +15,21 @@ import { WaitComponent } from '../wait/wait.component';
 })
 export class WnioskiComponent implements OnInit {
 
-  private wnioski = new BehaviorSubject<Array<Wniosek>>([]);
-  wnioski$ = this.wnioski.asObservable();
   public zablokowanyPrzyciskNowyWniosek = false;
-  loading = false;
   redirectingToApplication = false;
   loadingDocuments = false;
+  wnioski$: Observable<Wniosek[]>;
+  loading$: Observable<boolean>;
 
   constructor(private wnioskiService: WnioskiService, private router: Router, public dialog: MatDialog,
               @Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit(): void {
-    this.loading = true;
-    this.wnioskiService.wszystkieWnioski().pipe(
-      map((res: Wniosek[]) => {
-        if (res && res.length > 0) {
-          let wn: Wniosek[] = [];
-          wn = res.sort((a, b) => (a.applicationDateRequested > b.applicationDateRequested ? -1 : 1));
-          wn = wn.filter(item => !item.parentApplicationId);
-          for (const item of wn) {
-            item.odwolania = res.filter(it => it.parentApplicationId === item.applicationId);
-          }
-          return wn;
-        } else {
-          return [];
-        }
-      }),
-      finalize(() => this.loading = false))
-      .subscribe((res: Wniosek[]) => this.wnioski.next(res) );
+    this.loading$ = this.wnioskiService.loading$;
+    this.wnioski$ = this.wnioskiService.wnioski$;
     this.zablokowanyPrzyciskNowyWniosek = false;
     this.redirectingToApplication = false;
+    this.wnioskiService.wszystkieWnioski();
   }
 
   nowyWniosek() {

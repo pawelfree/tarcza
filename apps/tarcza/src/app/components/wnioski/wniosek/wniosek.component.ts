@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, Input, Inject } from '@angular/core';
 import { Wniosek } from '../../../models/wniosek';
 import { environment } from '../../../../environments/environment';
 import { AuthService } from '../../../services/auth.service';
@@ -11,30 +11,25 @@ import { WaitComponent } from '../../wait/wait.component';
 import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
 
-
-
-
 @Component({
   selector: 'app-wniosek',
   templateUrl: './wniosek.component.html',
   styleUrls: ['./wniosek.component.css']
 })
-export class WniosekComponent implements OnInit {
+export class WniosekComponent {
 
   @Input()
   wniosek: Wniosek;
   @Input()
   even: boolean;
   loadingDocuments = false;
-
   redirectingToApplication = false;
 
-  constructor(private readonly authService: AuthService, private readonly wnioskiService: WnioskiService, private readonly dialog: MatDialog,
-    private router: Router, @Inject(DOCUMENT) private document: Document) { }
-  
-
-  ngOnInit(): void {
-  }
+  constructor(private readonly authService: AuthService,
+              private readonly wnioskiService: WnioskiService,
+              private readonly dialog: MatDialog,
+              private readonly router: Router,
+              @Inject(DOCUMENT) private document: Document) {}
 
   loadPdf(id: string) {
     if (environment.getDocumentMethod === 'PARAM') {
@@ -60,38 +55,35 @@ export class WniosekComponent implements OnInit {
 
   noweOdwolanie() {
     const dialogRef = this.dialog.open(WaitComponent, { disableClose: true });
-   
+
     this.wnioskiService.noweOdwolanie(encodeURIComponent(this.wniosek.isClaimAllowed))
       .pipe(take(1)).subscribe(res => {
-        dialogRef.close()
+        dialogRef.close();
         this.redirectingToApplication = true;
         this.document.location.href = res.url;
       }, err => {
         if (err.status === 403) {
-            dialogRef.close();
-            this.showErrorDialog(err.error.InternalStatusCode);
+          dialogRef.close();
+          this.showErrorDialog(err.error.InternalStatusCode);
         } else {
           dialogRef.close();
           this.router.navigateByUrl('/error');
-          return null;
         }
       });
   }
 
   showErrorDialog(kodBledu: string) {
-    const errorRef = this.dialog.open(ErrorComponent,{disableClose: true,
-      data:{
-        message: kodBledu
-      }
+    const errorRef = this.dialog.open(ErrorComponent, {
+      disableClose: true,
+      data: { message: kodBledu }
     });
     errorRef.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
         this.router.navigateByUrl('/wnioski');
+        this.wnioskiService.wszystkieWnioski();
       }
     });
-    
   }
-
 
   applicationStatus(appStatus: string) {
     return this.wnioskiService.applicationStatus(appStatus);
