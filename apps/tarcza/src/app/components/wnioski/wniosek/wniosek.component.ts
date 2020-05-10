@@ -77,7 +77,7 @@ export class WniosekComponent {
       disableClose: true,
       data: { message: kodBledu }
     });
-    errorRef.afterClosed().subscribe((confirmed: boolean) => {
+    errorRef.afterClosed().pipe(take(1)).subscribe((confirmed: boolean) => {
       if (confirmed) {
         this.router.navigateByUrl('/wnioski');
         this.wnioskiService.wszystkieWnioski();
