@@ -34,6 +34,10 @@ export class WnioskiService {
         return this.http.get(this.apiUrl + 'getNewApplicationLink').pipe(catchError(err => of(null)));
     }
 
+    noweOdwolanie(hash: string): Observable<any> {
+        return this.http.get(this.apiUrl + 'getClaimLink/' + hash);
+    }
+
     odswiezSesje(): Observable<string> {
         return this.http.get(this.apiUrl + 'refreshToken', { responseType: 'text', observe: 'response' }).pipe(
             map(res => {

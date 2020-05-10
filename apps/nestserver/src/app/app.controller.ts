@@ -50,10 +50,12 @@ export class AppController {
     return res.send(readFileSync(pa));
   }
 
-  @Get('getClaimLink')
+  @Get('getClaimLink/:hash')
   getClaimLink(@Res() response: Response) {
-    if (Math.random() > 0.5) {
-      return  { url: 'http://onet.pl' };
+    const losowe = Math.random();
+    console.log(losowe);
+    if (losowe > 0.5) {
+      response.status(200).json({ url: 'http://onet.pl' });
     } else {
       response.status(403).json({InternalStatusCode: 'KOD_BLEDU'});
     }

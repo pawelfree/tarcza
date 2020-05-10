@@ -1,10 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Wniosek } from '../../../models/wniosek';
 import { environment } from '../../../../environments/environment';
 import { AuthService } from '../../../services/auth.service';
 import { WnioskiService } from '../../../services/wnioski.service';
-import { finalize } from 'rxjs/operators';
+import { finalize, take } from 'rxjs/operators';
 import { objectID } from '../../../services/objectid';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorComponent } from '../../error/error.component';
+import { WaitComponent } from '../../wait/wait.component';
+import { DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
+
+
 
 
 @Component({
@@ -20,7 +27,11 @@ export class WniosekComponent implements OnInit {
   even: boolean;
   loadingDocuments = false;
 
-  constructor(private readonly authService: AuthService, private readonly wnioskiService: WnioskiService) { }
+  redirectingToApplication = false;
+
+  constructor(private readonly authService: AuthService, private readonly wnioskiService: WnioskiService, private readonly dialog: MatDialog,
+    private router: Router, @Inject(DOCUMENT) private document: Document) { }
+  
 
   ngOnInit(): void {
   }
@@ -46,6 +57,34 @@ export class WniosekComponent implements OnInit {
       window.open(link, '_blank');
     }
   }
+
+  noweOdwolanie() {
+    const dialogRef = this.dialog.open(WaitComponent, { disableClose: true });
+   
+    this.wnioskiService.noweOdwolanie(encodeURIComponent(this.wniosek.isClaimAllowed))
+      .pipe(take(1)).subscribe(res => {
+        dialogRef.close()
+        this.redirectingToApplication = true;
+        this.document.location.href = res.url;
+      }, err => {
+        if (err.status === 403) {
+            dialogRef.close();
+            const errorDialog = this.dialog.open(ErrorComponent, {data: { message: err.error.InternalStatusCode }});
+            errorDialog.afterClosed().subscribe(result => {
+              console.log('Ala ma kota, okno zamknięte');
+              this.router.navigateByUrl('/wnioski');
+              return null;
+            });
+
+
+        } else {
+          dialogRef.close();
+          this.router.navigateByUrl('/error');
+          return null;
+        }
+      });
+  }
+
   applicationStatus(appStatus: string) {
     return this.wnioskiService.applicationStatus(appStatus);
   }
