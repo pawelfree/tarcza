@@ -53,7 +53,7 @@ export class WnioskiService {
     }
 
     wszystkieWnioski() {
-        this.wszystkieWnioskiInternal().pipe(take(1), tap(console.log)).subscribe((res: Wniosek[]) => this.wnioski.next(res));
+        this.wszystkieWnioskiInternal().pipe(take(1)).subscribe((res: Wniosek[]) => this.wnioski.next(res));
     }
 
     nowyWniosek(): Observable<any> {
