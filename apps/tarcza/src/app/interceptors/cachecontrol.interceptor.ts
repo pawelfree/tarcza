@@ -13,10 +13,9 @@ export class CacheControlInterceptor implements HttpInterceptor {
             headers: req.headers.
                 set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0').
                 set('Pragma', 'no-cache').
-                //set('Last-Modified', Date()).
+                set('Last-Modified', Date().toString().replace(/(^.*GMT).*/, '$1')).
                 set('Expires', 'Sat, 01 Jan 2000 00:00:00 GMT')
         });
-        console.log(Date().toString());    
         return next.handle(cloned);
     }
 }
