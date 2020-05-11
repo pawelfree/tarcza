@@ -50,7 +50,7 @@ export class AppController {
     return res.send(readFileSync(pa));
   }
 
-  @Get('getClaimLink/:hash')
+  @Get('getNewClaimLink/:hash')
   getClaimLink(@Res() response: Response) {
     const losowe = Math.random();
     if (losowe > 0.9) {

@@ -61,7 +61,7 @@ export class WnioskiService {
     }
 
     noweOdwolanie(hash: string): Observable<any> {
-        return this.http.get(this.apiUrl + 'getClaimLink/' + hash);
+        return this.http.get(this.apiUrl + 'getNewClaimLink/' + hash);
     }
 
     odswiezSesje(): Observable<string> {
