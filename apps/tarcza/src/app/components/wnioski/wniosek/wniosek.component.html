@@ -7,7 +7,7 @@
             <br />
             <span style="font-weight: 100">Status wniosku: </span>
             <span
-                [class]="statusColor(applicationStatus(wniosek.applicationStatus))">{{applicationStatus(wniosek.applicationStatus)}}</span>
+                [class]="statusColor(applicationStatus(wniosek.applicationStatus))">{{wniosek.applicationStatus | status}}</span>
 
         </div>
         <span class="spacer"></span>
