@@ -56,7 +56,7 @@ export class AppController {
     if (losowe > 0.9) {
       response.status(200).json({ url: 'http://onet.pl' });
     } else {
-      response.status(403).json({InternalStatusCode: 'KOD_BLEDU'});
+      response.status(403).json({innerStatusCode: 'KOD_BLEDU'});
     }
   }
 

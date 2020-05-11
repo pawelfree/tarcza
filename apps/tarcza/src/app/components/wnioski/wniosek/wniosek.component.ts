@@ -64,7 +64,7 @@ export class WniosekComponent {
       }, err => {
         if (err.status === 403) {
           dialogRef.close();
-          this.showErrorDialog(err.error.InternalStatusCode);
+          this.showErrorDialog(err.error.innerStatusCode);
         } else {
           dialogRef.close();
           this.router.navigateByUrl('/error');
