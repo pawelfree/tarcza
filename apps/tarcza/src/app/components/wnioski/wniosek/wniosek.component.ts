@@ -98,6 +98,11 @@ export class WniosekComponent {
     return this.wnioskiService.showData(czas);
   }
 
+  showClaimButton(claimID: string) {
+    console.log(claimID);
+    return this.wnioskiService.showClaimButton(claimID);
+  }
+
   showDecision(decisionID: string) {
     return this.wnioskiService.showDecision(decisionID);
   }

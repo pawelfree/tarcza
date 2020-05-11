@@ -16,7 +16,7 @@ export class CacheControlInterceptor implements HttpInterceptor {
                 //set('Last-Modified', Date()).
                 set('Expires', 'Sat, 01 Jan 2000 00:00:00 GMT')
         });
-        //console.log(Date());    
+        console.log(Date().toString());    
         return next.handle(cloned);
     }
 }

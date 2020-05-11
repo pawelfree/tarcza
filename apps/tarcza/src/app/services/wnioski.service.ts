@@ -170,6 +170,12 @@ export class WnioskiService {
         return showDocumentButton;
     }
 
+    showClaimButton(claimID: string) {
+        let showClaimButton = false;
+        showClaimButton = !(claimID) ? false : true;
+        return showClaimButton;
+    }
+
     statusColor(applicationStatus: string) {
         let statusClass = '';
         switch (applicationStatus) {

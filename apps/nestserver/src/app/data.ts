@@ -61,7 +61,7 @@ export const applications = {
       decisionId: 'decision_id_1',
       errorsPFR: 'to jest blad',
       parentApplicationId: '',
-      isClaimAllowed: 'odwolanie_3_id',
+      isClaimAllowed: '132000060000668MP.RUzJvOaAuG4nAr4N67/pcXiGuzn3MJqMJbLhAhkbjuRmh4UJaXcyX7K91kqvKdlfb8zf2Bz9fOsHpyrTPfRqEg==',
       nrNip: '9531542419'
     },
     {
@@ -92,7 +92,7 @@ export const applications = {
       decisionId: 'decision_id_1',
       errorsPFR: 'to jest blad',
       parentApplicationId: '',
-      isClaimAllowed: 'odwolanie_id_5',
+      isClaimAllowed: '132000060000668MP.RUzJvOaAuG4nAr4N67/pcXiGuzn3MJqMJbLhAhkbjuRmh4UJaXcyX7K91kqvKdlfb8zf2Bz9fOsHpyrTPfRqEg==',
       nrNip: '9531542419'
     }
   ]

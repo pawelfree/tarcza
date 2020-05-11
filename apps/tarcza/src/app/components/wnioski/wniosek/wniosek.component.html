@@ -37,7 +37,7 @@
             
             <div class="guziki">
                 <div class="guzik">
-                <span *ngIf="wniosek.isClaimAllowed">
+                <span *ngIf="showClaimButton(wniosek.isClaimAllowed)">
                     <button class="reapply" (click)="noweOdwolanie()" color="basic"></button>
                     <span class="smallDesc">Złóż odwołanie</span>
                 </span>
