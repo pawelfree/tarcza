@@ -52,6 +52,7 @@ export class WniosekComponent {
       const link = server + options;
       window.open(link, '_blank');
     }
+    this.wnioskiService.wszystkieWnioski();
   }
 
   noweOdwolanie() {

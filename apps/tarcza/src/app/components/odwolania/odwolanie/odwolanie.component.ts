@@ -40,6 +40,7 @@ export class OdwolanieComponent {
       const link = server + options;
       window.open(link, '_blank');
     }
+    this.wnioskiService.wszystkieWnioski();
   }
 
 }
