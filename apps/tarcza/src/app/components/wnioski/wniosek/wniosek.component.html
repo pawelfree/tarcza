@@ -1,13 +1,13 @@
-<mat-card [class]="even == true ? 'pink' : 'blue'">
+<mat-card class="blue">
     <mat-card-header>
         <div class="companyName">
             {{wniosek.companyName}}
             <br />
-            <span style="font-weight: 100;font-size: 0.8em;;">NIP: {{wniosek.nrNip}}</span>
+            <span style="font-weight: 100;font-size: 0.8em;;">NIP: {{ wniosek.nrNip }}</span>
             <br />
             <span style="font-weight: 100">Status wniosku: </span>
             <span
-                [class]="statusColor(applicationStatus(wniosek.applicationStatus))">{{wniosek.applicationStatus | status}}</span>
+                [class]="wniosek.applicationStatus | statusColor">{{ wniosek.applicationStatus | status }}</span>
 
         </div>
         <span class="spacer"></span>
@@ -30,7 +30,7 @@
                 <tr *ngIf="wniosek.amountGranted">
                     <td>Kwota przyznana</td>
                     <td class="amountInfo"><span
-                            [class]="checkAmount(wniosek.amountRequested,wniosek.amountGranted)">{{ wniosek.amountGranted | amount }}</span>
+                            [class]="wniosek.amountGranted | amountColor: wniosek.amountRequested">{{ wniosek.amountGranted | amount }}</span>
                     </td>
                 </tr>
             </table>
@@ -39,20 +39,20 @@
 
             <div class="guziki">
                 <div class="guzik">
-                    <span *ngIf="showClaimButton(wniosek.isClaimAllowed)">
+                    <span *ngIf="wniosek.isClaimAllowed">
                         <button class="reapply" (click)="noweOdwolanie()" color="basic"></button>
                         <span class="smallDesc">Złóż odwołanie</span>
                     </span>
                 </div>
                 <div class="guzik">
-                    <span *ngIf="showDecision(wniosek.decisionId)">
+                    <span *ngIf="wniosek.decisionId">
                         <button class="decButton" color="basic" (click)="loadPdf(wniosek.decisionId)"
                             [disabled]="loadingDocuments"></button>
                         <span class="smallDesc">Pokaż decyzję</span>
                     </span>
                 </div>
                 <div class="guzik">
-                    <span *ngIf="showDocument(wniosek.contractId)">
+                    <span *ngIf="wniosek.contractId">
                         <button class="agrButton" color="basic" (click)="loadPdf(wniosek.contractId)"
                             [disabled]="loadingDocuments"></button>
                         <span class="smallDesc">Pokaż umowę</span>

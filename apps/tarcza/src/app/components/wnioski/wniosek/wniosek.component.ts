@@ -84,29 +84,4 @@ export class WniosekComponent {
       }
     });
   }
-
-  applicationStatus(appStatus: string) {
-    return this.wnioskiService.applicationStatus(appStatus);
-  }
-  checkAmount(amountReq: number, amountGranded: number) {
-    return this.wnioskiService.checkAmount(amountReq, amountGranded);
-  }
-
-  showClaimButton(claimID: string) {
-    console.log(claimID);
-    return this.wnioskiService.showClaimButton(claimID);
-  }
-
-  showDecision(decisionID: string) {
-    return this.wnioskiService.showDecision(decisionID);
-  }
-
-  showDocument(documentID: string) {
-    return this.wnioskiService.showDocument(documentID);
-  }
-
-  statusColor(applicationStatus: string) {
-    return this.wnioskiService.statusColor(applicationStatus);
-  }
-
 }

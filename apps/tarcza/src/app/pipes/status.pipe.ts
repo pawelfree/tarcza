@@ -15,19 +15,15 @@ export class StatusAppPipe implements PipeTransform {
                 appStatusPl = 'Wysłany';
                 break;
             }
-            case 'REJECTED_BAD_DATA': {
+            case 'REJECTED_BAD_DATA': 
+            case 'REJECTED_AFTER_SCORING':
+            {
                 appStatusPl = 'Odrzucony';
                 break;
             }
-            case 'REJECTED_AFTER_SCORING': {
-                appStatusPl = 'Odrzucony';
-                break;
-            }
-            case 'GRANTED': {
-                appStatusPl = 'Przyznany';
-                break;
-            }
-            case 'GRANTED_CHANGED': {
+            case 'GRANTED':
+            case 'GRANTED_CHANGED':
+            {
                 appStatusPl = 'Przyznany';
                 break;
             }

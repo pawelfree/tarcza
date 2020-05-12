@@ -42,23 +42,4 @@ export class OdwolanieComponent {
     }
   }
 
-  applicationStatus(appStatus: string) {
-    return this.wnioskiService.applicationStatus(appStatus);
-  }
-  checkAmount(amountReq: number, amountGranded: number) {
-    return this.wnioskiService.checkAmount(amountReq, amountGranded);
-  }
-
-  showDecision(decisionID: string) {
-    return this.wnioskiService.showDecision(decisionID);
-  }
-
-  showDocument(documentID: string) {
-    return this.wnioskiService.showDocument(documentID);
-  }
-
-  statusColor(applicationStatus: string) {
-    return this.wnioskiService.statusColor(applicationStatus);
-  }
-
 }

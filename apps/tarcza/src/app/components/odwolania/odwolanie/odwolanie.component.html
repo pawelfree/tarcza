@@ -5,7 +5,7 @@
             <br />
             <span style="font-weight: 100">Status odwołania: </span>
             <span
-                [class]="statusColor(applicationStatus(odwolanie.applicationStatus))">{{applicationStatus(odwolanie.applicationStatus)}}</span>
+                [class]="odwolanie.applicationStatus | statusColor">{{ odwolanie.applicationStatus | status}}</span>
 
         </div>
         <span class="spacer"></span>
@@ -29,7 +29,7 @@
                 <tr *ngIf="odwolanie.amountGranted">
                     <td>Kwota przyznana</td>
                     <td class="amountInfo"><span
-                            [class]="checkAmount(odwolanie.amountRequested,odwolanie.amountGranted)">{{ odwolanie.amountGranted | amount }}</span>
+                            [class]="odwolanie.amountGranted | amountColor: odwolanie.amountRequested">{{ odwolanie.amountGranted | amount }}</span>
                     </td>
                 </tr>
             </table>
@@ -37,14 +37,14 @@
         <div align="end" class="document">
             <div class="guziki">
                 <div class="guzik">
-                    <span *ngIf="showDecision(odwolanie.decisionId)">
+                    <span *ngIf="odwolanie.decisionId">
                         <button class="decButton" color="basic" (click)="loadPdf(odwolanie.decisionId)"
                             [disabled]="loadingDocuments"></button>
                         <span class="smallDesc">Pokaż decyzję</span>
                     </span>
                 </div>
                 <div class="guzik">
-                    <span *ngIf="showDocument(odwolanie.contractId)">
+                    <span *ngIf="odwolanie.contractId">
                         <button class="agrButton" color="basic" (click)="loadPdf(odwolanie.contractId)"
                             [disabled]="loadingDocuments"></button>
                         <span class="smallDesc">Pokaż umowę</span>
