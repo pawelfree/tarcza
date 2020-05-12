@@ -6,9 +6,7 @@
             <span style="font-weight: 100;font-size: 0.8em;;">NIP: {{ wniosek.nrNip }}</span>
             <br />
             <span style="font-weight: 100">Status wniosku: </span>
-            <span
-                [class]="wniosek.applicationStatus | statusColor">{{ wniosek.applicationStatus | status }}</span>
-
+            <span [class]="wniosek.applicationStatus | statusColor">{{ wniosek.applicationStatus | status }}</span>
         </div>
         <span class="spacer"></span>
         <div style="text-align: right;">

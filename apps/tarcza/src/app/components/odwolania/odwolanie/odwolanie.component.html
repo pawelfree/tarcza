@@ -4,9 +4,7 @@
             Odwołanie do wniosku: {{ odwolanie.parentApplicationId }}
             <br />
             <span style="font-weight: 100">Status odwołania: </span>
-            <span
-                [class]="odwolanie.applicationStatus | statusColor">{{ odwolanie.applicationStatus | status}}</span>
-
+            <span [class]="odwolanie.applicationStatus | statusColor">{{ odwolanie.applicationStatus | status}}</span>
         </div>
         <span class="spacer"></span>
         <div style="text-align: right;">
@@ -16,7 +14,6 @@
                 {{ odwolanie.applicationDateRequested | date }}</span> <br />
             <span *ngIf=(odwolanie.applicationDateDecision) class="applicationData">Data wydania decyzji:
                 {{ odwolanie.applicationDateDecision | date }}</span>
-
         </div>
     </mat-card-header>
     <mat-card-content>
