@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { WnioskiComponent } from './wnioski/wnioski.component';
 import { WniosekComponent } from './wnioski/wniosek/wniosek.component';
 import { WaitComponent } from './wait/wait.component';
