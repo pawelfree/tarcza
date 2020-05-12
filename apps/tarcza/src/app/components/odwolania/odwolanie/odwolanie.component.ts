@@ -49,13 +49,6 @@ export class OdwolanieComponent {
     return this.wnioskiService.checkAmount(amountReq, amountGranded);
   }
 
-  showAmount(amount: number) {
-    return this.wnioskiService.showAmount(amount);
-  }
-  showData(czas: string) {
-    return this.wnioskiService.showData(czas);
-  }
-
   showDecision(decisionID: string) {
     return this.wnioskiService.showDecision(decisionID);
   }

@@ -7,31 +7,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WnioskiService } from './services/wnioski.service';
 import { AuthService } from './services/auth.service';
-import { MinutePipe } from './services/minute.pipe';
 import { InterceptorsModule } from './interceptors/interceptors.module';
 import { ComponentsModule } from './components/components.module';
-import { StatusAppPipe } from './services/status.pipe';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule( {
   declarations: [
-    AppComponent,
-    MinutePipe,
-    StatusAppPipe
+    AppComponent
   ],
   imports: [
     AngularMaterialModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    ComponentsModule,
     HttpClientModule,
     InterceptorsModule,
-    ComponentsModule
+    PipesModule,
   ],
   providers: [
-    WnioskiService,
-    AuthService
+    AuthService,
+    WnioskiService
   ],
-  bootstrap: [AppComponent],
-  exports: [StatusAppPipe]
+  bootstrap: [AppComponent]
 } )
 export class AppModule { }

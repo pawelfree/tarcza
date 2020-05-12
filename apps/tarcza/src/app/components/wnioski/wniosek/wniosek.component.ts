@@ -1,4 +1,4 @@
-import { Component, Input, Inject } from '@angular/core';
+import { Component, Input, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { Wniosek } from '../../../models/wniosek';
 import { environment } from '../../../../environments/environment';
 import { AuthService } from '../../../services/auth.service';
@@ -14,7 +14,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-wniosek',
   templateUrl: './wniosek.component.html',
-  styleUrls: ['./wniosek.component.css']
+  styleUrls: ['./wniosek.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WniosekComponent {
 
@@ -89,13 +90,6 @@ export class WniosekComponent {
   }
   checkAmount(amountReq: number, amountGranded: number) {
     return this.wnioskiService.checkAmount(amountReq, amountGranded);
-  }
-
-  showAmount(amount: number) {
-    return this.wnioskiService.showAmount(amount);
-  }
-  showData(czas: string) {
-    return this.wnioskiService.showData(czas);
   }
 
   showClaimButton(claimID: string) {

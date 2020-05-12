@@ -14,8 +14,10 @@
         <div style="text-align: right;">
             Wniosek nr: {{ wniosek.applicationId }}<br />
             <span class="author">{{wniosek.userName}}</span><br />
-            <span class="applicationData">Data złożenia wniosku: {{showData(wniosek.applicationDateRequested)}}</span><br /> 
-            <span *ngIf=(wniosek.applicationDateDecision) class="applicationData">Data wydania decyzji: {{showData(wniosek.applicationDateDecision)}}</span>
+            <span class="applicationData">Data złożenia wniosku:
+                {{ wniosek.applicationDateRequested | date }}</span><br />
+            <span *ngIf=(wniosek.applicationDateDecision) class="applicationData">Data wydania decyzji:
+                {{ wniosek.applicationDateDecision | date}}</span>
         </div>
     </mat-card-header>
     <mat-card-content>
@@ -23,43 +25,43 @@
             <table>
                 <tr>
                     <td>Wnioskowana kwota</td>
-                    <td class="amountInfo">{{showAmount(wniosek.amountRequested)}}</td>
+                    <td class="amountInfo">{{ wniosek.amountRequested | amount }}</td>
                 </tr>
                 <tr *ngIf="wniosek.amountGranted">
                     <td>Kwota przyznana</td>
                     <td class="amountInfo"><span
-                            [class]="checkAmount(wniosek.amountRequested,wniosek.amountGranted)">{{showAmount(wniosek.amountGranted)}}</span>
+                            [class]="checkAmount(wniosek.amountRequested,wniosek.amountGranted)">{{ wniosek.amountGranted | amount }}</span>
                     </td>
                 </tr>
             </table>
         </div>
         <div align="end" class="document">
-            
+
             <div class="guziki">
                 <div class="guzik">
-                <span *ngIf="showClaimButton(wniosek.isClaimAllowed)">
-                    <button class="reapply" (click)="noweOdwolanie()" color="basic"></button>
-                    <span class="smallDesc">Złóż odwołanie</span>
-                </span>
+                    <span *ngIf="showClaimButton(wniosek.isClaimAllowed)">
+                        <button class="reapply" (click)="noweOdwolanie()" color="basic"></button>
+                        <span class="smallDesc">Złóż odwołanie</span>
+                    </span>
                 </div>
                 <div class="guzik">
-                <span *ngIf="showDecision(wniosek.decisionId)">
-                    <button class="decButton" color="basic" (click)="loadPdf(wniosek.decisionId)"
-                        [disabled]="loadingDocuments"></button>
-                    <span class="smallDesc">Pokaż decyzję</span>
-                </span>
+                    <span *ngIf="showDecision(wniosek.decisionId)">
+                        <button class="decButton" color="basic" (click)="loadPdf(wniosek.decisionId)"
+                            [disabled]="loadingDocuments"></button>
+                        <span class="smallDesc">Pokaż decyzję</span>
+                    </span>
                 </div>
                 <div class="guzik">
-                <span *ngIf="showDocument(wniosek.contractId)">
-                    <button class="agrButton" color="basic" (click)="loadPdf(wniosek.contractId)"
-                        [disabled]="loadingDocuments"></button>
-                    <span class="smallDesc">Pokaż umowę</span>
-                </span>
+                    <span *ngIf="showDocument(wniosek.contractId)">
+                        <button class="agrButton" color="basic" (click)="loadPdf(wniosek.contractId)"
+                            [disabled]="loadingDocuments"></button>
+                        <span class="smallDesc">Pokaż umowę</span>
+                    </span>
                 </div>
             </div>
         </div>
     </mat-card-content>
-    <mat-card-footer *ngIf="wniosek.odwolania.length > 0" >
+    <mat-card-footer *ngIf="wniosek.odwolania.length > 0">
         <app-odwolania [odwolania]="wniosek.odwolania"></app-odwolania>
     </mat-card-footer>
 </mat-card>

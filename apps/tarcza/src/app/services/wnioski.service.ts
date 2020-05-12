@@ -4,8 +4,7 @@ import { Wniosek } from '../models/wniosek';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { User } from '../models/user';
 import { environment } from '../../environments/environment';
-import { map, catchError, tap, finalize, take } from 'rxjs/operators';
-import { FindValueSubscriber } from 'rxjs/internal/operators/find';
+import { map, catchError, finalize, take } from 'rxjs/operators';
 
 @Injectable()
 export class WnioskiService {
@@ -148,14 +147,6 @@ export class WnioskiService {
             }
         }
         return amountClass;
-    }
-
-    showAmount(amount: number) {
-        return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' zł.';
-    }
-
-    showData(czas: string) {
-        return czas.replace(/([0-9]{4})-([0-9]{2})-([0-9]{2}).*/, '$3-$2-$1');
     }
 
     showDecision(decisionID: string) {

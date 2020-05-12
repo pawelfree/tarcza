@@ -12,11 +12,13 @@ import { LoginComponent } from './login/login.component';
 import { BladComponent } from './blad/blad.component';
 
 import { AngularMaterialModule } from '../angular-material.module';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
     imports: [
-        CommonModule,
         AngularMaterialModule,
+        CommonModule,
+        PipesModule
     ],
     declarations: [
         BladComponent,
@@ -28,7 +30,7 @@ import { AngularMaterialModule } from '../angular-material.module';
         WaitComponent,
         WniosekComponent,
         WnioskiComponent
-      ],
+      ]
 })
 export class ComponentsModule {
 

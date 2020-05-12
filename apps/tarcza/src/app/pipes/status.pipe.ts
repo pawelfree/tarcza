@@ -2,8 +2,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe( { name: 'status' } )
 export class StatusAppPipe implements PipeTransform {
+
     transform( value: string ) {
-        
+
         let appStatusPl = '';
         switch (value) {
             case 'NEW': {

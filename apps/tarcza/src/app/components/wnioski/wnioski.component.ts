@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Wniosek } from '../../models/wniosek';
 import { WnioskiService } from '../../services/wnioski.service';
@@ -11,7 +11,8 @@ import { WaitComponent } from '../wait/wait.component';
 @Component({
   selector: 'app-wnioski',
   templateUrl: './wnioski.component.html',
-  styleUrls: ['./wnioski.component.css']
+  styleUrls: ['./wnioski.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WnioskiComponent implements OnInit {
 
