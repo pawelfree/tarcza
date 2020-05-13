@@ -85,15 +85,31 @@ export const applications = {
       companyName: 'Piekarnia Kamień',
       applicationDateRequested: '2019-02-01',
       applicationDateDecision: '2020-01-08 00:00:00',
-      applicationStatus: 'GRANTED_CHANGED',
-      amountRequested: '100000',
-      amountGranted: '8000',
+      applicationStatus: 'GRANTED',
+      amountRequested: '100000,00',
+      amountGranted: '0',
       contractId: 'document_id_1',
       decisionId: 'decision_id_1',
       errorsPFR: 'to jest blad',
       parentApplicationId: '',
       isClaimAllowed: '132000060000668MP.RUzJvOaAuG4nAr4N67/pcXiGuzn3MJqMJbLhAhkbjuRmh4UJaXcyX7K91kqvKdlfb8zf2Bz9fOsHpyrTPfRqEg==',
       nrNip: '9531542419'
+    },
+    {
+      applicationId: '132000060000282SP',
+      nrNip: '5341081479',
+      userName: 'MARIUSZ JASKULSKI',
+companyName: 'RACHUNEK TESTOWY',
+applicationDateRequested: '2020-04-26 00:00:00',
+applicationStatus: 'REJECTED_BAD_DATA',
+amountRequested: '3500000.00',
+amountGranted: '0,00',
+contractId: '1604573.C65C2A77EC2E357FA994A757B93ED94734EBEF6AB7BA55C0A8962AD02C7621937511C225E9D920F05E4C3E81154CE6076411E5FA2FE19F58714B1F0A197527B3',
+decisionId: '',
+errorsPFR: '',
+parentApplicationId: '',
+applicationDateDecision: '2020-04-26 13:46:21',
+isClaimAllowed: ''
     }
   ]
 };
