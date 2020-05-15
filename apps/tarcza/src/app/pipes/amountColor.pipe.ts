@@ -8,13 +8,12 @@ export class AmountColorPipe implements PipeTransform {
         const amountDeff: number = newGranted / newReq;
         let amountClass = '';
         switch (true) {
-            case (amountDeff > 0.25 && amountDeff < 1):
-            case (amountDeff === 0):
+            case (amountDeff < 0.75):
             {
                 amountClass = 'red';
                 break;
             }
-            case (amountDeff <= 0.25): {
+            case (amountDeff >= 0.75 && amountDeff < 1): {
                 amountClass = 'orange';
                 break;
             }
