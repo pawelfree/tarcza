@@ -12,6 +12,7 @@ import { BladComponent } from './blad/blad.component';
 
 import { AngularMaterialModule } from '../angular-material.module';
 import { PipesModule } from '../pipes/pipes.module';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
     imports: [
@@ -23,6 +24,7 @@ import { PipesModule } from '../pipes/pipes.module';
         BladComponent,
         LoginComponent,
         LogoutComponent,
+        ErrorComponent,
         OdwolaniaComponent,
         OdwolanieComponent,
         PersonComponent,

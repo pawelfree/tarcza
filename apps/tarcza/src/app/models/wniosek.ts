@@ -5,8 +5,8 @@ export interface Wniosek {
     applicationDateRequested: string;
     applicationDateDecision: string;
     applicationStatus: string;
-    amountRequested: number;
-    amountGranted: number;
+    amountRequested: string;
+    amountGranted: string;
     contractId: string;
     decisionId: string;
     nrNip: string;

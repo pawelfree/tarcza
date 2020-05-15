@@ -53,11 +53,13 @@ export class AppController {
   @Get('getNewClaimLink/:hash')
   getClaimLink(@Res() response: Response) {
     const losowe = Math.random();
+    const answer = ['INCORECT_HASH', 'INCORECT_OWNER', 'CLAIM_NOT_ALLOWED', 'CURRENT_CLAIM'];
+    const randomAnswer = answer[Math.floor(Math.random() * answer.length)];
+    console.log(randomAnswer);
     if (losowe > 0.9) {
       response.status(200).json({ url: 'http://onet.pl' });
     } else {
-      response.status(403).json({innerStatusCode: 'KOD_BLEDU'});
+      response.status(403).json({innerStatusCode: randomAnswer});
     }
   }
-
 }

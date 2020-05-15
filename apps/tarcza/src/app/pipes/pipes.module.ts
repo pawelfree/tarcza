@@ -5,6 +5,7 @@ import { AmountPipe } from './amount.pipe';
 import { DateAppPipe } from './date.pipe';
 import { StatusColorPipe } from './statusColor.pipe';
 import { AmountColorPipe } from './amountColor.pipe';
+import { ErrorMsgPipe } from './error.pipe';
 
 @NgModule({
     declarations: [
@@ -13,7 +14,8 @@ import { AmountColorPipe } from './amountColor.pipe';
         MinutePipe,
         StatusAppPipe,
         StatusColorPipe,
-        AmountColorPipe
+        AmountColorPipe,
+        ErrorMsgPipe
     ],
     exports: [
         AmountPipe,
@@ -21,7 +23,8 @@ import { AmountColorPipe } from './amountColor.pipe';
         MinutePipe,
         StatusAppPipe,
         StatusColorPipe,
-        AmountColorPipe
+        AmountColorPipe,
+        ErrorMsgPipe
     ]
 })
 export class PipesModule {
