@@ -29,7 +29,6 @@ export class ErrorMsgPipe implements PipeTransform {
               }
             }
         }
-        console.log(kodBledu + ': ' + msg);
         return msg;
     }
 }
