@@ -4,7 +4,7 @@
     <div class="column">
         <span *ngIf="wnioski$ | async" class="title">Twoje wnioski o subwencję PFR</span>
     </div>
-    <div class="column right" *ngIf="!(loading$ | async)">
+    <!--<div class="column right" *ngIf="!(loading$ | async)">
         <span class="addButton">
             <span class="description">Złóż wniosek</span>
             <span>
@@ -13,7 +13,7 @@
                 </button>
             </span>
         </span>
-    </div>
+    </div>-->
 </div>
 <mat-divider></mat-divider>
 <div *ngIf="!(loading$ | async)">

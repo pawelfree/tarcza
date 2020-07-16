@@ -33,7 +33,7 @@ export class WnioskiComponent implements OnInit {
     this.wnioskiService.wszystkieWnioski();
   }
 
-  nowyWniosek() {
+  /*nowyWniosek() {
     this.zablokowanyPrzyciskNowyWniosek = true;
     const dialogRef = this.dialog.open(WaitComponent, { disableClose: true });
     this.wnioskiService.nowyWniosek().pipe(
@@ -52,6 +52,6 @@ export class WnioskiComponent implements OnInit {
         }
       }
     );
-  }
+  }*/
 
 }
