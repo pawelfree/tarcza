@@ -16,7 +16,8 @@ export class AppController {
       id: '1234567890',
       isCompany: true,
       userName: 'Paweł Rzewuski',
-      token: this.appService.getToken()
+      token: this.appService.getToken(),
+      isSubmitAllowed: true
     };
   }
 

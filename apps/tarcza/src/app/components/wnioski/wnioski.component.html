@@ -1,19 +1,22 @@
 <div *ngIf="redirectingToApplication" class="overlay"></div>
 <mat-divider></mat-divider>
+<div class="info" *ngIf="(isSubmitAllowed === false)">Przypominamy, że 31 lipca 2020 roku był ostatnim dniem na składanie wniosku o przyznanie subwencji finansowej
+     w ramach Programu "Tarcza Finansowa PFR". <br />Jednocześnie informujemy, że możliwość złożenia odwołania obowiązuje przez 
+    okres 2 miesięcy licząc od dnia złożenia pierwotnego wniosku.</div>
 <div class="row">
     <div class="column">
         <span *ngIf="wnioski$ | async" class="title">Twoje wnioski o subwencję PFR</span>
     </div>
-    <!--<div class="column right" *ngIf="!(loading$ | async)">
+    <div class="column right" *ngIf="(isSubmitAllowed === true && !(loading$ | async))">
         <span class="addButton">
             <span class="description">Złóż wniosek</span>
-            <span>
+            <span> 
                 <button class="aButton" color="accent" [disabled]="zablokowanyPrzyciskNowyWniosek"
                     (click)="nowyWniosek()">
                 </button>
             </span>
         </span>
-    </div>-->
+    </div>
 </div>
 <mat-divider></mat-divider>
 <div *ngIf="!(loading$ | async)">
