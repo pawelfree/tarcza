@@ -25,7 +25,7 @@ export class WnioskiComponent implements OnInit {
   loggedIn$: Observable<User>;
   wnioski$: Observable<Wniosek[]>;
   loading$: Observable<boolean>;
-  public showButton: Subscription;
+
   public isSubmitAllowed: boolean;
 
 
@@ -34,7 +34,7 @@ export class WnioskiComponent implements OnInit {
 
   ngOnInit(): void {
     this.loggedIn$ = this.auth.loggedIn$;
-    this.showButton = this.loggedIn$.pipe(take(1)).subscribe(res => {
+    this.loggedIn$.pipe(take(1)).subscribe(res => {
       if (res) {
         this.isSubmitAllowed = res.isSubmitAllowed;
       }

@@ -11,13 +11,15 @@ export class AppController {
 
   @Get('LoginUser/:token')
   login() {
-
+    const losowe = Math.random();
+    let showButton: boolean;
+    showButton = ( losowe > 0.5 ) ? true : false;
     return {
       id: '1234567890',
       isCompany: true,
       userName: 'Paweł Rzewuski',
       token: this.appService.getToken(),
-      isSubmitAllowed: false
+      isSubmitAllowed: showButton
     };
   }
 
